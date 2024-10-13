@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexa.NET.GLFW", "Hexa.NET.G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generator", "Generator\Generator.csproj", "{012F640C-0388-4019-8C87-6A84BE136F5B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.csproj", "{4C6C2503-871A-459B-A379-5BD940DEE64A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{012F640C-0388-4019-8C87-6A84BE136F5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{012F640C-0388-4019-8C87-6A84BE136F5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{012F640C-0388-4019-8C87-6A84BE136F5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C6C2503-871A-459B-A379-5BD940DEE64A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C6C2503-871A-459B-A379-5BD940DEE64A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C6C2503-871A-459B-A379-5BD940DEE64A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C6C2503-871A-459B-A379-5BD940DEE64A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
