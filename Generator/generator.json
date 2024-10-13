@@ -1,0 +1,15 @@
+{
+  "Namespace": "Hexa.NET.GLFW",
+  "ApiName": "GLFW",
+  "LibName": "GLFW",
+  "EnableExperimentalOptions": true,
+  "GenerateConstructorsForStructs": true,
+  "GeneratePlaceholderComments": false,
+  "GenerateMetadata": true,
+  "ImportType": "FunctionTable",
+  "ConstantNamingConvention": "Unknown",
+  "TypeMappings": {
+  },
+  "IgnoredTypes": [],
+  "Usings": [ "System.Numerics" ]
+}
