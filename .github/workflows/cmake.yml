@@ -45,15 +45,15 @@ jobs:
 
     - name: Configure GLFW with CMake for Linux
       if: matrix.os == 'linux' || matrix.os == 'ubuntu-latest'
-      run: cmake -S glfw -B glfw/build
+      run: cmake -S glfw -B glfw/build -DBUILD_SHARED_LIBS=ON -DGLFW_BUILD_EXAMPLES=OFF -DGLFW_BUILD_TESTS=OFF -DGLFW_BUILD_DOCS=OFF -DGLFW_INSTALL=OFF
 
     - name: Configure GLFW with CMake for macOS
       if: matrix.os == 'macos-latest'
-      run: cmake -S glfw -B glfw/build -DCMAKE_OSX_ARCHITECTURES=${{ matrix.cmake-arch }}
+      run: cmake -S glfw -B glfw/build -DCMAKE_OSX_ARCHITECTURES=${{ matrix.cmake-arch }} -DBUILD_SHARED_LIBS=ON -DGLFW_BUILD_EXAMPLES=OFF -DGLFW_BUILD_TESTS=OFF -DGLFW_BUILD_DOCS=OFF -DGLFW_INSTALL=OFF
 
     - name: Configure GLFW with CMake for Windows
       if: matrix.os == 'windows-latest'
-      run: cmake -S glfw -B glfw/build -A ${{ matrix.cmake-arch }}
+      run: cmake -S glfw -B glfw/build -A ${{ matrix.cmake-arch }} -DBUILD_SHARED_LIBS=ON -DGLFW_BUILD_EXAMPLES=OFF -DGLFW_BUILD_TESTS=OFF -DGLFW_BUILD_DOCS=OFF -DGLFW_INSTALL=OFF
 
     - name: Build GLFW
       run: cmake --build glfw/build --config Release
@@ -61,14 +61,14 @@ jobs:
     - name: Move Windows binaries
       if: matrix.os == 'windows-latest'
       run: |
-        mv glfw/build/Release/*.dll glfw/build/
+        mv glfw/build/src/Release/*.dll glfw/build/src/
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4.3.4
       with:
         name: glfw-${{ matrix.os }}-${{ matrix.arch }}-artifacts 
         path: |
-          glfw/build/*.dll
-          glfw/build/*.so
-          glfw/build/*.dylib
+          glfw/build/src/*.dll
+          glfw/build/src/*.so
+          glfw/build/src/*.dylib
         if-no-files-found: ignore # 'warn' or 'ignore' or 'error'
