@@ -9,7 +9,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="HexaGen" Version="1.1.8-rc5" />
+		<PackageReference Include="HexaGen" Version="1.1.8" />
 	</ItemGroup>
 
 	<ItemGroup>
