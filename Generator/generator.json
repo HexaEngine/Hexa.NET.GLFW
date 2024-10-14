@@ -6,10 +6,5 @@
   "GenerateConstructorsForStructs": true,
   "GeneratePlaceholderComments": false,
   "GenerateMetadata": true,
-  "ImportType": "FunctionTable",
-  "ConstantNamingConvention": "Unknown",
-  "TypeMappings": {
-  },
-  "IgnoredTypes": [],
-  "Usings": [ "System.Numerics" ]
+  "ImportType": "FunctionTable"
 }

@@ -11,7 +11,6 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HexaGen.Runtime;
-using System.Numerics;
 
 namespace Hexa.NET.GLFW
 {
