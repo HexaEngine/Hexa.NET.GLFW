@@ -23,6 +23,11 @@ unsafe
         // Poll for and process events
         GLFW.PollEvents();
 
+        if (GLFW.GetKey(window, (int)GlfwKey.Escape) == GLFW.GLFW_PRESS)
+        {
+            GLFW.SetWindowShouldClose(window, 1); // Request to close the window
+        }
+
         // Swap front and back buffers (double buffering)
         GLFW.SwapBuffers(window);
     }
