@@ -31,4 +31,53 @@ namespace Hexa.NET.GLFW
 
 	}
 
+	/// <summary>
+	/// <br/>
+	/// Opaque cursor object.<br/>
+	/// <br/>
+	/// <br/>
+	/// <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "GLFWcursor")]
+	#if NET5_0_OR_GREATER
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	#endif
+	public unsafe struct GLFWcursorPtr : IEquatable<GLFWcursorPtr>
+	{
+		public GLFWcursorPtr(GLFWcursor* handle) { Handle = handle; }
+
+		public GLFWcursor* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static GLFWcursorPtr Null => new GLFWcursorPtr(null);
+
+		public GLFWcursor this[int index] { get => Handle[index]; set => Handle[index] = value; }
+
+		public static implicit operator GLFWcursorPtr(GLFWcursor* handle) => new GLFWcursorPtr(handle);
+
+		public static implicit operator GLFWcursor*(GLFWcursorPtr handle) => handle.Handle;
+
+		public static bool operator ==(GLFWcursorPtr left, GLFWcursorPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(GLFWcursorPtr left, GLFWcursorPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(GLFWcursorPtr left, GLFWcursor* right) => left.Handle == right;
+
+		public static bool operator !=(GLFWcursorPtr left, GLFWcursor* right) => left.Handle != right;
+
+		public bool Equals(GLFWcursorPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is GLFWcursorPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		#if NET5_0_OR_GREATER
+		private string DebuggerDisplay => string.Format("GLFWcursorPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		#endif
+	}
+
 }

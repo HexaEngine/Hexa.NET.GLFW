@@ -60,4 +60,66 @@ namespace Hexa.NET.GLFW
 
 	}
 
+	/// <summary>
+	/// <br/>
+	/// This describes a single 2D image.  See the documentation for each related<br/>
+	/// function what the expected pixel format is.<br/>
+	/// <br/>
+	/// <br/>
+	/// <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "GLFWimage")]
+	#if NET5_0_OR_GREATER
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	#endif
+	public unsafe struct GLFWimagePtr : IEquatable<GLFWimagePtr>
+	{
+		public GLFWimagePtr(GLFWimage* handle) { Handle = handle; }
+
+		public GLFWimage* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static GLFWimagePtr Null => new GLFWimagePtr(null);
+
+		public GLFWimage this[int index] { get => Handle[index]; set => Handle[index] = value; }
+
+		public static implicit operator GLFWimagePtr(GLFWimage* handle) => new GLFWimagePtr(handle);
+
+		public static implicit operator GLFWimage*(GLFWimagePtr handle) => handle.Handle;
+
+		public static bool operator ==(GLFWimagePtr left, GLFWimagePtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(GLFWimagePtr left, GLFWimagePtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(GLFWimagePtr left, GLFWimage* right) => left.Handle == right;
+
+		public static bool operator !=(GLFWimagePtr left, GLFWimage* right) => left.Handle != right;
+
+		public bool Equals(GLFWimagePtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is GLFWimagePtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		#if NET5_0_OR_GREATER
+		private string DebuggerDisplay => string.Format("GLFWimagePtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		#endif
+		/// <summary>
+		/// The width, in pixels, of this image.<br/>
+		/// </summary>
+		public ref int Width => ref Unsafe.AsRef<int>(&Handle->Width);
+		/// <summary>
+		/// The height, in pixels, of this image.<br/>
+		/// </summary>
+		public ref int Height => ref Unsafe.AsRef<int>(&Handle->Height);
+		/// <summary>
+		/// The pixel data of this image, arranged left-to-right, top-to-bottom.<br/>
+		/// </summary>
+		public byte* Pixels { get => Handle->Pixels; set => Handle->Pixels = value; }
+	}
+
 }

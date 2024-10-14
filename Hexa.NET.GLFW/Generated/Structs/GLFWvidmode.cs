@@ -83,4 +83,77 @@ namespace Hexa.NET.GLFW
 
 	}
 
+	/// <summary>
+	/// <br/>
+	/// This describes a single video mode.<br/>
+	/// <br/>
+	/// <br/>
+	/// <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "GLFWvidmode")]
+	#if NET5_0_OR_GREATER
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	#endif
+	public unsafe struct GLFWvidmodePtr : IEquatable<GLFWvidmodePtr>
+	{
+		public GLFWvidmodePtr(GLFWvidmode* handle) { Handle = handle; }
+
+		public GLFWvidmode* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static GLFWvidmodePtr Null => new GLFWvidmodePtr(null);
+
+		public GLFWvidmode this[int index] { get => Handle[index]; set => Handle[index] = value; }
+
+		public static implicit operator GLFWvidmodePtr(GLFWvidmode* handle) => new GLFWvidmodePtr(handle);
+
+		public static implicit operator GLFWvidmode*(GLFWvidmodePtr handle) => handle.Handle;
+
+		public static bool operator ==(GLFWvidmodePtr left, GLFWvidmodePtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(GLFWvidmodePtr left, GLFWvidmodePtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(GLFWvidmodePtr left, GLFWvidmode* right) => left.Handle == right;
+
+		public static bool operator !=(GLFWvidmodePtr left, GLFWvidmode* right) => left.Handle != right;
+
+		public bool Equals(GLFWvidmodePtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is GLFWvidmodePtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		#if NET5_0_OR_GREATER
+		private string DebuggerDisplay => string.Format("GLFWvidmodePtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		#endif
+		/// <summary>
+		/// The width, in screen coordinates, of the video mode.<br/>
+		/// </summary>
+		public ref int Width => ref Unsafe.AsRef<int>(&Handle->Width);
+		/// <summary>
+		/// The height, in screen coordinates, of the video mode.<br/>
+		/// </summary>
+		public ref int Height => ref Unsafe.AsRef<int>(&Handle->Height);
+		/// <summary>
+		/// The bit depth of the red channel of the video mode.<br/>
+		/// </summary>
+		public ref int RedBits => ref Unsafe.AsRef<int>(&Handle->RedBits);
+		/// <summary>
+		/// The bit depth of the green channel of the video mode.<br/>
+		/// </summary>
+		public ref int GreenBits => ref Unsafe.AsRef<int>(&Handle->GreenBits);
+		/// <summary>
+		/// The bit depth of the blue channel of the video mode.<br/>
+		/// </summary>
+		public ref int BlueBits => ref Unsafe.AsRef<int>(&Handle->BlueBits);
+		/// <summary>
+		/// The refresh rate, in Hz, of the video mode.<br/>
+		/// </summary>
+		public ref int RefreshRate => ref Unsafe.AsRef<int>(&Handle->RefreshRate);
+	}
+
 }

@@ -130,4 +130,79 @@ namespace Hexa.NET.GLFW
 
 	}
 
+	/// <summary>
+	/// <br/>
+	/// This describes the input state of a gamepad.<br/>
+	/// <br/>
+	/// <br/>
+	/// <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "GLFWgamepadstate")]
+	#if NET5_0_OR_GREATER
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	#endif
+	public unsafe struct GLFWgamepadstatePtr : IEquatable<GLFWgamepadstatePtr>
+	{
+		public GLFWgamepadstatePtr(GLFWgamepadstate* handle) { Handle = handle; }
+
+		public GLFWgamepadstate* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static GLFWgamepadstatePtr Null => new GLFWgamepadstatePtr(null);
+
+		public GLFWgamepadstate this[int index] { get => Handle[index]; set => Handle[index] = value; }
+
+		public static implicit operator GLFWgamepadstatePtr(GLFWgamepadstate* handle) => new GLFWgamepadstatePtr(handle);
+
+		public static implicit operator GLFWgamepadstate*(GLFWgamepadstatePtr handle) => handle.Handle;
+
+		public static bool operator ==(GLFWgamepadstatePtr left, GLFWgamepadstatePtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(GLFWgamepadstatePtr left, GLFWgamepadstatePtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(GLFWgamepadstatePtr left, GLFWgamepadstate* right) => left.Handle == right;
+
+		public static bool operator !=(GLFWgamepadstatePtr left, GLFWgamepadstate* right) => left.Handle != right;
+
+		public bool Equals(GLFWgamepadstatePtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is GLFWgamepadstatePtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		#if NET5_0_OR_GREATER
+		private string DebuggerDisplay => string.Format("GLFWgamepadstatePtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		#endif
+		/// <summary>
+		/// The states of each [gamepad button](<br/>
+		/// `GLFW_PRESS`<br/>
+		/// or `GLFW_RELEASE`.<br/>
+		/// </summary>
+		public unsafe Span<byte> Buttons
+		
+		{
+			get
+			{
+				return new Span<byte>(&Handle->Buttons_0, 15);
+			}
+		}
+		/// <summary>
+		/// The states of each [gamepad axis](<br/>
+		/// in the range -1.0<br/>
+		/// to 1.0 inclusive.<br/>
+		/// </summary>
+		public unsafe Span<float> Axes
+		
+		{
+			get
+			{
+				return new Span<float>(&Handle->Axes_0, 6);
+			}
+		}
+	}
+
 }

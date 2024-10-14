@@ -31,4 +31,53 @@ namespace Hexa.NET.GLFW
 
 	}
 
+	/// <summary>
+	/// <br/>
+	/// Opaque window object.<br/>
+	/// <br/>
+	/// <br/>
+	/// <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "GLFWwindow")]
+	#if NET5_0_OR_GREATER
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	#endif
+	public unsafe struct GLFWwindowPtr : IEquatable<GLFWwindowPtr>
+	{
+		public GLFWwindowPtr(GLFWwindow* handle) { Handle = handle; }
+
+		public GLFWwindow* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static GLFWwindowPtr Null => new GLFWwindowPtr(null);
+
+		public GLFWwindow this[int index] { get => Handle[index]; set => Handle[index] = value; }
+
+		public static implicit operator GLFWwindowPtr(GLFWwindow* handle) => new GLFWwindowPtr(handle);
+
+		public static implicit operator GLFWwindow*(GLFWwindowPtr handle) => handle.Handle;
+
+		public static bool operator ==(GLFWwindowPtr left, GLFWwindowPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(GLFWwindowPtr left, GLFWwindowPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(GLFWwindowPtr left, GLFWwindow* right) => left.Handle == right;
+
+		public static bool operator !=(GLFWwindowPtr left, GLFWwindow* right) => left.Handle != right;
+
+		public bool Equals(GLFWwindowPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is GLFWwindowPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		#if NET5_0_OR_GREATER
+		private string DebuggerDisplay => string.Format("GLFWwindowPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		#endif
+	}
+
 }

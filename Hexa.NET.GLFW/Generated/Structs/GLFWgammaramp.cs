@@ -67,4 +67,69 @@ namespace Hexa.NET.GLFW
 
 	}
 
+	/// <summary>
+	/// <br/>
+	/// This describes the gamma ramp for a monitor.<br/>
+	/// <br/>
+	/// <br/>
+	/// <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "GLFWgammaramp")]
+	#if NET5_0_OR_GREATER
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	#endif
+	public unsafe struct GLFWgammarampPtr : IEquatable<GLFWgammarampPtr>
+	{
+		public GLFWgammarampPtr(GLFWgammaramp* handle) { Handle = handle; }
+
+		public GLFWgammaramp* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static GLFWgammarampPtr Null => new GLFWgammarampPtr(null);
+
+		public GLFWgammaramp this[int index] { get => Handle[index]; set => Handle[index] = value; }
+
+		public static implicit operator GLFWgammarampPtr(GLFWgammaramp* handle) => new GLFWgammarampPtr(handle);
+
+		public static implicit operator GLFWgammaramp*(GLFWgammarampPtr handle) => handle.Handle;
+
+		public static bool operator ==(GLFWgammarampPtr left, GLFWgammarampPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(GLFWgammarampPtr left, GLFWgammarampPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(GLFWgammarampPtr left, GLFWgammaramp* right) => left.Handle == right;
+
+		public static bool operator !=(GLFWgammarampPtr left, GLFWgammaramp* right) => left.Handle != right;
+
+		public bool Equals(GLFWgammarampPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is GLFWgammarampPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		#if NET5_0_OR_GREATER
+		private string DebuggerDisplay => string.Format("GLFWgammarampPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		#endif
+		/// <summary>
+		/// An array of value describing the response of the red channel.<br/>
+		/// </summary>
+		public ushort* Red { get => Handle->Red; set => Handle->Red = value; }
+		/// <summary>
+		/// An array of value describing the response of the green channel.<br/>
+		/// </summary>
+		public ushort* Green { get => Handle->Green; set => Handle->Green = value; }
+		/// <summary>
+		/// An array of value describing the response of the blue channel.<br/>
+		/// </summary>
+		public ushort* Blue { get => Handle->Blue; set => Handle->Blue = value; }
+		/// <summary>
+		/// The number of elements in each array.<br/>
+		/// </summary>
+		public ref uint Size => ref Unsafe.AsRef<uint>(&Handle->Size);
+	}
+
 }

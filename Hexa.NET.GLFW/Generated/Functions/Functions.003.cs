@@ -1378,7 +1378,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwGetGamepadState")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int GetGamepadState([NativeName(NativeNameType.Param, "jid")] [NativeName(NativeNameType.Type, "int")] int jid, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "GLFWgamepadstate*")] GLFWgamepadstate* state)
+		public static int GetGamepadState([NativeName(NativeNameType.Param, "jid")] [NativeName(NativeNameType.Type, "int")] int jid, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "GLFWgamepadstate*")] GLFWgamepadstatePtr state)
 		{
 			int ret = GetGamepadStateNative(jid, state);
 			return ret;
@@ -1472,7 +1472,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetClipboardString")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetClipboardString([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "const char*")] byte* str)
+		public static void SetClipboardString([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "const char*")] byte* str)
 		{
 			SetClipboardStringNative(window, str);
 		}
@@ -1527,7 +1527,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetClipboardString")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetClipboardString([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "const char*")] ref byte str)
+		public static void SetClipboardString([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "const char*")] ref byte str)
 		{
 			fixed (byte* pstr = &str)
 			{
@@ -1556,7 +1556,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetClipboardString")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetClipboardString([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> str)
+		public static void SetClipboardString([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> str)
 		{
 			fixed (byte* pstr = str)
 			{
@@ -1585,7 +1585,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetClipboardString")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetClipboardString([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "const char*")] string str)
+		public static void SetClipboardString([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "const char*")] string str)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1789,7 +1789,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwGetClipboardString")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* GetClipboardString([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
+		public static byte* GetClipboardString([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
 		{
 			byte* ret = GetClipboardStringNative(window);
 			return ret;
@@ -1822,7 +1822,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwGetClipboardString")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string GetClipboardStringS([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
+		public static string GetClipboardStringS([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
 		{
 			string ret = Utils.DecodeStringUTF8(GetClipboardStringNative(window));
 			return ret;
@@ -2209,7 +2209,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwMakeContextCurrent")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void MakeContextCurrent([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
+		public static void MakeContextCurrent([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
 		{
 			MakeContextCurrentNative(window);
 		}
@@ -2297,9 +2297,9 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwGetCurrentContext")]
 		[return: NativeName(NativeNameType.Type, "GLFWwindow*")]
-		public static GLFWwindow* GetCurrentContext()
+		public static GLFWwindowPtr GetCurrentContext()
 		{
-			GLFWwindow* ret = GetCurrentContextNative();
+			GLFWwindowPtr ret = GetCurrentContextNative();
 			return ret;
 		}
 
@@ -2365,7 +2365,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSwapBuffers")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SwapBuffers([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
+		public static void SwapBuffers([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
 		{
 			SwapBuffersNative(window);
 		}

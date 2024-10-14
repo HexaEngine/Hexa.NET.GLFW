@@ -73,4 +73,78 @@ namespace Hexa.NET.GLFW
 
 	}
 
+	/// <summary>
+	/// <br/>
+	/// This describes a custom heap memory allocator for GLFW.  To set an allocator, pass it<br/>
+	/// to <br/>
+	/// before initializing the library.<br/>
+	/// <br/>
+	/// <br/>
+	/// <br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "GLFWallocator")]
+	#if NET5_0_OR_GREATER
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	#endif
+	public unsafe struct GLFWallocatorPtr : IEquatable<GLFWallocatorPtr>
+	{
+		public GLFWallocatorPtr(GLFWallocator* handle) { Handle = handle; }
+
+		public GLFWallocator* Handle;
+
+		public bool IsNull => Handle == null;
+
+		public static GLFWallocatorPtr Null => new GLFWallocatorPtr(null);
+
+		public GLFWallocator this[int index] { get => Handle[index]; set => Handle[index] = value; }
+
+		public static implicit operator GLFWallocatorPtr(GLFWallocator* handle) => new GLFWallocatorPtr(handle);
+
+		public static implicit operator GLFWallocator*(GLFWallocatorPtr handle) => handle.Handle;
+
+		public static bool operator ==(GLFWallocatorPtr left, GLFWallocatorPtr right) => left.Handle == right.Handle;
+
+		public static bool operator !=(GLFWallocatorPtr left, GLFWallocatorPtr right) => left.Handle != right.Handle;
+
+		public static bool operator ==(GLFWallocatorPtr left, GLFWallocator* right) => left.Handle == right;
+
+		public static bool operator !=(GLFWallocatorPtr left, GLFWallocator* right) => left.Handle != right;
+
+		public bool Equals(GLFWallocatorPtr other) => Handle == other.Handle;
+
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is GLFWallocatorPtr handle && Equals(handle);
+
+		/// <inheritdoc/>
+		public override int GetHashCode() => ((nuint)Handle).GetHashCode();
+
+		#if NET5_0_OR_GREATER
+		private string DebuggerDisplay => string.Format("GLFWallocatorPtr [0x{0}]", ((nuint)Handle).ToString("X"));
+		#endif
+		/// <summary>
+		/// The memory allocation function.  See <br/>
+		/// for details about<br/>
+		/// allocation function.<br/>
+		/// </summary>
+		public void* Allocate { get => Handle->Allocate; set => Handle->Allocate = value; }
+		/// <summary>
+		/// The memory reallocation function.  See <br/>
+		/// for details about<br/>
+		/// reallocation function.<br/>
+		/// </summary>
+		public void* Reallocate { get => Handle->Reallocate; set => Handle->Reallocate = value; }
+		/// <summary>
+		/// The memory deallocation function.  See <br/>
+		/// for details about<br/>
+		/// deallocation function.<br/>
+		/// </summary>
+		public void* Deallocate { get => Handle->Deallocate; set => Handle->Deallocate = value; }
+		/// <summary>
+		/// The user pointer for this custom allocator.  This value will be passed to the<br/>
+		/// allocator functions.<br/>
+		/// </summary>
+		public void* User { get => Handle->User; set => Handle->User = value; }
+	}
+
 }

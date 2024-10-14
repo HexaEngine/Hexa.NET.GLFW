@@ -67,7 +67,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwRestoreWindow")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RestoreWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
+		public static void RestoreWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
 		{
 			RestoreWindowNative(window);
 		}
@@ -144,7 +144,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwMaximizeWindow")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void MaximizeWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
+		public static void MaximizeWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
 		{
 			MaximizeWindowNative(window);
 		}
@@ -232,7 +232,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwShowWindow")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ShowWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
+		public static void ShowWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
 		{
 			ShowWindowNative(window);
 		}
@@ -315,7 +315,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwHideWindow")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void HideWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
+		public static void HideWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
 		{
 			HideWindowNative(window);
 		}
@@ -420,7 +420,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwFocusWindow")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void FocusWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
+		public static void FocusWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
 		{
 			FocusWindowNative(window);
 		}
@@ -517,7 +517,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwRequestWindowAttention")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RequestWindowAttention([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
+		public static void RequestWindowAttention([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
 		{
 			RequestWindowAttentionNative(window);
 		}
@@ -593,9 +593,9 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwGetWindowMonitor")]
 		[return: NativeName(NativeNameType.Type, "GLFWmonitor*")]
-		public static GLFWmonitor* GetWindowMonitor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
+		public static GLFWmonitorPtr GetWindowMonitor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
 		{
-			GLFWmonitor* ret = GetWindowMonitorNative(window);
+			GLFWmonitorPtr ret = GetWindowMonitorNative(window);
 			return ret;
 		}
 
@@ -615,11 +615,11 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwGetWindowMonitor")]
 		[return: NativeName(NativeNameType.Type, "GLFWmonitor*")]
-		public static GLFWmonitor* GetWindowMonitor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window)
+		public static GLFWmonitorPtr GetWindowMonitor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
-				GLFWmonitor* ret = GetWindowMonitorNative((GLFWwindow*)pwindow);
+				GLFWmonitorPtr ret = GetWindowMonitorNative((GLFWwindow*)pwindow);
 				return ret;
 			}
 		}
@@ -694,7 +694,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetWindowMonitor")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowMonitor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] GLFWmonitor* monitor, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int")] int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int")] int ypos, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "refreshRate")] [NativeName(NativeNameType.Type, "int")] int refreshRate)
+		public static void SetWindowMonitor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] GLFWmonitorPtr monitor, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int")] int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int")] int ypos, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "refreshRate")] [NativeName(NativeNameType.Type, "int")] int refreshRate)
 		{
 			SetWindowMonitorNative(window, monitor, xpos, ypos, width, height, refreshRate);
 		}
@@ -729,7 +729,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetWindowMonitor")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowMonitor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] GLFWmonitor* monitor, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int")] int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int")] int ypos, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "refreshRate")] [NativeName(NativeNameType.Type, "int")] int refreshRate)
+		public static void SetWindowMonitor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] GLFWmonitorPtr monitor, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int")] int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int")] int ypos, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "refreshRate")] [NativeName(NativeNameType.Type, "int")] int refreshRate)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -767,7 +767,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetWindowMonitor")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowMonitor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] ref GLFWmonitor monitor, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int")] int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int")] int ypos, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "refreshRate")] [NativeName(NativeNameType.Type, "int")] int refreshRate)
+		public static void SetWindowMonitor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] ref GLFWmonitor monitor, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int")] int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int")] int ypos, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "refreshRate")] [NativeName(NativeNameType.Type, "int")] int refreshRate)
 		{
 			fixed (GLFWmonitor* pmonitor = &monitor)
 			{
@@ -868,7 +868,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwGetWindowAttrib")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int GetWindowAttrib([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "attrib")] [NativeName(NativeNameType.Type, "int")] int attrib)
+		public static int GetWindowAttrib([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "attrib")] [NativeName(NativeNameType.Type, "int")] int attrib)
 		{
 			int ret = GetWindowAttribNative(window, attrib);
 			return ret;
@@ -980,7 +980,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetWindowAttrib")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowAttrib([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "attrib")] [NativeName(NativeNameType.Type, "int")] int attrib, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value)
+		public static void SetWindowAttrib([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "attrib")] [NativeName(NativeNameType.Type, "int")] int attrib, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value)
 		{
 			SetWindowAttribNative(window, attrib, value);
 		}
@@ -1072,7 +1072,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetWindowUserPointer")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowUserPointer([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "pointer")] [NativeName(NativeNameType.Type, "void*")] void* pointer)
+		public static void SetWindowUserPointer([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "pointer")] [NativeName(NativeNameType.Type, "void*")] void* pointer)
 		{
 			SetWindowUserPointerNative(window, pointer);
 		}
@@ -1147,7 +1147,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwGetWindowUserPointer")]
 		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* GetWindowUserPointer([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
+		public static void* GetWindowUserPointer([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
 		{
 			void* ret = GetWindowUserPointerNative(window);
 			return ret;
@@ -1235,7 +1235,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetWindowPosCallback")]
 		[return: NativeName(NativeNameType.Type, "GLFWwindowposfun")]
-		public static delegate*<GLFWwindow*, int, int, void> SetWindowPosCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowposfun")] GLFWwindowposfun callback)
+		public static delegate*<GLFWwindow*, int, int, void> SetWindowPosCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowposfun")] GLFWwindowposfun callback)
 		{
 			delegate*<GLFWwindow*, int, int, void> ret = SetWindowPosCallbackNative(window, callback);
 			return ret;
@@ -1325,7 +1325,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetWindowSizeCallback")]
 		[return: NativeName(NativeNameType.Type, "GLFWwindowsizefun")]
-		public static delegate*<GLFWwindow*, int, int, void> SetWindowSizeCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowsizefun")] GLFWwindowsizefun callback)
+		public static delegate*<GLFWwindow*, int, int, void> SetWindowSizeCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowsizefun")] GLFWwindowsizefun callback)
 		{
 			delegate*<GLFWwindow*, int, int, void> ret = SetWindowSizeCallbackNative(window, callback);
 			return ret;
@@ -1421,7 +1421,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetWindowCloseCallback")]
 		[return: NativeName(NativeNameType.Type, "GLFWwindowclosefun")]
-		public static delegate*<GLFWwindow*, void> SetWindowCloseCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowclosefun")] GLFWwindowclosefun callback)
+		public static delegate*<GLFWwindow*, void> SetWindowCloseCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowclosefun")] GLFWwindowclosefun callback)
 		{
 			delegate*<GLFWwindow*, void> ret = SetWindowCloseCallbackNative(window, callback);
 			return ret;
@@ -1519,7 +1519,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetWindowRefreshCallback")]
 		[return: NativeName(NativeNameType.Type, "GLFWwindowrefreshfun")]
-		public static delegate*<GLFWwindow*, void> SetWindowRefreshCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowrefreshfun")] GLFWwindowrefreshfun callback)
+		public static delegate*<GLFWwindow*, void> SetWindowRefreshCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowrefreshfun")] GLFWwindowrefreshfun callback)
 		{
 			delegate*<GLFWwindow*, void> ret = SetWindowRefreshCallbackNative(window, callback);
 			return ret;
@@ -1616,7 +1616,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetWindowFocusCallback")]
 		[return: NativeName(NativeNameType.Type, "GLFWwindowfocusfun")]
-		public static delegate*<GLFWwindow*, int, void> SetWindowFocusCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowfocusfun")] GLFWwindowfocusfun callback)
+		public static delegate*<GLFWwindow*, int, void> SetWindowFocusCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowfocusfun")] GLFWwindowfocusfun callback)
 		{
 			delegate*<GLFWwindow*, int, void> ret = SetWindowFocusCallbackNative(window, callback);
 			return ret;
@@ -1705,7 +1705,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetWindowIconifyCallback")]
 		[return: NativeName(NativeNameType.Type, "GLFWwindowiconifyfun")]
-		public static delegate*<GLFWwindow*, int, void> SetWindowIconifyCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowiconifyfun")] GLFWwindowiconifyfun callback)
+		public static delegate*<GLFWwindow*, int, void> SetWindowIconifyCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowiconifyfun")] GLFWwindowiconifyfun callback)
 		{
 			delegate*<GLFWwindow*, int, void> ret = SetWindowIconifyCallbackNative(window, callback);
 			return ret;
@@ -1790,7 +1790,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetWindowMaximizeCallback")]
 		[return: NativeName(NativeNameType.Type, "GLFWwindowmaximizefun")]
-		public static delegate*<GLFWwindow*, int, void> SetWindowMaximizeCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowmaximizefun")] GLFWwindowmaximizefun callback)
+		public static delegate*<GLFWwindow*, int, void> SetWindowMaximizeCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowmaximizefun")] GLFWwindowmaximizefun callback)
 		{
 			delegate*<GLFWwindow*, int, void> ret = SetWindowMaximizeCallbackNative(window, callback);
 			return ret;
@@ -1875,7 +1875,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetFramebufferSizeCallback")]
 		[return: NativeName(NativeNameType.Type, "GLFWframebuffersizefun")]
-		public static delegate*<GLFWwindow*, int, int, void> SetFramebufferSizeCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWframebuffersizefun")] GLFWframebuffersizefun callback)
+		public static delegate*<GLFWwindow*, int, int, void> SetFramebufferSizeCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWframebuffersizefun")] GLFWframebuffersizefun callback)
 		{
 			delegate*<GLFWwindow*, int, int, void> ret = SetFramebufferSizeCallbackNative(window, callback);
 			return ret;
@@ -1960,7 +1960,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetWindowContentScaleCallback")]
 		[return: NativeName(NativeNameType.Type, "GLFWwindowcontentscalefun")]
-		public static delegate*<GLFWwindow*, float, float, void> SetWindowContentScaleCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowcontentscalefun")] GLFWwindowcontentscalefun callback)
+		public static delegate*<GLFWwindow*, float, float, void> SetWindowContentScaleCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowcontentscalefun")] GLFWwindowcontentscalefun callback)
 		{
 			delegate*<GLFWwindow*, float, float, void> ret = SetWindowContentScaleCallbackNative(window, callback);
 			return ret;
@@ -2369,7 +2369,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwGetInputMode")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int GetInputMode([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "int")] int mode)
+		public static int GetInputMode([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "int")] int mode)
 		{
 			int ret = GetInputModeNative(window, mode);
 			return ret;
@@ -2548,7 +2548,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetInputMode")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetInputMode([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "int")] int mode, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value)
+		public static void SetInputMode([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "int")] int mode, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value)
 		{
 			SetInputModeNative(window, mode, value);
 		}
@@ -3021,7 +3021,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwGetKey")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int GetKey([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "int")] int key)
+		public static int GetKey([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "int")] int key)
 		{
 			int ret = GetKeyNative(window, key);
 			return ret;
@@ -3125,7 +3125,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwGetMouseButton")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int GetMouseButton([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "int")] int button)
+		public static int GetMouseButton([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "int")] int button)
 		{
 			int ret = GetMouseButtonNative(window, button);
 			return ret;
@@ -3227,7 +3227,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwGetCursorPos")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetCursorPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double*")] double* xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double*")] double* ypos)
+		public static void GetCursorPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double*")] double* xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double*")] double* ypos)
 		{
 			GetCursorPosNative(window, xpos, ypos);
 		}
@@ -3292,7 +3292,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwGetCursorPos")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetCursorPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double*")] ref double xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double*")] double* ypos)
+		public static void GetCursorPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double*")] ref double xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double*")] double* ypos)
 		{
 			fixed (double* pxpos = &xpos)
 			{
@@ -3363,7 +3363,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwGetCursorPos")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetCursorPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double*")] double* xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double*")] ref double ypos)
+		public static void GetCursorPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double*")] double* xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double*")] ref double ypos)
 		{
 			fixed (double* pypos = &ypos)
 			{
@@ -3434,7 +3434,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwGetCursorPos")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetCursorPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double*")] ref double xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double*")] ref double ypos)
+		public static void GetCursorPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double*")] ref double xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double*")] ref double ypos)
 		{
 			fixed (double* pxpos = &xpos)
 			{
@@ -3555,7 +3555,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetCursorPos")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetCursorPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double")] double xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double")] double ypos)
+		public static void SetCursorPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double")] double xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double")] double ypos)
 		{
 			SetCursorPosNative(window, xpos, ypos);
 		}
@@ -3664,9 +3664,9 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwCreateCursor")]
 		[return: NativeName(NativeNameType.Type, "GLFWcursor*")]
-		public static GLFWcursor* CreateCursor([NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "const GLFWimage*")] GLFWimage* image, [NativeName(NativeNameType.Param, "xhot")] [NativeName(NativeNameType.Type, "int")] int xhot, [NativeName(NativeNameType.Param, "yhot")] [NativeName(NativeNameType.Type, "int")] int yhot)
+		public static GLFWcursorPtr CreateCursor([NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "const GLFWimage*")] GLFWimagePtr image, [NativeName(NativeNameType.Param, "xhot")] [NativeName(NativeNameType.Type, "int")] int xhot, [NativeName(NativeNameType.Param, "yhot")] [NativeName(NativeNameType.Type, "int")] int yhot)
 		{
-			GLFWcursor* ret = CreateCursorNative(image, xhot, yhot);
+			GLFWcursorPtr ret = CreateCursorNative(image, xhot, yhot);
 			return ret;
 		}
 
@@ -3698,11 +3698,11 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwCreateCursor")]
 		[return: NativeName(NativeNameType.Type, "GLFWcursor*")]
-		public static GLFWcursor* CreateCursor([NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "const GLFWimage*")] ref GLFWimage image, [NativeName(NativeNameType.Param, "xhot")] [NativeName(NativeNameType.Type, "int")] int xhot, [NativeName(NativeNameType.Param, "yhot")] [NativeName(NativeNameType.Type, "int")] int yhot)
+		public static GLFWcursorPtr CreateCursor([NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "const GLFWimage*")] ref GLFWimage image, [NativeName(NativeNameType.Param, "xhot")] [NativeName(NativeNameType.Type, "int")] int xhot, [NativeName(NativeNameType.Param, "yhot")] [NativeName(NativeNameType.Type, "int")] int yhot)
 		{
 			fixed (GLFWimage* pimage = &image)
 			{
-				GLFWcursor* ret = CreateCursorNative((GLFWimage*)pimage, xhot, yhot);
+				GLFWcursorPtr ret = CreateCursorNative((GLFWimage*)pimage, xhot, yhot);
 				return ret;
 			}
 		}
@@ -3841,9 +3841,9 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwCreateStandardCursor")]
 		[return: NativeName(NativeNameType.Type, "GLFWcursor*")]
-		public static GLFWcursor* CreateStandardCursor([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "int")] int shape)
+		public static GLFWcursorPtr CreateStandardCursor([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "int")] int shape)
 		{
-			GLFWcursor* ret = CreateStandardCursorNative(shape);
+			GLFWcursorPtr ret = CreateStandardCursorNative(shape);
 			return ret;
 		}
 
@@ -3899,7 +3899,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwDestroyCursor")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DestroyCursor([NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "GLFWcursor*")] GLFWcursor* cursor)
+		public static void DestroyCursor([NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "GLFWcursor*")] GLFWcursorPtr cursor)
 		{
 			DestroyCursorNative(cursor);
 		}
@@ -3987,7 +3987,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetCursor")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetCursor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "GLFWcursor*")] GLFWcursor* cursor)
+		public static void SetCursor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "GLFWcursor*")] GLFWcursorPtr cursor)
 		{
 			SetCursorNative(window, cursor);
 		}
@@ -4014,7 +4014,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetCursor")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetCursor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "GLFWcursor*")] GLFWcursor* cursor)
+		public static void SetCursor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "GLFWcursor*")] GLFWcursorPtr cursor)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4044,7 +4044,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetCursor")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetCursor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "GLFWcursor*")] ref GLFWcursor cursor)
+		public static void SetCursor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "GLFWcursor*")] ref GLFWcursor cursor)
 		{
 			fixed (GLFWcursor* pcursor = &cursor)
 			{
@@ -4171,7 +4171,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetKeyCallback")]
 		[return: NativeName(NativeNameType.Type, "GLFWkeyfun")]
-		public static delegate*<GLFWwindow*, int, int, int, int, void> SetKeyCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWkeyfun")] GLFWkeyfun callback)
+		public static delegate*<GLFWwindow*, int, int, int, int, void> SetKeyCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWkeyfun")] GLFWkeyfun callback)
 		{
 			delegate*<GLFWwindow*, int, int, int, int, void> ret = SetKeyCallbackNative(window, callback);
 			return ret;
@@ -4296,7 +4296,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetCharCallback")]
 		[return: NativeName(NativeNameType.Type, "GLFWcharfun")]
-		public static delegate*<GLFWwindow*, uint, void> SetCharCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWcharfun")] GLFWcharfun callback)
+		public static delegate*<GLFWwindow*, uint, void> SetCharCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWcharfun")] GLFWcharfun callback)
 		{
 			delegate*<GLFWwindow*, uint, void> ret = SetCharCallbackNative(window, callback);
 			return ret;
@@ -4416,7 +4416,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetCharModsCallback")]
 		[return: NativeName(NativeNameType.Type, "GLFWcharmodsfun")]
-		public static delegate*<GLFWwindow*, uint, int, void> SetCharModsCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWcharmodsfun")] GLFWcharmodsfun callback)
+		public static delegate*<GLFWwindow*, uint, int, void> SetCharModsCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWcharmodsfun")] GLFWcharmodsfun callback)
 		{
 			delegate*<GLFWwindow*, uint, int, void> ret = SetCharModsCallbackNative(window, callback);
 			return ret;
@@ -4537,7 +4537,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetMouseButtonCallback")]
 		[return: NativeName(NativeNameType.Type, "GLFWmousebuttonfun")]
-		public static delegate*<GLFWwindow*, int, int, int, void> SetMouseButtonCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWmousebuttonfun")] GLFWmousebuttonfun callback)
+		public static delegate*<GLFWwindow*, int, int, int, void> SetMouseButtonCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWmousebuttonfun")] GLFWmousebuttonfun callback)
 		{
 			delegate*<GLFWwindow*, int, int, int, void> ret = SetMouseButtonCallbackNative(window, callback);
 			return ret;
@@ -4638,7 +4638,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetCursorPosCallback")]
 		[return: NativeName(NativeNameType.Type, "GLFWcursorposfun")]
-		public static delegate*<GLFWwindow*, double, double, void> SetCursorPosCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWcursorposfun")] GLFWcursorposfun callback)
+		public static delegate*<GLFWwindow*, double, double, void> SetCursorPosCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWcursorposfun")] GLFWcursorposfun callback)
 		{
 			delegate*<GLFWwindow*, double, double, void> ret = SetCursorPosCallbackNative(window, callback);
 			return ret;
@@ -4727,7 +4727,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetCursorEnterCallback")]
 		[return: NativeName(NativeNameType.Type, "GLFWcursorenterfun")]
-		public static delegate*<GLFWwindow*, int, void> SetCursorEnterCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWcursorenterfun")] GLFWcursorenterfun callback)
+		public static delegate*<GLFWwindow*, int, void> SetCursorEnterCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWcursorenterfun")] GLFWcursorenterfun callback)
 		{
 			delegate*<GLFWwindow*, int, void> ret = SetCursorEnterCallbackNative(window, callback);
 			return ret;
@@ -4819,7 +4819,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetScrollCallback")]
 		[return: NativeName(NativeNameType.Type, "GLFWscrollfun")]
-		public static delegate*<GLFWwindow*, double, double, void> SetScrollCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWscrollfun")] GLFWscrollfun callback)
+		public static delegate*<GLFWwindow*, double, double, void> SetScrollCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWscrollfun")] GLFWscrollfun callback)
 		{
 			delegate*<GLFWwindow*, double, double, void> ret = SetScrollCallbackNative(window, callback);
 			return ret;
@@ -4915,7 +4915,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glfwSetDropCallback")]
 		[return: NativeName(NativeNameType.Type, "GLFWdropfun")]
-		public static delegate*<GLFWwindow*, int, byte**, void> SetDropCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWdropfun")] GLFWdropfun callback)
+		public static delegate*<GLFWwindow*, int, byte**, void> SetDropCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWdropfun")] GLFWdropfun callback)
 		{
 			delegate*<GLFWwindow*, int, byte**, void> ret = SetDropCallbackNative(window, callback);
 			return ret;
