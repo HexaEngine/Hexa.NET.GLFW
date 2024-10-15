@@ -25,7 +25,6 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// <br/>
 	/// </summary>
-	[NativeName(NativeNameType.StructOrClass, "GLFWallocator")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct GLFWallocator
 	{
@@ -34,31 +33,23 @@ namespace Hexa.NET.GLFW
 		/// for details about<br/>
 		/// allocation function.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Field, "allocate")]
-		[NativeName(NativeNameType.Type, "GLFWallocatefun")]
 		public unsafe void* Allocate;
 		/// <summary>
 		/// The memory reallocation function.  See <br/>
 		/// for details about<br/>
 		/// reallocation function.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Field, "reallocate")]
-		[NativeName(NativeNameType.Type, "GLFWreallocatefun")]
 		public unsafe void* Reallocate;
 		/// <summary>
 		/// The memory deallocation function.  See <br/>
 		/// for details about<br/>
 		/// deallocation function.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Field, "deallocate")]
-		[NativeName(NativeNameType.Type, "GLFWdeallocatefun")]
 		public unsafe void* Deallocate;
 		/// <summary>
 		/// The user pointer for this custom allocator.  This value will be passed to the<br/>
 		/// allocator functions.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Field, "user")]
-		[NativeName(NativeNameType.Type, "void*")]
 		public unsafe void* User;
 
 
@@ -83,7 +74,6 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Typedef, "GLFWallocator")]
 	#if NET5_0_OR_GREATER
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	#endif

@@ -10,5 +10,7 @@ generator.PatchEngine.RegisterPrePatch(new ConstantsToEnumPatch("GLFW_MOUSE_", "
 generator.PatchEngine.RegisterPrePatch(new ConstantsToEnumPatch("GLFW_HAT_", "GlfwHat", "int"));
 generator.PatchEngine.RegisterPrePatch(new ConstantsToEnumPatch("GLFW_JOYSTICK_", "GlfwJoystick", "int"));
 generator.PatchEngine.RegisterPrePatch(new ConstantsToEnumPatch("GLFW_GAMEPAD_", "GlfwGamepad", "int"));
+generator.LogToConsole();
 
-generator.Generate([.. Directory.GetFiles("include")], "../../../../Hexa.NET.GLFW/Generated");
+generator.Generate("include/main.h", "../../../../Hexa.NET.GLFW/Generated");
+generator.GetMetadata().Save("metadata.json");

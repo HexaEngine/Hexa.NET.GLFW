@@ -23,7 +23,6 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// <br/>
 	/// </summary>
-	[NativeName(NativeNameType.StructOrClass, "GLFWmonitor")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct GLFWmonitor
 	{
@@ -39,7 +38,6 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Typedef, "GLFWmonitor")]
 	#if NET5_0_OR_GREATER
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	#endif
@@ -88,7 +86,6 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Typedef, "GLFWmonitor")]
 	#if NET5_0_OR_GREATER
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	#endif

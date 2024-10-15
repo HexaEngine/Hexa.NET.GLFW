@@ -14,540 +14,272 @@ namespace Hexa.NET.GLFW
 {
 	public unsafe partial class GLFW
 	{
-		[NativeName(NativeNameType.Const, "GLFW_VERSION_MAJOR")]
-		[NativeName(NativeNameType.Value, "3")]
 		public const int GLFW_VERSION_MAJOR = 3;
 
-		[NativeName(NativeNameType.Const, "GLFW_VERSION_MINOR")]
-		[NativeName(NativeNameType.Value, "5")]
 		public const int GLFW_VERSION_MINOR = 5;
 
-		[NativeName(NativeNameType.Const, "GLFW_VERSION_REVISION")]
-		[NativeName(NativeNameType.Value, "0")]
 		public const int GLFW_VERSION_REVISION = 0;
 
-		[NativeName(NativeNameType.Const, "GLFW_TRUE")]
-		[NativeName(NativeNameType.Value, "1")]
 		public const int GLFW_TRUE = 1;
 
-		[NativeName(NativeNameType.Const, "GLFW_FALSE")]
-		[NativeName(NativeNameType.Value, "0")]
 		public const int GLFW_FALSE = 0;
 
-		[NativeName(NativeNameType.Const, "GLFW_RELEASE")]
-		[NativeName(NativeNameType.Value, "0")]
 		public const int GLFW_RELEASE = 0;
 
-		[NativeName(NativeNameType.Const, "GLFW_PRESS")]
-		[NativeName(NativeNameType.Value, "1")]
 		public const int GLFW_PRESS = 1;
 
-		[NativeName(NativeNameType.Const, "GLFW_REPEAT")]
-		[NativeName(NativeNameType.Value, "2")]
 		public const int GLFW_REPEAT = 2;
 
-		[NativeName(NativeNameType.Const, "GLFW_NO_ERROR")]
-		[NativeName(NativeNameType.Value, "0")]
 		public const int GLFW_NO_ERROR = 0;
 
-		[NativeName(NativeNameType.Const, "GLFW_NOT_INITIALIZED")]
-		[NativeName(NativeNameType.Value, "0x00010001")]
 		public const int GLFW_NOT_INITIALIZED = 0x00010001;
 
-		[NativeName(NativeNameType.Const, "GLFW_NO_CURRENT_CONTEXT")]
-		[NativeName(NativeNameType.Value, "0x00010002")]
 		public const int GLFW_NO_CURRENT_CONTEXT = 0x00010002;
 
-		[NativeName(NativeNameType.Const, "GLFW_INVALID_ENUM")]
-		[NativeName(NativeNameType.Value, "0x00010003")]
 		public const int GLFW_INVALID_ENUM = 0x00010003;
 
-		[NativeName(NativeNameType.Const, "GLFW_INVALID_VALUE")]
-		[NativeName(NativeNameType.Value, "0x00010004")]
 		public const int GLFW_INVALID_VALUE = 0x00010004;
 
-		[NativeName(NativeNameType.Const, "GLFW_OUT_OF_MEMORY")]
-		[NativeName(NativeNameType.Value, "0x00010005")]
 		public const int GLFW_OUT_OF_MEMORY = 0x00010005;
 
-		[NativeName(NativeNameType.Const, "GLFW_API_UNAVAILABLE")]
-		[NativeName(NativeNameType.Value, "0x00010006")]
 		public const int GLFW_API_UNAVAILABLE = 0x00010006;
 
-		[NativeName(NativeNameType.Const, "GLFW_VERSION_UNAVAILABLE")]
-		[NativeName(NativeNameType.Value, "0x00010007")]
 		public const int GLFW_VERSION_UNAVAILABLE = 0x00010007;
 
-		[NativeName(NativeNameType.Const, "GLFW_PLATFORM_ERROR")]
-		[NativeName(NativeNameType.Value, "0x00010008")]
 		public const int GLFW_PLATFORM_ERROR = 0x00010008;
 
-		[NativeName(NativeNameType.Const, "GLFW_FORMAT_UNAVAILABLE")]
-		[NativeName(NativeNameType.Value, "0x00010009")]
 		public const int GLFW_FORMAT_UNAVAILABLE = 0x00010009;
 
-		[NativeName(NativeNameType.Const, "GLFW_NO_WINDOW_CONTEXT")]
-		[NativeName(NativeNameType.Value, "0x0001000A")]
 		public const int GLFW_NO_WINDOW_CONTEXT = 0x0001000A;
 
-		[NativeName(NativeNameType.Const, "GLFW_CURSOR_UNAVAILABLE")]
-		[NativeName(NativeNameType.Value, "0x0001000B")]
 		public const int GLFW_CURSOR_UNAVAILABLE = 0x0001000B;
 
-		[NativeName(NativeNameType.Const, "GLFW_FEATURE_UNAVAILABLE")]
-		[NativeName(NativeNameType.Value, "0x0001000C")]
 		public const int GLFW_FEATURE_UNAVAILABLE = 0x0001000C;
 
-		[NativeName(NativeNameType.Const, "GLFW_FEATURE_UNIMPLEMENTED")]
-		[NativeName(NativeNameType.Value, "0x0001000D")]
 		public const int GLFW_FEATURE_UNIMPLEMENTED = 0x0001000D;
 
-		[NativeName(NativeNameType.Const, "GLFW_PLATFORM_UNAVAILABLE")]
-		[NativeName(NativeNameType.Value, "0x0001000E")]
 		public const int GLFW_PLATFORM_UNAVAILABLE = 0x0001000E;
 
-		[NativeName(NativeNameType.Const, "GLFW_FOCUSED")]
-		[NativeName(NativeNameType.Value, "0x00020001")]
 		public const int GLFW_FOCUSED = 0x00020001;
 
-		[NativeName(NativeNameType.Const, "GLFW_ICONIFIED")]
-		[NativeName(NativeNameType.Value, "0x00020002")]
 		public const int GLFW_ICONIFIED = 0x00020002;
 
-		[NativeName(NativeNameType.Const, "GLFW_RESIZABLE")]
-		[NativeName(NativeNameType.Value, "0x00020003")]
 		public const int GLFW_RESIZABLE = 0x00020003;
 
-		[NativeName(NativeNameType.Const, "GLFW_VISIBLE")]
-		[NativeName(NativeNameType.Value, "0x00020004")]
 		public const int GLFW_VISIBLE = 0x00020004;
 
-		[NativeName(NativeNameType.Const, "GLFW_DECORATED")]
-		[NativeName(NativeNameType.Value, "0x00020005")]
 		public const int GLFW_DECORATED = 0x00020005;
 
-		[NativeName(NativeNameType.Const, "GLFW_AUTO_ICONIFY")]
-		[NativeName(NativeNameType.Value, "0x00020006")]
 		public const int GLFW_AUTO_ICONIFY = 0x00020006;
 
-		[NativeName(NativeNameType.Const, "GLFW_FLOATING")]
-		[NativeName(NativeNameType.Value, "0x00020007")]
 		public const int GLFW_FLOATING = 0x00020007;
 
-		[NativeName(NativeNameType.Const, "GLFW_MAXIMIZED")]
-		[NativeName(NativeNameType.Value, "0x00020008")]
 		public const int GLFW_MAXIMIZED = 0x00020008;
 
-		[NativeName(NativeNameType.Const, "GLFW_CENTER_CURSOR")]
-		[NativeName(NativeNameType.Value, "0x00020009")]
 		public const int GLFW_CENTER_CURSOR = 0x00020009;
 
-		[NativeName(NativeNameType.Const, "GLFW_TRANSPARENT_FRAMEBUFFER")]
-		[NativeName(NativeNameType.Value, "0x0002000A")]
 		public const int GLFW_TRANSPARENT_FRAMEBUFFER = 0x0002000A;
 
-		[NativeName(NativeNameType.Const, "GLFW_HOVERED")]
-		[NativeName(NativeNameType.Value, "0x0002000B")]
 		public const int GLFW_HOVERED = 0x0002000B;
 
-		[NativeName(NativeNameType.Const, "GLFW_FOCUS_ON_SHOW")]
-		[NativeName(NativeNameType.Value, "0x0002000C")]
 		public const int GLFW_FOCUS_ON_SHOW = 0x0002000C;
 
-		[NativeName(NativeNameType.Const, "GLFW_POSITION_X")]
-		[NativeName(NativeNameType.Value, "0x0002000E")]
 		public const int GLFW_POSITION_X = 0x0002000E;
 
-		[NativeName(NativeNameType.Const, "GLFW_POSITION_Y")]
-		[NativeName(NativeNameType.Value, "0x0002000F")]
 		public const int GLFW_POSITION_Y = 0x0002000F;
 
-		[NativeName(NativeNameType.Const, "GLFW_RED_BITS")]
-		[NativeName(NativeNameType.Value, "0x00021001")]
 		public const int GLFW_RED_BITS = 0x00021001;
 
-		[NativeName(NativeNameType.Const, "GLFW_GREEN_BITS")]
-		[NativeName(NativeNameType.Value, "0x00021002")]
 		public const int GLFW_GREEN_BITS = 0x00021002;
 
-		[NativeName(NativeNameType.Const, "GLFW_BLUE_BITS")]
-		[NativeName(NativeNameType.Value, "0x00021003")]
 		public const int GLFW_BLUE_BITS = 0x00021003;
 
-		[NativeName(NativeNameType.Const, "GLFW_ALPHA_BITS")]
-		[NativeName(NativeNameType.Value, "0x00021004")]
 		public const int GLFW_ALPHA_BITS = 0x00021004;
 
-		[NativeName(NativeNameType.Const, "GLFW_DEPTH_BITS")]
-		[NativeName(NativeNameType.Value, "0x00021005")]
 		public const int GLFW_DEPTH_BITS = 0x00021005;
 
-		[NativeName(NativeNameType.Const, "GLFW_STENCIL_BITS")]
-		[NativeName(NativeNameType.Value, "0x00021006")]
 		public const int GLFW_STENCIL_BITS = 0x00021006;
 
-		[NativeName(NativeNameType.Const, "GLFW_ACCUM_RED_BITS")]
-		[NativeName(NativeNameType.Value, "0x00021007")]
 		public const int GLFW_ACCUM_RED_BITS = 0x00021007;
 
-		[NativeName(NativeNameType.Const, "GLFW_ACCUM_GREEN_BITS")]
-		[NativeName(NativeNameType.Value, "0x00021008")]
 		public const int GLFW_ACCUM_GREEN_BITS = 0x00021008;
 
-		[NativeName(NativeNameType.Const, "GLFW_ACCUM_BLUE_BITS")]
-		[NativeName(NativeNameType.Value, "0x00021009")]
 		public const int GLFW_ACCUM_BLUE_BITS = 0x00021009;
 
-		[NativeName(NativeNameType.Const, "GLFW_ACCUM_ALPHA_BITS")]
-		[NativeName(NativeNameType.Value, "0x0002100A")]
 		public const int GLFW_ACCUM_ALPHA_BITS = 0x0002100A;
 
-		[NativeName(NativeNameType.Const, "GLFW_AUX_BUFFERS")]
-		[NativeName(NativeNameType.Value, "0x0002100B")]
 		public const int GLFW_AUX_BUFFERS = 0x0002100B;
 
-		[NativeName(NativeNameType.Const, "GLFW_STEREO")]
-		[NativeName(NativeNameType.Value, "0x0002100C")]
 		public const int GLFW_STEREO = 0x0002100C;
 
-		[NativeName(NativeNameType.Const, "GLFW_SAMPLES")]
-		[NativeName(NativeNameType.Value, "0x0002100D")]
 		public const int GLFW_SAMPLES = 0x0002100D;
 
-		[NativeName(NativeNameType.Const, "GLFW_SRGB_CAPABLE")]
-		[NativeName(NativeNameType.Value, "0x0002100E")]
 		public const int GLFW_SRGB_CAPABLE = 0x0002100E;
 
-		[NativeName(NativeNameType.Const, "GLFW_REFRESH_RATE")]
-		[NativeName(NativeNameType.Value, "0x0002100F")]
 		public const int GLFW_REFRESH_RATE = 0x0002100F;
 
-		[NativeName(NativeNameType.Const, "GLFW_DOUBLEBUFFER")]
-		[NativeName(NativeNameType.Value, "0x00021010")]
 		public const int GLFW_DOUBLEBUFFER = 0x00021010;
 
-		[NativeName(NativeNameType.Const, "GLFW_CLIENT_API")]
-		[NativeName(NativeNameType.Value, "0x00022001")]
 		public const int GLFW_CLIENT_API = 0x00022001;
 
-		[NativeName(NativeNameType.Const, "GLFW_CONTEXT_VERSION_MAJOR")]
-		[NativeName(NativeNameType.Value, "0x00022002")]
 		public const int GLFW_CONTEXT_VERSION_MAJOR = 0x00022002;
 
-		[NativeName(NativeNameType.Const, "GLFW_CONTEXT_VERSION_MINOR")]
-		[NativeName(NativeNameType.Value, "0x00022003")]
 		public const int GLFW_CONTEXT_VERSION_MINOR = 0x00022003;
 
-		[NativeName(NativeNameType.Const, "GLFW_CONTEXT_REVISION")]
-		[NativeName(NativeNameType.Value, "0x00022004")]
 		public const int GLFW_CONTEXT_REVISION = 0x00022004;
 
-		[NativeName(NativeNameType.Const, "GLFW_CONTEXT_ROBUSTNESS")]
-		[NativeName(NativeNameType.Value, "0x00022005")]
 		public const int GLFW_CONTEXT_ROBUSTNESS = 0x00022005;
 
-		[NativeName(NativeNameType.Const, "GLFW_OPENGL_FORWARD_COMPAT")]
-		[NativeName(NativeNameType.Value, "0x00022006")]
 		public const int GLFW_OPENGL_FORWARD_COMPAT = 0x00022006;
 
-		[NativeName(NativeNameType.Const, "GLFW_CONTEXT_DEBUG")]
-		[NativeName(NativeNameType.Value, "0x00022007")]
 		public const int GLFW_CONTEXT_DEBUG = 0x00022007;
 
-		[NativeName(NativeNameType.Const, "GLFW_OPENGL_PROFILE")]
-		[NativeName(NativeNameType.Value, "0x00022008")]
 		public const int GLFW_OPENGL_PROFILE = 0x00022008;
 
-		[NativeName(NativeNameType.Const, "GLFW_CONTEXT_RELEASE_BEHAVIOR")]
-		[NativeName(NativeNameType.Value, "0x00022009")]
 		public const int GLFW_CONTEXT_RELEASE_BEHAVIOR = 0x00022009;
 
-		[NativeName(NativeNameType.Const, "GLFW_CONTEXT_NO_ERROR")]
-		[NativeName(NativeNameType.Value, "0x0002200A")]
 		public const int GLFW_CONTEXT_NO_ERROR = 0x0002200A;
 
-		[NativeName(NativeNameType.Const, "GLFW_CONTEXT_CREATION_API")]
-		[NativeName(NativeNameType.Value, "0x0002200B")]
 		public const int GLFW_CONTEXT_CREATION_API = 0x0002200B;
 
-		[NativeName(NativeNameType.Const, "GLFW_SCALE_TO_MONITOR")]
-		[NativeName(NativeNameType.Value, "0x0002200C")]
 		public const int GLFW_SCALE_TO_MONITOR = 0x0002200C;
 
-		[NativeName(NativeNameType.Const, "GLFW_SCALE_FRAMEBUFFER")]
-		[NativeName(NativeNameType.Value, "0x0002200D")]
 		public const int GLFW_SCALE_FRAMEBUFFER = 0x0002200D;
 
-		[NativeName(NativeNameType.Const, "GLFW_COCOA_RETINA_FRAMEBUFFER")]
-		[NativeName(NativeNameType.Value, "0x00023001")]
 		public const int GLFW_COCOA_RETINA_FRAMEBUFFER = 0x00023001;
 
-		[NativeName(NativeNameType.Const, "GLFW_COCOA_FRAME_NAME")]
-		[NativeName(NativeNameType.Value, "0x00023002")]
 		public const int GLFW_COCOA_FRAME_NAME = 0x00023002;
 
-		[NativeName(NativeNameType.Const, "GLFW_COCOA_GRAPHICS_SWITCHING")]
-		[NativeName(NativeNameType.Value, "0x00023003")]
 		public const int GLFW_COCOA_GRAPHICS_SWITCHING = 0x00023003;
 
-		[NativeName(NativeNameType.Const, "GLFW_X11_CLASS_NAME")]
-		[NativeName(NativeNameType.Value, "0x00024001")]
 		public const int GLFW_X11_CLASS_NAME = 0x00024001;
 
-		[NativeName(NativeNameType.Const, "GLFW_X11_INSTANCE_NAME")]
-		[NativeName(NativeNameType.Value, "0x00024002")]
 		public const int GLFW_X11_INSTANCE_NAME = 0x00024002;
 
-		[NativeName(NativeNameType.Const, "GLFW_WIN32_KEYBOARD_MENU")]
-		[NativeName(NativeNameType.Value, "0x00025001")]
 		public const int GLFW_WIN32_KEYBOARD_MENU = 0x00025001;
 
-		[NativeName(NativeNameType.Const, "GLFW_WIN32_SHOWDEFAULT")]
-		[NativeName(NativeNameType.Value, "0x00025002")]
 		public const int GLFW_WIN32_SHOWDEFAULT = 0x00025002;
 
-		[NativeName(NativeNameType.Const, "GLFW_WAYLAND_APP_ID")]
-		[NativeName(NativeNameType.Value, "0x00026001")]
 		public const int GLFW_WAYLAND_APP_ID = 0x00026001;
 
-		[NativeName(NativeNameType.Const, "GLFW_NO_API")]
-		[NativeName(NativeNameType.Value, "0")]
 		public const int GLFW_NO_API = 0;
 
-		[NativeName(NativeNameType.Const, "GLFW_OPENGL_API")]
-		[NativeName(NativeNameType.Value, "0x00030001")]
 		public const int GLFW_OPENGL_API = 0x00030001;
 
-		[NativeName(NativeNameType.Const, "GLFW_OPENGL_ES_API")]
-		[NativeName(NativeNameType.Value, "0x00030002")]
 		public const int GLFW_OPENGL_ES_API = 0x00030002;
 
-		[NativeName(NativeNameType.Const, "GLFW_NO_ROBUSTNESS")]
-		[NativeName(NativeNameType.Value, "0")]
 		public const int GLFW_NO_ROBUSTNESS = 0;
 
-		[NativeName(NativeNameType.Const, "GLFW_NO_RESET_NOTIFICATION")]
-		[NativeName(NativeNameType.Value, "0x00031001")]
 		public const int GLFW_NO_RESET_NOTIFICATION = 0x00031001;
 
-		[NativeName(NativeNameType.Const, "GLFW_LOSE_CONTEXT_ON_RESET")]
-		[NativeName(NativeNameType.Value, "0x00031002")]
 		public const int GLFW_LOSE_CONTEXT_ON_RESET = 0x00031002;
 
-		[NativeName(NativeNameType.Const, "GLFW_OPENGL_ANY_PROFILE")]
-		[NativeName(NativeNameType.Value, "0")]
 		public const int GLFW_OPENGL_ANY_PROFILE = 0;
 
-		[NativeName(NativeNameType.Const, "GLFW_OPENGL_CORE_PROFILE")]
-		[NativeName(NativeNameType.Value, "0x00032001")]
 		public const int GLFW_OPENGL_CORE_PROFILE = 0x00032001;
 
-		[NativeName(NativeNameType.Const, "GLFW_OPENGL_COMPAT_PROFILE")]
-		[NativeName(NativeNameType.Value, "0x00032002")]
 		public const int GLFW_OPENGL_COMPAT_PROFILE = 0x00032002;
 
-		[NativeName(NativeNameType.Const, "GLFW_CURSOR")]
-		[NativeName(NativeNameType.Value, "0x00033001")]
 		public const int GLFW_CURSOR = 0x00033001;
 
-		[NativeName(NativeNameType.Const, "GLFW_STICKY_KEYS")]
-		[NativeName(NativeNameType.Value, "0x00033002")]
 		public const int GLFW_STICKY_KEYS = 0x00033002;
 
-		[NativeName(NativeNameType.Const, "GLFW_STICKY_MOUSE_BUTTONS")]
-		[NativeName(NativeNameType.Value, "0x00033003")]
 		public const int GLFW_STICKY_MOUSE_BUTTONS = 0x00033003;
 
-		[NativeName(NativeNameType.Const, "GLFW_LOCK_KEY_MODS")]
-		[NativeName(NativeNameType.Value, "0x00033004")]
 		public const int GLFW_LOCK_KEY_MODS = 0x00033004;
 
-		[NativeName(NativeNameType.Const, "GLFW_RAW_MOUSE_MOTION")]
-		[NativeName(NativeNameType.Value, "0x00033005")]
 		public const int GLFW_RAW_MOUSE_MOTION = 0x00033005;
 
-		[NativeName(NativeNameType.Const, "GLFW_UNLIMITED_MOUSE_BUTTONS")]
-		[NativeName(NativeNameType.Value, "0x00033006")]
 		public const int GLFW_UNLIMITED_MOUSE_BUTTONS = 0x00033006;
 
-		[NativeName(NativeNameType.Const, "GLFW_CURSOR_NORMAL")]
-		[NativeName(NativeNameType.Value, "0x00034001")]
 		public const int GLFW_CURSOR_NORMAL = 0x00034001;
 
-		[NativeName(NativeNameType.Const, "GLFW_CURSOR_HIDDEN")]
-		[NativeName(NativeNameType.Value, "0x00034002")]
 		public const int GLFW_CURSOR_HIDDEN = 0x00034002;
 
-		[NativeName(NativeNameType.Const, "GLFW_CURSOR_DISABLED")]
-		[NativeName(NativeNameType.Value, "0x00034003")]
 		public const int GLFW_CURSOR_DISABLED = 0x00034003;
 
-		[NativeName(NativeNameType.Const, "GLFW_CURSOR_CAPTURED")]
-		[NativeName(NativeNameType.Value, "0x00034004")]
 		public const int GLFW_CURSOR_CAPTURED = 0x00034004;
 
-		[NativeName(NativeNameType.Const, "GLFW_ANY_RELEASE_BEHAVIOR")]
-		[NativeName(NativeNameType.Value, "0")]
 		public const int GLFW_ANY_RELEASE_BEHAVIOR = 0;
 
-		[NativeName(NativeNameType.Const, "GLFW_RELEASE_BEHAVIOR_FLUSH")]
-		[NativeName(NativeNameType.Value, "0x00035001")]
 		public const int GLFW_RELEASE_BEHAVIOR_FLUSH = 0x00035001;
 
-		[NativeName(NativeNameType.Const, "GLFW_RELEASE_BEHAVIOR_NONE")]
-		[NativeName(NativeNameType.Value, "0x00035002")]
 		public const int GLFW_RELEASE_BEHAVIOR_NONE = 0x00035002;
 
-		[NativeName(NativeNameType.Const, "GLFW_NATIVE_CONTEXT_API")]
-		[NativeName(NativeNameType.Value, "0x00036001")]
 		public const int GLFW_NATIVE_CONTEXT_API = 0x00036001;
 
-		[NativeName(NativeNameType.Const, "GLFW_EGL_CONTEXT_API")]
-		[NativeName(NativeNameType.Value, "0x00036002")]
 		public const int GLFW_EGL_CONTEXT_API = 0x00036002;
 
-		[NativeName(NativeNameType.Const, "GLFW_OSMESA_CONTEXT_API")]
-		[NativeName(NativeNameType.Value, "0x00036003")]
 		public const int GLFW_OSMESA_CONTEXT_API = 0x00036003;
 
-		[NativeName(NativeNameType.Const, "GLFW_ANGLE_PLATFORM_TYPE_NONE")]
-		[NativeName(NativeNameType.Value, "0x00037001")]
 		public const int GLFW_ANGLE_PLATFORM_TYPE_NONE = 0x00037001;
 
-		[NativeName(NativeNameType.Const, "GLFW_ANGLE_PLATFORM_TYPE_OPENGL")]
-		[NativeName(NativeNameType.Value, "0x00037002")]
 		public const int GLFW_ANGLE_PLATFORM_TYPE_OPENGL = 0x00037002;
 
-		[NativeName(NativeNameType.Const, "GLFW_ANGLE_PLATFORM_TYPE_OPENGLES")]
-		[NativeName(NativeNameType.Value, "0x00037003")]
 		public const int GLFW_ANGLE_PLATFORM_TYPE_OPENGLES = 0x00037003;
 
-		[NativeName(NativeNameType.Const, "GLFW_ANGLE_PLATFORM_TYPE_D3D9")]
-		[NativeName(NativeNameType.Value, "0x00037004")]
 		public const int GLFW_ANGLE_PLATFORM_TYPE_D3D9 = 0x00037004;
 
-		[NativeName(NativeNameType.Const, "GLFW_ANGLE_PLATFORM_TYPE_D3D11")]
-		[NativeName(NativeNameType.Value, "0x00037005")]
 		public const int GLFW_ANGLE_PLATFORM_TYPE_D3D11 = 0x00037005;
 
-		[NativeName(NativeNameType.Const, "GLFW_ANGLE_PLATFORM_TYPE_VULKAN")]
-		[NativeName(NativeNameType.Value, "0x00037007")]
 		public const int GLFW_ANGLE_PLATFORM_TYPE_VULKAN = 0x00037007;
 
-		[NativeName(NativeNameType.Const, "GLFW_ANGLE_PLATFORM_TYPE_METAL")]
-		[NativeName(NativeNameType.Value, "0x00037008")]
 		public const int GLFW_ANGLE_PLATFORM_TYPE_METAL = 0x00037008;
 
-		[NativeName(NativeNameType.Const, "GLFW_WAYLAND_PREFER_LIBDECOR")]
-		[NativeName(NativeNameType.Value, "0x00038001")]
 		public const int GLFW_WAYLAND_PREFER_LIBDECOR = 0x00038001;
 
-		[NativeName(NativeNameType.Const, "GLFW_WAYLAND_DISABLE_LIBDECOR")]
-		[NativeName(NativeNameType.Value, "0x00038002")]
 		public const int GLFW_WAYLAND_DISABLE_LIBDECOR = 0x00038002;
 
-		[NativeName(NativeNameType.Const, "GLFW_ANY_POSITION")]
-		[NativeName(NativeNameType.Value, "0x80000000")]
 		public const uint GLFW_ANY_POSITION = 0x80000000;
 
-		[NativeName(NativeNameType.Const, "GLFW_ARROW_CURSOR")]
-		[NativeName(NativeNameType.Value, "0x00036001")]
 		public const int GLFW_ARROW_CURSOR = 0x00036001;
 
-		[NativeName(NativeNameType.Const, "GLFW_IBEAM_CURSOR")]
-		[NativeName(NativeNameType.Value, "0x00036002")]
 		public const int GLFW_IBEAM_CURSOR = 0x00036002;
 
-		[NativeName(NativeNameType.Const, "GLFW_CROSSHAIR_CURSOR")]
-		[NativeName(NativeNameType.Value, "0x00036003")]
 		public const int GLFW_CROSSHAIR_CURSOR = 0x00036003;
 
-		[NativeName(NativeNameType.Const, "GLFW_POINTING_HAND_CURSOR")]
-		[NativeName(NativeNameType.Value, "0x00036004")]
 		public const int GLFW_POINTING_HAND_CURSOR = 0x00036004;
 
-		[NativeName(NativeNameType.Const, "GLFW_RESIZE_EW_CURSOR")]
-		[NativeName(NativeNameType.Value, "0x00036005")]
 		public const int GLFW_RESIZE_EW_CURSOR = 0x00036005;
 
-		[NativeName(NativeNameType.Const, "GLFW_RESIZE_NS_CURSOR")]
-		[NativeName(NativeNameType.Value, "0x00036006")]
 		public const int GLFW_RESIZE_NS_CURSOR = 0x00036006;
 
-		[NativeName(NativeNameType.Const, "GLFW_RESIZE_NWSE_CURSOR")]
-		[NativeName(NativeNameType.Value, "0x00036007")]
 		public const int GLFW_RESIZE_NWSE_CURSOR = 0x00036007;
 
-		[NativeName(NativeNameType.Const, "GLFW_RESIZE_NESW_CURSOR")]
-		[NativeName(NativeNameType.Value, "0x00036008")]
 		public const int GLFW_RESIZE_NESW_CURSOR = 0x00036008;
 
-		[NativeName(NativeNameType.Const, "GLFW_RESIZE_ALL_CURSOR")]
-		[NativeName(NativeNameType.Value, "0x00036009")]
 		public const int GLFW_RESIZE_ALL_CURSOR = 0x00036009;
 
-		[NativeName(NativeNameType.Const, "GLFW_NOT_ALLOWED_CURSOR")]
-		[NativeName(NativeNameType.Value, "0x0003600A")]
 		public const int GLFW_NOT_ALLOWED_CURSOR = 0x0003600A;
 
-		[NativeName(NativeNameType.Const, "GLFW_CONNECTED")]
-		[NativeName(NativeNameType.Value, "0x00040001")]
 		public const int GLFW_CONNECTED = 0x00040001;
 
-		[NativeName(NativeNameType.Const, "GLFW_DISCONNECTED")]
-		[NativeName(NativeNameType.Value, "0x00040002")]
 		public const int GLFW_DISCONNECTED = 0x00040002;
 
-		[NativeName(NativeNameType.Const, "GLFW_ANGLE_PLATFORM_TYPE")]
-		[NativeName(NativeNameType.Value, "0x00050002")]
 		public const int GLFW_ANGLE_PLATFORM_TYPE = 0x00050002;
 
-		[NativeName(NativeNameType.Const, "GLFW_PLATFORM")]
-		[NativeName(NativeNameType.Value, "0x00050003")]
 		public const int GLFW_PLATFORM = 0x00050003;
 
-		[NativeName(NativeNameType.Const, "GLFW_COCOA_CHDIR_RESOURCES")]
-		[NativeName(NativeNameType.Value, "0x00051001")]
 		public const int GLFW_COCOA_CHDIR_RESOURCES = 0x00051001;
 
-		[NativeName(NativeNameType.Const, "GLFW_COCOA_MENUBAR")]
-		[NativeName(NativeNameType.Value, "0x00051002")]
 		public const int GLFW_COCOA_MENUBAR = 0x00051002;
 
-		[NativeName(NativeNameType.Const, "GLFW_X11_XCB_VULKAN_SURFACE")]
-		[NativeName(NativeNameType.Value, "0x00052001")]
 		public const int GLFW_X11_XCB_VULKAN_SURFACE = 0x00052001;
 
-		[NativeName(NativeNameType.Const, "GLFW_WAYLAND_LIBDECOR")]
-		[NativeName(NativeNameType.Value, "0x00053001")]
 		public const int GLFW_WAYLAND_LIBDECOR = 0x00053001;
 
-		[NativeName(NativeNameType.Const, "GLFW_ANY_PLATFORM")]
-		[NativeName(NativeNameType.Value, "0x00060000")]
 		public const int GLFW_ANY_PLATFORM = 0x00060000;
 
-		[NativeName(NativeNameType.Const, "GLFW_PLATFORM_WIN32")]
-		[NativeName(NativeNameType.Value, "0x00060001")]
 		public const int GLFW_PLATFORM_WIN32 = 0x00060001;
 
-		[NativeName(NativeNameType.Const, "GLFW_PLATFORM_COCOA")]
-		[NativeName(NativeNameType.Value, "0x00060002")]
 		public const int GLFW_PLATFORM_COCOA = 0x00060002;
 
-		[NativeName(NativeNameType.Const, "GLFW_PLATFORM_WAYLAND")]
-		[NativeName(NativeNameType.Value, "0x00060003")]
 		public const int GLFW_PLATFORM_WAYLAND = 0x00060003;
 
-		[NativeName(NativeNameType.Const, "GLFW_PLATFORM_X11")]
-		[NativeName(NativeNameType.Value, "0x00060004")]
 		public const int GLFW_PLATFORM_X11 = 0x00060004;
 
-		[NativeName(NativeNameType.Const, "GLFW_PLATFORM_NULL")]
-		[NativeName(NativeNameType.Value, "0x00060005")]
 		public const int GLFW_PLATFORM_NULL = 0x00060005;
 
-		[NativeName(NativeNameType.Const, "GLFW_DONT_CARE")]
-		[NativeName(NativeNameType.Value, "-1")]
 		public const int GLFW_DONT_CARE = -1;
 
 	}

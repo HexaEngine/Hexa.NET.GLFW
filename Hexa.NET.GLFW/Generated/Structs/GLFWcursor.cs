@@ -23,7 +23,6 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// <br/>
 	/// </summary>
-	[NativeName(NativeNameType.StructOrClass, "GLFWcursor")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct GLFWcursor
 	{
@@ -39,7 +38,6 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Typedef, "GLFWcursor")]
 	#if NET5_0_OR_GREATER
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	#endif

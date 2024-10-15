@@ -23,7 +23,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void InitApi()
 		{
-			funcTable = new FunctionTable(LibraryLoader.LoadLibrary(GetLibraryName, null), 120);
+			funcTable = new FunctionTable(LibraryLoader.LoadLibrary(GetLibraryName, null), 145);
 			funcTable.Load(0, "glfwInit");
 			funcTable.Load(1, "glfwTerminate");
 			funcTable.Load(2, "glfwInitHint");
@@ -144,6 +144,31 @@ namespace Hexa.NET.GLFW
 			funcTable.Load(117, "glfwGetProcAddress");
 			funcTable.Load(118, "glfwVulkanSupported");
 			funcTable.Load(119, "glfwGetRequiredInstanceExtensions");
+			funcTable.Load(120, "glfwGetWin32Adapter");
+			funcTable.Load(121, "glfwGetWin32Monitor");
+			funcTable.Load(122, "glfwGetWin32Window");
+			funcTable.Load(123, "glfwGetWGLContext");
+			funcTable.Load(124, "glfwGetCocoaMonitor");
+			funcTable.Load(125, "glfwGetCocoaWindow");
+			funcTable.Load(126, "glfwGetCocoaView");
+			funcTable.Load(127, "glfwGetNSGLContext");
+			funcTable.Load(128, "glfwGetX11Display");
+			funcTable.Load(129, "glfwGetX11Adapter");
+			funcTable.Load(130, "glfwGetX11Monitor");
+			funcTable.Load(131, "glfwGetX11Window");
+			funcTable.Load(132, "glfwSetX11SelectionString");
+			funcTable.Load(133, "glfwGetX11SelectionString");
+			funcTable.Load(134, "glfwGetGLXContext");
+			funcTable.Load(135, "glfwGetGLXWindow");
+			funcTable.Load(136, "glfwGetWaylandDisplay");
+			funcTable.Load(137, "glfwGetWaylandMonitor");
+			funcTable.Load(138, "glfwGetWaylandWindow");
+			funcTable.Load(139, "glfwGetEGLDisplay");
+			funcTable.Load(140, "glfwGetEGLContext");
+			funcTable.Load(141, "glfwGetEGLSurface");
+			funcTable.Load(142, "glfwGetOSMesaColorBuffer");
+			funcTable.Load(143, "glfwGetOSMesaDepthBuffer");
+			funcTable.Load(144, "glfwGetOSMesaContext");
 		}
 
 		public static void FreeApi()

@@ -96,306 +96,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwCreateWindow")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindow*")]
-		public static GLFWwindowPtr CreateWindow([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] ref byte title, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] ref GLFWmonitor monitor, [NativeName(NativeNameType.Param, "share")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr share)
-		{
-			fixed (byte* ptitle = &title)
-			{
-				fixed (GLFWmonitor* pmonitor = &monitor)
-				{
-					GLFWwindowPtr ret = CreateWindowNative(width, height, (byte*)ptitle, (GLFWmonitor*)pmonitor, share);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function creates a window and its associated OpenGL or OpenGL ES<br/>
-		/// context.  Most of the options controlling how the window and its context<br/>
-		/// should be created are specified with [window hints](<br/>
-		/// Successful creation does not change which context is current.  Before you<br/>
-		/// can use the newly created context, you need to<br/>
-		/// [make it current](<br/>
-		/// For information about the `share`<br/>
-		/// parameter, see <br/>
-		/// The created window, framebuffer and context may differ from what you<br/>
-		/// requested, as not all parameters and hints are<br/>
-		/// [hard constraints](<br/>
-		/// This includes the size of the<br/>
-		/// window, especially for full screen windows.  To query the actual attributes<br/>
-		/// of the created window, framebuffer and context, see <br/>
-		/// <br/>
-		/// and <br/>
-		/// To create a full screen window, you need to specify the monitor the window<br/>
-		/// will cover.  If no monitor is specified, the window will be windowed mode.<br/>
-		/// Unless you have a way for the user to choose a specific monitor, it is<br/>
-		/// recommended that you pick the primary monitor.  For more information on how<br/>
-		/// to query connected monitors, see <br/>
-		/// For full screen windows, the specified size becomes the resolution of the<br/>
-		/// window's _desired video mode_.  As long as a full screen window is not<br/>
-		/// iconified, the supported video mode most closely matching the desired video<br/>
-		/// mode is set for the specified monitor.  For more information about full<br/>
-		/// screen windows, including the creation of so called _windowed full screen_<br/>
-		/// or _borderless full screen_ windows, see <br/>
-		/// Once you have created the window, you can switch it between windowed and<br/>
-		/// full screen mode with <br/>
-		/// This will not affect its<br/>
-		/// OpenGL or OpenGL ES context.<br/>
-		/// By default, newly created windows use the placement recommended by the<br/>
-		/// window system.  To create the window at a specific position, set the <br/>
-		/// and <br/>
-		/// window hints before creation.  To<br/>
-		/// restore the default behavior, set either or both hints back to<br/>
-		/// `GLFW_ANY_POSITION`.<br/>
-		/// As long as at least one full screen window is not iconified, the screensaver<br/>
-		/// is prohibited from starting.<br/>
-		/// Window systems put limits on window sizes.  Very large or very small window<br/>
-		/// dimensions may be overridden by the window system on creation.  Check the<br/>
-		/// actual [size](<br/>
-		/// after creation.<br/>
-		/// The [swap interval](<br/>
-		/// is not set during window creation and<br/>
-		/// the initial value may vary depending on driver settings and defaults.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// [bundle-guide]: https://developer.apple.com/library/mac/documentation/CoreFoundation/Conceptual/CFBundles/<br/>
-		/// <br/>
-		/// [hidpi-guide]: https://developer.apple.com/library/mac/documentation/GraphicsAnimation/Conceptual/HighResolutionOSX/Explained/Explained.html<br/>
-		/// <br/>
-		/// <br/>
-		/// [libdecor]: https://gitlab.freedesktop.org/libdecor/libdecor<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwCreateWindow")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindow*")]
-		public static GLFWwindowPtr CreateWindow([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> title, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] ref GLFWmonitor monitor, [NativeName(NativeNameType.Param, "share")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr share)
-		{
-			fixed (byte* ptitle = title)
-			{
-				fixed (GLFWmonitor* pmonitor = &monitor)
-				{
-					GLFWwindowPtr ret = CreateWindowNative(width, height, (byte*)ptitle, (GLFWmonitor*)pmonitor, share);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function creates a window and its associated OpenGL or OpenGL ES<br/>
-		/// context.  Most of the options controlling how the window and its context<br/>
-		/// should be created are specified with [window hints](<br/>
-		/// Successful creation does not change which context is current.  Before you<br/>
-		/// can use the newly created context, you need to<br/>
-		/// [make it current](<br/>
-		/// For information about the `share`<br/>
-		/// parameter, see <br/>
-		/// The created window, framebuffer and context may differ from what you<br/>
-		/// requested, as not all parameters and hints are<br/>
-		/// [hard constraints](<br/>
-		/// This includes the size of the<br/>
-		/// window, especially for full screen windows.  To query the actual attributes<br/>
-		/// of the created window, framebuffer and context, see <br/>
-		/// <br/>
-		/// and <br/>
-		/// To create a full screen window, you need to specify the monitor the window<br/>
-		/// will cover.  If no monitor is specified, the window will be windowed mode.<br/>
-		/// Unless you have a way for the user to choose a specific monitor, it is<br/>
-		/// recommended that you pick the primary monitor.  For more information on how<br/>
-		/// to query connected monitors, see <br/>
-		/// For full screen windows, the specified size becomes the resolution of the<br/>
-		/// window's _desired video mode_.  As long as a full screen window is not<br/>
-		/// iconified, the supported video mode most closely matching the desired video<br/>
-		/// mode is set for the specified monitor.  For more information about full<br/>
-		/// screen windows, including the creation of so called _windowed full screen_<br/>
-		/// or _borderless full screen_ windows, see <br/>
-		/// Once you have created the window, you can switch it between windowed and<br/>
-		/// full screen mode with <br/>
-		/// This will not affect its<br/>
-		/// OpenGL or OpenGL ES context.<br/>
-		/// By default, newly created windows use the placement recommended by the<br/>
-		/// window system.  To create the window at a specific position, set the <br/>
-		/// and <br/>
-		/// window hints before creation.  To<br/>
-		/// restore the default behavior, set either or both hints back to<br/>
-		/// `GLFW_ANY_POSITION`.<br/>
-		/// As long as at least one full screen window is not iconified, the screensaver<br/>
-		/// is prohibited from starting.<br/>
-		/// Window systems put limits on window sizes.  Very large or very small window<br/>
-		/// dimensions may be overridden by the window system on creation.  Check the<br/>
-		/// actual [size](<br/>
-		/// after creation.<br/>
-		/// The [swap interval](<br/>
-		/// is not set during window creation and<br/>
-		/// the initial value may vary depending on driver settings and defaults.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// [bundle-guide]: https://developer.apple.com/library/mac/documentation/CoreFoundation/Conceptual/CFBundles/<br/>
-		/// <br/>
-		/// [hidpi-guide]: https://developer.apple.com/library/mac/documentation/GraphicsAnimation/Conceptual/HighResolutionOSX/Explained/Explained.html<br/>
-		/// <br/>
-		/// <br/>
-		/// [libdecor]: https://gitlab.freedesktop.org/libdecor/libdecor<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwCreateWindow")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindow*")]
-		public static GLFWwindowPtr CreateWindow([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] string title, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] ref GLFWmonitor monitor, [NativeName(NativeNameType.Param, "share")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr share)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (title != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(title);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(title, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (GLFWmonitor* pmonitor = &monitor)
-			{
-				GLFWwindowPtr ret = CreateWindowNative(width, height, pStr0, (GLFWmonitor*)pmonitor, share);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function creates a window and its associated OpenGL or OpenGL ES<br/>
-		/// context.  Most of the options controlling how the window and its context<br/>
-		/// should be created are specified with [window hints](<br/>
-		/// Successful creation does not change which context is current.  Before you<br/>
-		/// can use the newly created context, you need to<br/>
-		/// [make it current](<br/>
-		/// For information about the `share`<br/>
-		/// parameter, see <br/>
-		/// The created window, framebuffer and context may differ from what you<br/>
-		/// requested, as not all parameters and hints are<br/>
-		/// [hard constraints](<br/>
-		/// This includes the size of the<br/>
-		/// window, especially for full screen windows.  To query the actual attributes<br/>
-		/// of the created window, framebuffer and context, see <br/>
-		/// <br/>
-		/// and <br/>
-		/// To create a full screen window, you need to specify the monitor the window<br/>
-		/// will cover.  If no monitor is specified, the window will be windowed mode.<br/>
-		/// Unless you have a way for the user to choose a specific monitor, it is<br/>
-		/// recommended that you pick the primary monitor.  For more information on how<br/>
-		/// to query connected monitors, see <br/>
-		/// For full screen windows, the specified size becomes the resolution of the<br/>
-		/// window's _desired video mode_.  As long as a full screen window is not<br/>
-		/// iconified, the supported video mode most closely matching the desired video<br/>
-		/// mode is set for the specified monitor.  For more information about full<br/>
-		/// screen windows, including the creation of so called _windowed full screen_<br/>
-		/// or _borderless full screen_ windows, see <br/>
-		/// Once you have created the window, you can switch it between windowed and<br/>
-		/// full screen mode with <br/>
-		/// This will not affect its<br/>
-		/// OpenGL or OpenGL ES context.<br/>
-		/// By default, newly created windows use the placement recommended by the<br/>
-		/// window system.  To create the window at a specific position, set the <br/>
-		/// and <br/>
-		/// window hints before creation.  To<br/>
-		/// restore the default behavior, set either or both hints back to<br/>
-		/// `GLFW_ANY_POSITION`.<br/>
-		/// As long as at least one full screen window is not iconified, the screensaver<br/>
-		/// is prohibited from starting.<br/>
-		/// Window systems put limits on window sizes.  Very large or very small window<br/>
-		/// dimensions may be overridden by the window system on creation.  Check the<br/>
-		/// actual [size](<br/>
-		/// after creation.<br/>
-		/// The [swap interval](<br/>
-		/// is not set during window creation and<br/>
-		/// the initial value may vary depending on driver settings and defaults.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// [bundle-guide]: https://developer.apple.com/library/mac/documentation/CoreFoundation/Conceptual/CFBundles/<br/>
-		/// <br/>
-		/// [hidpi-guide]: https://developer.apple.com/library/mac/documentation/GraphicsAnimation/Conceptual/HighResolutionOSX/Explained/Explained.html<br/>
-		/// <br/>
-		/// <br/>
-		/// [libdecor]: https://gitlab.freedesktop.org/libdecor/libdecor<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwCreateWindow")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindow*")]
-		public static GLFWwindowPtr CreateWindow([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] GLFWmonitorPtr monitor, [NativeName(NativeNameType.Param, "share")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow share)
+		public static GLFWwindowPtr CreateWindow(int width, int height, byte* title, GLFWmonitorPtr monitor, ref GLFWwindow share)
 		{
 			fixed (GLFWwindow* pshare = &share)
 			{
@@ -483,9 +184,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwCreateWindow")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindow*")]
-		public static GLFWwindowPtr CreateWindow([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] ref byte title, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] GLFWmonitorPtr monitor, [NativeName(NativeNameType.Param, "share")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow share)
+		public static GLFWwindowPtr CreateWindow(int width, int height, ref byte title, GLFWmonitorPtr monitor, ref GLFWwindow share)
 		{
 			fixed (byte* ptitle = &title)
 			{
@@ -576,9 +275,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwCreateWindow")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindow*")]
-		public static GLFWwindowPtr CreateWindow([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> title, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] GLFWmonitorPtr monitor, [NativeName(NativeNameType.Param, "share")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow share)
+		public static GLFWwindowPtr CreateWindow(int width, int height, ReadOnlySpan<byte> title, GLFWmonitorPtr monitor, ref GLFWwindow share)
 		{
 			fixed (byte* ptitle = title)
 			{
@@ -669,9 +366,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwCreateWindow")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindow*")]
-		public static GLFWwindowPtr CreateWindow([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] string title, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] GLFWmonitorPtr monitor, [NativeName(NativeNameType.Param, "share")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow share)
+		public static GLFWwindowPtr CreateWindow(int width, int height, string title, GLFWmonitorPtr monitor, ref GLFWwindow share)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -780,9 +475,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwCreateWindow")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindow*")]
-		public static GLFWwindowPtr CreateWindow([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] ref GLFWmonitor monitor, [NativeName(NativeNameType.Param, "share")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow share)
+		public static GLFWwindowPtr CreateWindow(int width, int height, byte* title, ref GLFWmonitor monitor, ref GLFWwindow share)
 		{
 			fixed (GLFWmonitor* pmonitor = &monitor)
 			{
@@ -873,9 +566,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwCreateWindow")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindow*")]
-		public static GLFWwindowPtr CreateWindow([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] ref byte title, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] ref GLFWmonitor monitor, [NativeName(NativeNameType.Param, "share")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow share)
+		public static GLFWwindowPtr CreateWindow(int width, int height, ref byte title, ref GLFWmonitor monitor, ref GLFWwindow share)
 		{
 			fixed (byte* ptitle = &title)
 			{
@@ -969,9 +660,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwCreateWindow")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindow*")]
-		public static GLFWwindowPtr CreateWindow([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> title, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] ref GLFWmonitor monitor, [NativeName(NativeNameType.Param, "share")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow share)
+		public static GLFWwindowPtr CreateWindow(int width, int height, ReadOnlySpan<byte> title, ref GLFWmonitor monitor, ref GLFWwindow share)
 		{
 			fixed (byte* ptitle = title)
 			{
@@ -1065,9 +754,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwCreateWindow")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindow*")]
-		public static GLFWwindowPtr CreateWindow([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] string title, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] ref GLFWmonitor monitor, [NativeName(NativeNameType.Param, "share")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow share)
+		public static GLFWwindowPtr CreateWindow(int width, int height, string title, ref GLFWmonitor monitor, ref GLFWwindow share)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1120,10 +807,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwDestroyWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void DestroyWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
+		internal static void DestroyWindowNative(GLFWwindow* window)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, void>)funcTable[29])(window);
@@ -1152,9 +837,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwDestroyWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DestroyWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
+		public static void DestroyWindow(GLFWwindowPtr window)
 		{
 			DestroyWindowNative(window);
 		}
@@ -1179,9 +862,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwDestroyWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DestroyWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window)
+		public static void DestroyWindow(ref GLFWwindow window)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1203,10 +884,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwWindowShouldClose")]
-		[return: NativeName(NativeNameType.Type, "int")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static int WindowShouldCloseNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
+		internal static int WindowShouldCloseNative(GLFWwindow* window)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, int>)funcTable[30])(window);
@@ -1229,9 +908,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwWindowShouldClose")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int WindowShouldClose([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
+		public static int WindowShouldClose(GLFWwindowPtr window)
 		{
 			int ret = WindowShouldCloseNative(window);
 			return ret;
@@ -1251,9 +928,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwWindowShouldClose")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int WindowShouldClose([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window)
+		public static int WindowShouldClose(ref GLFWwindow window)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1278,10 +953,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowShouldClose")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void SetWindowShouldCloseNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value)
+		internal static void SetWindowShouldCloseNative(GLFWwindow* window, int value)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, int, void>)funcTable[31])(window, value);
@@ -1306,9 +979,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowShouldClose")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowShouldClose([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value)
+		public static void SetWindowShouldClose(GLFWwindowPtr window, int value)
 		{
 			SetWindowShouldCloseNative(window, value);
 		}
@@ -1329,9 +1000,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowShouldClose")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowShouldClose([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value)
+		public static void SetWindowShouldClose(ref GLFWwindow window, int value)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1361,10 +1030,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static byte* GetWindowTitleNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
+		internal static byte* GetWindowTitleNative(GLFWwindow* window)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, byte*>)funcTable[32])(window);
@@ -1395,9 +1062,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* GetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
+		public static byte* GetWindowTitle(GLFWwindowPtr window)
 		{
 			byte* ret = GetWindowTitleNative(window);
 			return ret;
@@ -1425,9 +1090,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string GetWindowTitleS([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
+		public static string GetWindowTitleS(GLFWwindowPtr window)
 		{
 			string ret = Utils.DecodeStringUTF8(GetWindowTitleNative(window));
 			return ret;
@@ -1455,9 +1118,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* GetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window)
+		public static byte* GetWindowTitle(ref GLFWwindow window)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1488,9 +1149,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string GetWindowTitleS([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window)
+		public static string GetWindowTitleS(ref GLFWwindow window)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1515,10 +1174,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void SetWindowTitleNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title)
+		internal static void SetWindowTitleNative(GLFWwindow* window, byte* title)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, byte*, void>)funcTable[33])(window, title);
@@ -1543,9 +1200,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title)
+		public static void SetWindowTitle(GLFWwindowPtr window, byte* title)
 		{
 			SetWindowTitleNative(window, title);
 		}
@@ -1566,9 +1221,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title)
+		public static void SetWindowTitle(ref GLFWwindow window, byte* title)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1592,9 +1245,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] ref byte title)
+		public static void SetWindowTitle(GLFWwindowPtr window, ref byte title)
 		{
 			fixed (byte* ptitle = &title)
 			{
@@ -1618,9 +1269,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> title)
+		public static void SetWindowTitle(GLFWwindowPtr window, ReadOnlySpan<byte> title)
 		{
 			fixed (byte* ptitle = title)
 			{
@@ -1644,9 +1293,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] string title)
+		public static void SetWindowTitle(GLFWwindowPtr window, string title)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1688,9 +1335,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] ref byte title)
+		public static void SetWindowTitle(ref GLFWwindow window, ref byte title)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1717,9 +1362,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> title)
+		public static void SetWindowTitle(ref GLFWwindow window, ReadOnlySpan<byte> title)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1746,9 +1389,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] string title)
+		public static void SetWindowTitle(ref GLFWwindow window, string title)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1809,10 +1450,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowIcon")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void SetWindowIconNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "images")] [NativeName(NativeNameType.Type, "const GLFWimage*")] GLFWimage* images)
+		internal static void SetWindowIconNative(GLFWwindow* window, int count, GLFWimage* images)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, int, GLFWimage*, void>)funcTable[34])(window, count, images);
@@ -1853,9 +1492,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowIcon")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowIcon([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "images")] [NativeName(NativeNameType.Type, "const GLFWimage*")] GLFWimagePtr images)
+		public static void SetWindowIcon(GLFWwindowPtr window, int count, GLFWimagePtr images)
 		{
 			SetWindowIconNative(window, count, images);
 		}
@@ -1892,9 +1529,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowIcon")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowIcon([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "images")] [NativeName(NativeNameType.Type, "const GLFWimage*")] GLFWimagePtr images)
+		public static void SetWindowIcon(ref GLFWwindow window, int count, GLFWimagePtr images)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1934,9 +1569,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowIcon")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowIcon([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "images")] [NativeName(NativeNameType.Type, "const GLFWimage*")] ref GLFWimage images)
+		public static void SetWindowIcon(GLFWwindowPtr window, int count, ref GLFWimage images)
 		{
 			fixed (GLFWimage* pimages = &images)
 			{
@@ -1976,9 +1609,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowIcon")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowIcon([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "images")] [NativeName(NativeNameType.Type, "const GLFWimage*")] ref GLFWimage images)
+		public static void SetWindowIcon(ref GLFWwindow window, int count, ref GLFWimage images)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -2009,10 +1640,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void GetWindowPosNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int*")] int* xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int*")] int* ypos)
+		internal static void GetWindowPosNative(GLFWwindow* window, int* xpos, int* ypos)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, int*, int*, void>)funcTable[35])(window, xpos, ypos);
@@ -2041,9 +1670,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int*")] int* xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int*")] int* ypos)
+		public static void GetWindowPos(GLFWwindowPtr window, int* xpos, int* ypos)
 		{
 			GetWindowPosNative(window, xpos, ypos);
 		}
@@ -2068,9 +1695,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int*")] int* xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int*")] int* ypos)
+		public static void GetWindowPos(ref GLFWwindow window, int* xpos, int* ypos)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -2098,9 +1723,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int*")] ref int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int*")] int* ypos)
+		public static void GetWindowPos(GLFWwindowPtr window, ref int xpos, int* ypos)
 		{
 			fixed (int* pxpos = &xpos)
 			{
@@ -2128,9 +1751,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int*")] ref int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int*")] int* ypos)
+		public static void GetWindowPos(ref GLFWwindow window, ref int xpos, int* ypos)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -2161,9 +1782,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int*")] int* xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int*")] ref int ypos)
+		public static void GetWindowPos(GLFWwindowPtr window, int* xpos, ref int ypos)
 		{
 			fixed (int* pypos = &ypos)
 			{
@@ -2191,9 +1810,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int*")] int* xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int*")] ref int ypos)
+		public static void GetWindowPos(ref GLFWwindow window, int* xpos, ref int ypos)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -2224,9 +1841,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int*")] ref int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int*")] ref int ypos)
+		public static void GetWindowPos(GLFWwindowPtr window, ref int xpos, ref int ypos)
 		{
 			fixed (int* pxpos = &xpos)
 			{
@@ -2257,9 +1872,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int*")] ref int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int*")] ref int ypos)
+		public static void GetWindowPos(ref GLFWwindow window, ref int xpos, ref int ypos)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -2296,10 +1909,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void SetWindowPosNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int")] int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int")] int ypos)
+		internal static void SetWindowPosNative(GLFWwindow* window, int xpos, int ypos)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, int, int, void>)funcTable[36])(window, xpos, ypos);
@@ -2331,9 +1942,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int")] int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int")] int ypos)
+		public static void SetWindowPos(GLFWwindowPtr window, int xpos, int ypos)
 		{
 			SetWindowPosNative(window, xpos, ypos);
 		}
@@ -2361,9 +1970,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int")] int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int")] int ypos)
+		public static void SetWindowPos(ref GLFWwindow window, int xpos, int ypos)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -2389,10 +1996,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void GetWindowSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int*")] int* width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int*")] int* height)
+		internal static void GetWindowSizeNative(GLFWwindow* window, int* width, int* height)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, int*, int*, void>)funcTable[37])(window, width, height);
@@ -2419,9 +2024,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int*")] int* width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int*")] int* height)
+		public static void GetWindowSize(GLFWwindowPtr window, int* width, int* height)
 		{
 			GetWindowSizeNative(window, width, height);
 		}
@@ -2444,9 +2047,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int*")] int* width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int*")] int* height)
+		public static void GetWindowSize(ref GLFWwindow window, int* width, int* height)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -2472,9 +2073,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int*")] ref int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int*")] int* height)
+		public static void GetWindowSize(GLFWwindowPtr window, ref int width, int* height)
 		{
 			fixed (int* pwidth = &width)
 			{
@@ -2500,9 +2099,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int*")] ref int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int*")] int* height)
+		public static void GetWindowSize(ref GLFWwindow window, ref int width, int* height)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -2531,9 +2128,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int*")] int* width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int*")] ref int height)
+		public static void GetWindowSize(GLFWwindowPtr window, int* width, ref int height)
 		{
 			fixed (int* pheight = &height)
 			{
@@ -2559,9 +2154,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int*")] int* width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int*")] ref int height)
+		public static void GetWindowSize(ref GLFWwindow window, int* width, ref int height)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -2590,9 +2183,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int*")] ref int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int*")] ref int height)
+		public static void GetWindowSize(GLFWwindowPtr window, ref int width, ref int height)
 		{
 			fixed (int* pwidth = &width)
 			{
@@ -2621,9 +2212,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int*")] ref int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int*")] ref int height)
+		public static void GetWindowSize(ref GLFWwindow window, ref int width, ref int height)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -2661,10 +2250,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowSizeLimits")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void SetWindowSizeLimitsNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "minwidth")] [NativeName(NativeNameType.Type, "int")] int minwidth, [NativeName(NativeNameType.Param, "minheight")] [NativeName(NativeNameType.Type, "int")] int minheight, [NativeName(NativeNameType.Param, "maxwidth")] [NativeName(NativeNameType.Type, "int")] int maxwidth, [NativeName(NativeNameType.Param, "maxheight")] [NativeName(NativeNameType.Type, "int")] int maxheight)
+		internal static void SetWindowSizeLimitsNative(GLFWwindow* window, int minwidth, int minheight, int maxwidth, int maxheight)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, int, int, int, int, void>)funcTable[38])(window, minwidth, minheight, maxwidth, maxheight);
@@ -2697,9 +2284,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowSizeLimits")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowSizeLimits([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "minwidth")] [NativeName(NativeNameType.Type, "int")] int minwidth, [NativeName(NativeNameType.Param, "minheight")] [NativeName(NativeNameType.Type, "int")] int minheight, [NativeName(NativeNameType.Param, "maxwidth")] [NativeName(NativeNameType.Type, "int")] int maxwidth, [NativeName(NativeNameType.Param, "maxheight")] [NativeName(NativeNameType.Type, "int")] int maxheight)
+		public static void SetWindowSizeLimits(GLFWwindowPtr window, int minwidth, int minheight, int maxwidth, int maxheight)
 		{
 			SetWindowSizeLimitsNative(window, minwidth, minheight, maxwidth, maxheight);
 		}
@@ -2728,9 +2313,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowSizeLimits")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowSizeLimits([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "minwidth")] [NativeName(NativeNameType.Type, "int")] int minwidth, [NativeName(NativeNameType.Param, "minheight")] [NativeName(NativeNameType.Type, "int")] int minheight, [NativeName(NativeNameType.Param, "maxwidth")] [NativeName(NativeNameType.Type, "int")] int maxwidth, [NativeName(NativeNameType.Param, "maxheight")] [NativeName(NativeNameType.Type, "int")] int maxheight)
+		public static void SetWindowSizeLimits(ref GLFWwindow window, int minwidth, int minheight, int maxwidth, int maxheight)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -2765,10 +2348,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowAspectRatio")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void SetWindowAspectRatioNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "numer")] [NativeName(NativeNameType.Type, "int")] int numer, [NativeName(NativeNameType.Param, "denom")] [NativeName(NativeNameType.Type, "int")] int denom)
+		internal static void SetWindowAspectRatioNative(GLFWwindow* window, int numer, int denom)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, int, int, void>)funcTable[39])(window, numer, denom);
@@ -2804,9 +2385,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowAspectRatio")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowAspectRatio([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "numer")] [NativeName(NativeNameType.Type, "int")] int numer, [NativeName(NativeNameType.Param, "denom")] [NativeName(NativeNameType.Type, "int")] int denom)
+		public static void SetWindowAspectRatio(GLFWwindowPtr window, int numer, int denom)
 		{
 			SetWindowAspectRatioNative(window, numer, denom);
 		}
@@ -2838,9 +2417,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowAspectRatio")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowAspectRatio([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "numer")] [NativeName(NativeNameType.Type, "int")] int numer, [NativeName(NativeNameType.Param, "denom")] [NativeName(NativeNameType.Type, "int")] int denom)
+		public static void SetWindowAspectRatio(ref GLFWwindow window, int numer, int denom)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -2871,10 +2448,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void SetWindowSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height)
+		internal static void SetWindowSizeNative(GLFWwindow* window, int width, int height)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, int, int, void>)funcTable[40])(window, width, height);
@@ -2906,9 +2481,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height)
+		public static void SetWindowSize(GLFWwindowPtr window, int width, int height)
 		{
 			SetWindowSizeNative(window, width, height);
 		}
@@ -2936,9 +2509,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height)
+		public static void SetWindowSize(ref GLFWwindow window, int width, int height)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -2964,10 +2535,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetFramebufferSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void GetFramebufferSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int*")] int* width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int*")] int* height)
+		internal static void GetFramebufferSizeNative(GLFWwindow* window, int* width, int* height)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, int*, int*, void>)funcTable[41])(window, width, height);
@@ -2994,9 +2563,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetFramebufferSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetFramebufferSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int*")] int* width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int*")] int* height)
+		public static void GetFramebufferSize(GLFWwindowPtr window, int* width, int* height)
 		{
 			GetFramebufferSizeNative(window, width, height);
 		}
@@ -3019,9 +2586,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetFramebufferSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetFramebufferSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int*")] int* width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int*")] int* height)
+		public static void GetFramebufferSize(ref GLFWwindow window, int* width, int* height)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3047,9 +2612,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetFramebufferSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetFramebufferSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int*")] ref int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int*")] int* height)
+		public static void GetFramebufferSize(GLFWwindowPtr window, ref int width, int* height)
 		{
 			fixed (int* pwidth = &width)
 			{
@@ -3075,9 +2638,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetFramebufferSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetFramebufferSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int*")] ref int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int*")] int* height)
+		public static void GetFramebufferSize(ref GLFWwindow window, ref int width, int* height)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3106,9 +2667,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetFramebufferSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetFramebufferSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int*")] int* width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int*")] ref int height)
+		public static void GetFramebufferSize(GLFWwindowPtr window, int* width, ref int height)
 		{
 			fixed (int* pheight = &height)
 			{
@@ -3134,9 +2693,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetFramebufferSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetFramebufferSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int*")] int* width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int*")] ref int height)
+		public static void GetFramebufferSize(ref GLFWwindow window, int* width, ref int height)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3165,9 +2722,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetFramebufferSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetFramebufferSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int*")] ref int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int*")] ref int height)
+		public static void GetFramebufferSize(GLFWwindowPtr window, ref int width, ref int height)
 		{
 			fixed (int* pwidth = &width)
 			{
@@ -3196,9 +2751,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetFramebufferSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetFramebufferSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int*")] ref int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int*")] ref int height)
+		public static void GetFramebufferSize(ref GLFWwindow window, ref int width, ref int height)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3235,10 +2788,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void GetWindowFrameSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom)
+		internal static void GetWindowFrameSizeNative(GLFWwindow* window, int* left, int* top, int* right, int* bottom)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, int*, int*, int*, int*, void>)funcTable[42])(window, left, top, right, bottom);
@@ -3270,9 +2821,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom)
+		public static void GetWindowFrameSize(GLFWwindowPtr window, int* left, int* top, int* right, int* bottom)
 		{
 			GetWindowFrameSizeNative(window, left, top, right, bottom);
 		}
@@ -3300,9 +2849,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom)
+		public static void GetWindowFrameSize(ref GLFWwindow window, int* left, int* top, int* right, int* bottom)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3333,9 +2880,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom)
+		public static void GetWindowFrameSize(GLFWwindowPtr window, ref int left, int* top, int* right, int* bottom)
 		{
 			fixed (int* pleft = &left)
 			{
@@ -3366,9 +2911,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom)
+		public static void GetWindowFrameSize(ref GLFWwindow window, ref int left, int* top, int* right, int* bottom)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3402,9 +2945,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom)
+		public static void GetWindowFrameSize(GLFWwindowPtr window, int* left, ref int top, int* right, int* bottom)
 		{
 			fixed (int* ptop = &top)
 			{
@@ -3435,9 +2976,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom)
+		public static void GetWindowFrameSize(ref GLFWwindow window, int* left, ref int top, int* right, int* bottom)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3471,9 +3010,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom)
+		public static void GetWindowFrameSize(GLFWwindowPtr window, ref int left, ref int top, int* right, int* bottom)
 		{
 			fixed (int* pleft = &left)
 			{
@@ -3507,9 +3044,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom)
+		public static void GetWindowFrameSize(ref GLFWwindow window, ref int left, ref int top, int* right, int* bottom)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3546,9 +3081,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom)
+		public static void GetWindowFrameSize(GLFWwindowPtr window, int* left, int* top, ref int right, int* bottom)
 		{
 			fixed (int* pright = &right)
 			{
@@ -3579,9 +3112,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom)
+		public static void GetWindowFrameSize(ref GLFWwindow window, int* left, int* top, ref int right, int* bottom)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3615,9 +3146,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom)
+		public static void GetWindowFrameSize(GLFWwindowPtr window, ref int left, int* top, ref int right, int* bottom)
 		{
 			fixed (int* pleft = &left)
 			{
@@ -3651,9 +3180,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom)
+		public static void GetWindowFrameSize(ref GLFWwindow window, ref int left, int* top, ref int right, int* bottom)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3690,9 +3217,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom)
+		public static void GetWindowFrameSize(GLFWwindowPtr window, int* left, ref int top, ref int right, int* bottom)
 		{
 			fixed (int* ptop = &top)
 			{
@@ -3726,9 +3251,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom)
+		public static void GetWindowFrameSize(ref GLFWwindow window, int* left, ref int top, ref int right, int* bottom)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3765,9 +3288,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom)
+		public static void GetWindowFrameSize(GLFWwindowPtr window, ref int left, ref int top, ref int right, int* bottom)
 		{
 			fixed (int* pleft = &left)
 			{
@@ -3804,9 +3325,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom)
+		public static void GetWindowFrameSize(ref GLFWwindow window, ref int left, ref int top, ref int right, int* bottom)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3846,9 +3365,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom)
+		public static void GetWindowFrameSize(GLFWwindowPtr window, int* left, int* top, int* right, ref int bottom)
 		{
 			fixed (int* pbottom = &bottom)
 			{
@@ -3879,9 +3396,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom)
+		public static void GetWindowFrameSize(ref GLFWwindow window, int* left, int* top, int* right, ref int bottom)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3915,9 +3430,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom)
+		public static void GetWindowFrameSize(GLFWwindowPtr window, ref int left, int* top, int* right, ref int bottom)
 		{
 			fixed (int* pleft = &left)
 			{
@@ -3951,9 +3464,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom)
+		public static void GetWindowFrameSize(ref GLFWwindow window, ref int left, int* top, int* right, ref int bottom)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3990,9 +3501,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom)
+		public static void GetWindowFrameSize(GLFWwindowPtr window, int* left, ref int top, int* right, ref int bottom)
 		{
 			fixed (int* ptop = &top)
 			{
@@ -4026,9 +3535,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom)
+		public static void GetWindowFrameSize(ref GLFWwindow window, int* left, ref int top, int* right, ref int bottom)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4065,9 +3572,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom)
+		public static void GetWindowFrameSize(GLFWwindowPtr window, ref int left, ref int top, int* right, ref int bottom)
 		{
 			fixed (int* pleft = &left)
 			{
@@ -4104,9 +3609,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom)
+		public static void GetWindowFrameSize(ref GLFWwindow window, ref int left, ref int top, int* right, ref int bottom)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4146,9 +3649,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom)
+		public static void GetWindowFrameSize(GLFWwindowPtr window, int* left, int* top, ref int right, ref int bottom)
 		{
 			fixed (int* pright = &right)
 			{
@@ -4182,9 +3683,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom)
+		public static void GetWindowFrameSize(ref GLFWwindow window, int* left, int* top, ref int right, ref int bottom)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4221,9 +3720,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom)
+		public static void GetWindowFrameSize(GLFWwindowPtr window, ref int left, int* top, ref int right, ref int bottom)
 		{
 			fixed (int* pleft = &left)
 			{
@@ -4260,9 +3757,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom)
+		public static void GetWindowFrameSize(ref GLFWwindow window, ref int left, int* top, ref int right, ref int bottom)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4302,9 +3797,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom)
+		public static void GetWindowFrameSize(GLFWwindowPtr window, int* left, ref int top, ref int right, ref int bottom)
 		{
 			fixed (int* ptop = &top)
 			{
@@ -4341,9 +3834,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom)
+		public static void GetWindowFrameSize(ref GLFWwindow window, int* left, ref int top, ref int right, ref int bottom)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4383,9 +3874,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom)
+		public static void GetWindowFrameSize(GLFWwindowPtr window, ref int left, ref int top, ref int right, ref int bottom)
 		{
 			fixed (int* pleft = &left)
 			{
@@ -4425,9 +3914,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowFrameSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowFrameSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom)
+		public static void GetWindowFrameSize(ref GLFWwindow window, ref int left, ref int top, ref int right, ref int bottom)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4470,10 +3957,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowContentScale")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void GetWindowContentScaleNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "xscale")] [NativeName(NativeNameType.Type, "float*")] float* xscale, [NativeName(NativeNameType.Param, "yscale")] [NativeName(NativeNameType.Type, "float*")] float* yscale)
+		internal static void GetWindowContentScaleNative(GLFWwindow* window, float* xscale, float* yscale)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, float*, float*, void>)funcTable[43])(window, xscale, yscale);
@@ -4505,9 +3990,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowContentScale")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowContentScale([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "xscale")] [NativeName(NativeNameType.Type, "float*")] float* xscale, [NativeName(NativeNameType.Param, "yscale")] [NativeName(NativeNameType.Type, "float*")] float* yscale)
+		public static void GetWindowContentScale(GLFWwindowPtr window, float* xscale, float* yscale)
 		{
 			GetWindowContentScaleNative(window, xscale, yscale);
 		}
@@ -4535,9 +4018,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowContentScale")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowContentScale([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "xscale")] [NativeName(NativeNameType.Type, "float*")] float* xscale, [NativeName(NativeNameType.Param, "yscale")] [NativeName(NativeNameType.Type, "float*")] float* yscale)
+		public static void GetWindowContentScale(ref GLFWwindow window, float* xscale, float* yscale)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4568,9 +4049,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowContentScale")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowContentScale([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "xscale")] [NativeName(NativeNameType.Type, "float*")] ref float xscale, [NativeName(NativeNameType.Param, "yscale")] [NativeName(NativeNameType.Type, "float*")] float* yscale)
+		public static void GetWindowContentScale(GLFWwindowPtr window, ref float xscale, float* yscale)
 		{
 			fixed (float* pxscale = &xscale)
 			{
@@ -4601,9 +4080,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowContentScale")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowContentScale([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "xscale")] [NativeName(NativeNameType.Type, "float*")] ref float xscale, [NativeName(NativeNameType.Param, "yscale")] [NativeName(NativeNameType.Type, "float*")] float* yscale)
+		public static void GetWindowContentScale(ref GLFWwindow window, ref float xscale, float* yscale)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4637,9 +4114,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowContentScale")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowContentScale([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "xscale")] [NativeName(NativeNameType.Type, "float*")] float* xscale, [NativeName(NativeNameType.Param, "yscale")] [NativeName(NativeNameType.Type, "float*")] ref float yscale)
+		public static void GetWindowContentScale(GLFWwindowPtr window, float* xscale, ref float yscale)
 		{
 			fixed (float* pyscale = &yscale)
 			{
@@ -4670,9 +4145,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowContentScale")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowContentScale([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "xscale")] [NativeName(NativeNameType.Type, "float*")] float* xscale, [NativeName(NativeNameType.Param, "yscale")] [NativeName(NativeNameType.Type, "float*")] ref float yscale)
+		public static void GetWindowContentScale(ref GLFWwindow window, float* xscale, ref float yscale)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4706,9 +4179,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowContentScale")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowContentScale([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "xscale")] [NativeName(NativeNameType.Type, "float*")] ref float xscale, [NativeName(NativeNameType.Param, "yscale")] [NativeName(NativeNameType.Type, "float*")] ref float yscale)
+		public static void GetWindowContentScale(GLFWwindowPtr window, ref float xscale, ref float yscale)
 		{
 			fixed (float* pxscale = &xscale)
 			{
@@ -4742,9 +4213,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowContentScale")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowContentScale([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "xscale")] [NativeName(NativeNameType.Type, "float*")] ref float xscale, [NativeName(NativeNameType.Param, "yscale")] [NativeName(NativeNameType.Type, "float*")] ref float yscale)
+		public static void GetWindowContentScale(ref GLFWwindow window, ref float xscale, ref float yscale)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4776,10 +4245,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowOpacity")]
-		[return: NativeName(NativeNameType.Type, "float")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static float GetWindowOpacityNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
+		internal static float GetWindowOpacityNative(GLFWwindow* window)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, float>)funcTable[44])(window);
@@ -4806,9 +4273,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowOpacity")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		public static float GetWindowOpacity([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
+		public static float GetWindowOpacity(GLFWwindowPtr window)
 		{
 			float ret = GetWindowOpacityNative(window);
 			return ret;
@@ -4832,9 +4297,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowOpacity")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		public static float GetWindowOpacity([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window)
+		public static float GetWindowOpacity(ref GLFWwindow window)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4865,10 +4328,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowOpacity")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void SetWindowOpacityNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "opacity")] [NativeName(NativeNameType.Type, "float")] float opacity)
+		internal static void SetWindowOpacityNative(GLFWwindow* window, float opacity)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, float, void>)funcTable[45])(window, opacity);
@@ -4899,9 +4360,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowOpacity")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowOpacity([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "opacity")] [NativeName(NativeNameType.Type, "float")] float opacity)
+		public static void SetWindowOpacity(GLFWwindowPtr window, float opacity)
 		{
 			SetWindowOpacityNative(window, opacity);
 		}
@@ -4928,9 +4387,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowOpacity")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowOpacity([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "opacity")] [NativeName(NativeNameType.Type, "float")] float opacity)
+		public static void SetWindowOpacity(ref GLFWwindow window, float opacity)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4958,10 +4415,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwIconifyWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void IconifyWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
+		internal static void IconifyWindowNative(GLFWwindow* window)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, void>)funcTable[46])(window);
@@ -4990,9 +4445,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwIconifyWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void IconifyWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
+		public static void IconifyWindow(GLFWwindowPtr window)
 		{
 			IconifyWindowNative(window);
 		}
@@ -5017,14 +4470,554 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwIconifyWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void IconifyWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window)
+		public static void IconifyWindow(ref GLFWwindow window)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
 				IconifyWindowNative((GLFWwindow*)pwindow);
 			}
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function restores the specified window if it was previously iconified<br/>
+		/// (minimized) or maximized.  If the window is already restored, this function<br/>
+		/// does nothing.<br/>
+		/// If the specified window is an iconified full screen window, its desired<br/>
+		/// video mode is set again for its monitor when the window is restored.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// and <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void RestoreWindowNative(GLFWwindow* window)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<GLFWwindow*, void>)funcTable[47])(window);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[47])((nint)window);
+			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function restores the specified window if it was previously iconified<br/>
+		/// (minimized) or maximized.  If the window is already restored, this function<br/>
+		/// does nothing.<br/>
+		/// If the specified window is an iconified full screen window, its desired<br/>
+		/// video mode is set again for its monitor when the window is restored.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// and <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static void RestoreWindow(GLFWwindowPtr window)
+		{
+			RestoreWindowNative(window);
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function restores the specified window if it was previously iconified<br/>
+		/// (minimized) or maximized.  If the window is already restored, this function<br/>
+		/// does nothing.<br/>
+		/// If the specified window is an iconified full screen window, its desired<br/>
+		/// video mode is set again for its monitor when the window is restored.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// and <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static void RestoreWindow(ref GLFWwindow window)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				RestoreWindowNative((GLFWwindow*)pwindow);
+			}
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function maximizes the specified window if it was previously not<br/>
+		/// maximized.  If the window is already maximized, this function does nothing.<br/>
+		/// If the specified window is a full screen window, this function does nothing.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// and <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void MaximizeWindowNative(GLFWwindow* window)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<GLFWwindow*, void>)funcTable[48])(window);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[48])((nint)window);
+			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function maximizes the specified window if it was previously not<br/>
+		/// maximized.  If the window is already maximized, this function does nothing.<br/>
+		/// If the specified window is a full screen window, this function does nothing.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// and <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static void MaximizeWindow(GLFWwindowPtr window)
+		{
+			MaximizeWindowNative(window);
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function maximizes the specified window if it was previously not<br/>
+		/// maximized.  If the window is already maximized, this function does nothing.<br/>
+		/// If the specified window is a full screen window, this function does nothing.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// and <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static void MaximizeWindow(ref GLFWwindow window)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				MaximizeWindowNative((GLFWwindow*)pwindow);
+			}
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function makes the specified window visible if it was previously<br/>
+		/// hidden.  If the window is already visible or is in full screen mode, this<br/>
+		/// function does nothing.<br/>
+		/// By default, windowed mode windows are focused when shown<br/>
+		/// Set the [GLFW_FOCUS_ON_SHOW](<br/>
+		/// window hint<br/>
+		/// to change this behavior for all newly created windows, or change the<br/>
+		/// behavior for an existing window with <br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// and <br/>
+		/// <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void ShowWindowNative(GLFWwindow* window)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<GLFWwindow*, void>)funcTable[49])(window);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[49])((nint)window);
+			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function makes the specified window visible if it was previously<br/>
+		/// hidden.  If the window is already visible or is in full screen mode, this<br/>
+		/// function does nothing.<br/>
+		/// By default, windowed mode windows are focused when shown<br/>
+		/// Set the [GLFW_FOCUS_ON_SHOW](<br/>
+		/// window hint<br/>
+		/// to change this behavior for all newly created windows, or change the<br/>
+		/// behavior for an existing window with <br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// and <br/>
+		/// <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static void ShowWindow(GLFWwindowPtr window)
+		{
+			ShowWindowNative(window);
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function makes the specified window visible if it was previously<br/>
+		/// hidden.  If the window is already visible or is in full screen mode, this<br/>
+		/// function does nothing.<br/>
+		/// By default, windowed mode windows are focused when shown<br/>
+		/// Set the [GLFW_FOCUS_ON_SHOW](<br/>
+		/// window hint<br/>
+		/// to change this behavior for all newly created windows, or change the<br/>
+		/// behavior for an existing window with <br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// and <br/>
+		/// <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static void ShowWindow(ref GLFWwindow window)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				ShowWindowNative((GLFWwindow*)pwindow);
+			}
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function hides the specified window if it was previously visible.  If<br/>
+		/// the window is already hidden or is in full screen mode, this function does<br/>
+		/// nothing.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// and <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void HideWindowNative(GLFWwindow* window)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<GLFWwindow*, void>)funcTable[50])(window);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[50])((nint)window);
+			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function hides the specified window if it was previously visible.  If<br/>
+		/// the window is already hidden or is in full screen mode, this function does<br/>
+		/// nothing.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// and <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static void HideWindow(GLFWwindowPtr window)
+		{
+			HideWindowNative(window);
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function hides the specified window if it was previously visible.  If<br/>
+		/// the window is already hidden or is in full screen mode, this function does<br/>
+		/// nothing.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// and <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static void HideWindow(ref GLFWwindow window)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				HideWindowNative((GLFWwindow*)pwindow);
+			}
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function brings the specified window to front and sets input focus.<br/>
+		/// The window should already be visible and not iconified.<br/>
+		/// By default, both windowed and full screen mode windows are focused when<br/>
+		/// initially created.  Set the [GLFW_FOCUSED](<br/>
+		/// to<br/>
+		/// disable this behavior.<br/>
+		/// Also by default, windowed mode windows are focused when shown<br/>
+		/// with <br/>
+		/// Set the<br/>
+		/// [GLFW_FOCUS_ON_SHOW](<br/>
+		/// to disable this behavior.<br/>
+		/// __Do not use this function__ to steal focus from other applications unless<br/>
+		/// you are certain that is what the user wants.  Focus stealing can be<br/>
+		/// extremely disruptive.<br/>
+		/// For a less disruptive way of getting the user's attention, see<br/>
+		/// [attention requests](<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// and <br/>
+		/// <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void FocusWindowNative(GLFWwindow* window)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<GLFWwindow*, void>)funcTable[51])(window);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[51])((nint)window);
+			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function brings the specified window to front and sets input focus.<br/>
+		/// The window should already be visible and not iconified.<br/>
+		/// By default, both windowed and full screen mode windows are focused when<br/>
+		/// initially created.  Set the [GLFW_FOCUSED](<br/>
+		/// to<br/>
+		/// disable this behavior.<br/>
+		/// Also by default, windowed mode windows are focused when shown<br/>
+		/// with <br/>
+		/// Set the<br/>
+		/// [GLFW_FOCUS_ON_SHOW](<br/>
+		/// to disable this behavior.<br/>
+		/// __Do not use this function__ to steal focus from other applications unless<br/>
+		/// you are certain that is what the user wants.  Focus stealing can be<br/>
+		/// extremely disruptive.<br/>
+		/// For a less disruptive way of getting the user's attention, see<br/>
+		/// [attention requests](<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// and <br/>
+		/// <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static void FocusWindow(GLFWwindowPtr window)
+		{
+			FocusWindowNative(window);
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function brings the specified window to front and sets input focus.<br/>
+		/// The window should already be visible and not iconified.<br/>
+		/// By default, both windowed and full screen mode windows are focused when<br/>
+		/// initially created.  Set the [GLFW_FOCUSED](<br/>
+		/// to<br/>
+		/// disable this behavior.<br/>
+		/// Also by default, windowed mode windows are focused when shown<br/>
+		/// with <br/>
+		/// Set the<br/>
+		/// [GLFW_FOCUS_ON_SHOW](<br/>
+		/// to disable this behavior.<br/>
+		/// __Do not use this function__ to steal focus from other applications unless<br/>
+		/// you are certain that is what the user wants.  Focus stealing can be<br/>
+		/// extremely disruptive.<br/>
+		/// For a less disruptive way of getting the user's attention, see<br/>
+		/// [attention requests](<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// and <br/>
+		/// <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static void FocusWindow(ref GLFWwindow window)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				FocusWindowNative((GLFWwindow*)pwindow);
+			}
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function requests user attention to the specified window.  On<br/>
+		/// platforms where this is not supported, attention is requested to the<br/>
+		/// application as a whole.<br/>
+		/// Once the user has given attention, usually by focusing the window or<br/>
+		/// application, the system will end the request automatically.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// and <br/>
+		/// <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void RequestWindowAttentionNative(GLFWwindow* window)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<GLFWwindow*, void>)funcTable[52])(window);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[52])((nint)window);
+			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function requests user attention to the specified window.  On<br/>
+		/// platforms where this is not supported, attention is requested to the<br/>
+		/// application as a whole.<br/>
+		/// Once the user has given attention, usually by focusing the window or<br/>
+		/// application, the system will end the request automatically.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// and <br/>
+		/// <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static void RequestWindowAttention(GLFWwindowPtr window)
+		{
+			RequestWindowAttentionNative(window);
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function requests user attention to the specified window.  On<br/>
+		/// platforms where this is not supported, attention is requested to the<br/>
+		/// application as a whole.<br/>
+		/// Once the user has given attention, usually by focusing the window or<br/>
+		/// application, the system will end the request automatically.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// and <br/>
+		/// <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static void RequestWindowAttention(ref GLFWwindow window)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				RequestWindowAttentionNative((GLFWwindow*)pwindow);
+			}
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the handle of the monitor that the specified window is<br/>
+		/// in full screen on.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static GLFWmonitor* GetWindowMonitorNative(GLFWwindow* window)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, GLFWmonitor*>)funcTable[53])(window);
+			#else
+			return (GLFWmonitor*)((delegate* unmanaged[Cdecl]<nint, nint>)funcTable[53])((nint)window);
+			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the handle of the monitor that the specified window is<br/>
+		/// in full screen on.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static GLFWmonitorPtr GetWindowMonitor(GLFWwindowPtr window)
+		{
+			GLFWmonitorPtr ret = GetWindowMonitorNative(window);
+			return ret;
 		}
 	}
 }

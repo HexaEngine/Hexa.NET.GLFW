@@ -23,50 +23,37 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// <br/>
 	/// </summary>
-	[NativeName(NativeNameType.StructOrClass, "GLFWvidmode")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct GLFWvidmode
 	{
 		/// <summary>
 		/// The width, in screen coordinates, of the video mode.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Field, "width")]
-		[NativeName(NativeNameType.Type, "int")]
 		public int Width;
 
 		/// <summary>
 		/// The height, in screen coordinates, of the video mode.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Field, "height")]
-		[NativeName(NativeNameType.Type, "int")]
 		public int Height;
 
 		/// <summary>
 		/// The bit depth of the red channel of the video mode.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Field, "redBits")]
-		[NativeName(NativeNameType.Type, "int")]
 		public int RedBits;
 
 		/// <summary>
 		/// The bit depth of the green channel of the video mode.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Field, "greenBits")]
-		[NativeName(NativeNameType.Type, "int")]
 		public int GreenBits;
 
 		/// <summary>
 		/// The bit depth of the blue channel of the video mode.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Field, "blueBits")]
-		[NativeName(NativeNameType.Type, "int")]
 		public int BlueBits;
 
 		/// <summary>
 		/// The refresh rate, in Hz, of the video mode.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Field, "refreshRate")]
-		[NativeName(NativeNameType.Type, "int")]
 		public int RefreshRate;
 
 
@@ -91,7 +78,6 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Typedef, "GLFWvidmode")]
 	#if NET5_0_OR_GREATER
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	#endif

@@ -4,7 +4,11 @@
   "LibName": "GLFW",
   "GenerateConstructorsForStructs": true,
   "GeneratePlaceholderComments": false,
-  "GenerateMetadata": true,
+  "GenerateMetadata": false,
   "WrapPointersAsHandle": true,
-  "ImportType": "FunctionTable"
+  "ImportType": "FunctionTable",
+  "TypeMappings": {
+    "Window": "X11Window",
+    "Display": "X11Display"
+  }
 }

@@ -15,7 +15,7 @@
 
 		<PackageId>Hexa.NET.GLFW</PackageId>
 		<AssemblyVersion>3.4.0</AssemblyVersion>
-		<PackageVersion>1.0.2</PackageVersion>
+		<PackageVersion>1.0.3</PackageVersion>
 		<Description>A .NET Wrapper for GLFW (v 3.4.0), generated with the HexaGen code generator. HexaGen allows users to access native libraries easily and with high performance.</Description>
 		<PackageTags>GLFW Hexa HexaGen Source Generator C# .NET DotNet Sharp Windows macOS Android Bindings Wrapper Native</PackageTags>
 		<Authors>Juna Meinhold</Authors>

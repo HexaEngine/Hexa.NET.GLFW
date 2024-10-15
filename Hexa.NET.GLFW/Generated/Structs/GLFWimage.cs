@@ -24,29 +24,22 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// <br/>
 	/// </summary>
-	[NativeName(NativeNameType.StructOrClass, "GLFWimage")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct GLFWimage
 	{
 		/// <summary>
 		/// The width, in pixels, of this image.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Field, "width")]
-		[NativeName(NativeNameType.Type, "int")]
 		public int Width;
 
 		/// <summary>
 		/// The height, in pixels, of this image.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Field, "height")]
-		[NativeName(NativeNameType.Type, "int")]
 		public int Height;
 
 		/// <summary>
 		/// The pixel data of this image, arranged left-to-right, top-to-bottom.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Field, "pixels")]
-		[NativeName(NativeNameType.Type, "unsigned char*")]
 		public unsafe byte* Pixels;
 
 
@@ -69,7 +62,6 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Typedef, "GLFWimage")]
 	#if NET5_0_OR_GREATER
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	#endif

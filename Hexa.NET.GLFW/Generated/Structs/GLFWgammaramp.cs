@@ -23,36 +23,27 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// <br/>
 	/// </summary>
-	[NativeName(NativeNameType.StructOrClass, "GLFWgammaramp")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct GLFWgammaramp
 	{
 		/// <summary>
 		/// An array of value describing the response of the red channel.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Field, "red")]
-		[NativeName(NativeNameType.Type, "unsigned short*")]
 		public unsafe ushort* Red;
 
 		/// <summary>
 		/// An array of value describing the response of the green channel.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Field, "green")]
-		[NativeName(NativeNameType.Type, "unsigned short*")]
 		public unsafe ushort* Green;
 
 		/// <summary>
 		/// An array of value describing the response of the blue channel.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Field, "blue")]
-		[NativeName(NativeNameType.Type, "unsigned short*")]
 		public unsafe ushort* Blue;
 
 		/// <summary>
 		/// The number of elements in each array.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Field, "size")]
-		[NativeName(NativeNameType.Type, "unsigned int")]
 		public uint Size;
 
 
@@ -75,7 +66,6 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Typedef, "GLFWgammaramp")]
 	#if NET5_0_OR_GREATER
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	#endif

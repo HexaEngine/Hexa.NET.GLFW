@@ -23,7 +23,6 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// <br/>
 	/// </summary>
-	[NativeName(NativeNameType.StructOrClass, "GLFWgamepadstate")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct GLFWgamepadstate
 	{
@@ -32,8 +31,6 @@ namespace Hexa.NET.GLFW
 		/// `GLFW_PRESS`<br/>
 		/// or `GLFW_RELEASE`.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Field, "buttons")]
-		[NativeName(NativeNameType.Type, "unsigned char[15]")]
 		public byte Buttons_0;
 		public byte Buttons_1;
 		public byte Buttons_2;
@@ -55,8 +52,6 @@ namespace Hexa.NET.GLFW
 		/// in the range -1.0<br/>
 		/// to 1.0 inclusive.<br/>
 		/// </summary>
-		[NativeName(NativeNameType.Field, "axes")]
-		[NativeName(NativeNameType.Type, "float[6]")]
 		public float Axes_0;
 		public float Axes_1;
 		public float Axes_2;
@@ -138,7 +133,6 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// <br/>
 	/// </summary>
-	[NativeName(NativeNameType.Typedef, "GLFWgamepadstate")]
 	#if NET5_0_OR_GREATER
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	#endif

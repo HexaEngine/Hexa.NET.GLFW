@@ -19,540 +19,6 @@ namespace Hexa.NET.GLFW
 
 		/// <summary>
 		/// <br/>
-		/// This function restores the specified window if it was previously iconified<br/>
-		/// (minimized) or maximized.  If the window is already restored, this function<br/>
-		/// does nothing.<br/>
-		/// If the specified window is an iconified full screen window, its desired<br/>
-		/// video mode is set again for its monitor when the window is restored.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// and <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwRestoreWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void RestoreWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<GLFWwindow*, void>)funcTable[47])(window);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[47])((nint)window);
-			#endif
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function restores the specified window if it was previously iconified<br/>
-		/// (minimized) or maximized.  If the window is already restored, this function<br/>
-		/// does nothing.<br/>
-		/// If the specified window is an iconified full screen window, its desired<br/>
-		/// video mode is set again for its monitor when the window is restored.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// and <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwRestoreWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RestoreWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
-		{
-			RestoreWindowNative(window);
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function restores the specified window if it was previously iconified<br/>
-		/// (minimized) or maximized.  If the window is already restored, this function<br/>
-		/// does nothing.<br/>
-		/// If the specified window is an iconified full screen window, its desired<br/>
-		/// video mode is set again for its monitor when the window is restored.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// and <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwRestoreWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RestoreWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window)
-		{
-			fixed (GLFWwindow* pwindow = &window)
-			{
-				RestoreWindowNative((GLFWwindow*)pwindow);
-			}
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function maximizes the specified window if it was previously not<br/>
-		/// maximized.  If the window is already maximized, this function does nothing.<br/>
-		/// If the specified window is a full screen window, this function does nothing.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// and <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwMaximizeWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void MaximizeWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<GLFWwindow*, void>)funcTable[48])(window);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[48])((nint)window);
-			#endif
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function maximizes the specified window if it was previously not<br/>
-		/// maximized.  If the window is already maximized, this function does nothing.<br/>
-		/// If the specified window is a full screen window, this function does nothing.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// and <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwMaximizeWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void MaximizeWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
-		{
-			MaximizeWindowNative(window);
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function maximizes the specified window if it was previously not<br/>
-		/// maximized.  If the window is already maximized, this function does nothing.<br/>
-		/// If the specified window is a full screen window, this function does nothing.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// and <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwMaximizeWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void MaximizeWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window)
-		{
-			fixed (GLFWwindow* pwindow = &window)
-			{
-				MaximizeWindowNative((GLFWwindow*)pwindow);
-			}
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function makes the specified window visible if it was previously<br/>
-		/// hidden.  If the window is already visible or is in full screen mode, this<br/>
-		/// function does nothing.<br/>
-		/// By default, windowed mode windows are focused when shown<br/>
-		/// Set the [GLFW_FOCUS_ON_SHOW](<br/>
-		/// window hint<br/>
-		/// to change this behavior for all newly created windows, or change the<br/>
-		/// behavior for an existing window with <br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// and <br/>
-		/// <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwShowWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void ShowWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<GLFWwindow*, void>)funcTable[49])(window);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[49])((nint)window);
-			#endif
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function makes the specified window visible if it was previously<br/>
-		/// hidden.  If the window is already visible or is in full screen mode, this<br/>
-		/// function does nothing.<br/>
-		/// By default, windowed mode windows are focused when shown<br/>
-		/// Set the [GLFW_FOCUS_ON_SHOW](<br/>
-		/// window hint<br/>
-		/// to change this behavior for all newly created windows, or change the<br/>
-		/// behavior for an existing window with <br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// and <br/>
-		/// <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwShowWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ShowWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
-		{
-			ShowWindowNative(window);
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function makes the specified window visible if it was previously<br/>
-		/// hidden.  If the window is already visible or is in full screen mode, this<br/>
-		/// function does nothing.<br/>
-		/// By default, windowed mode windows are focused when shown<br/>
-		/// Set the [GLFW_FOCUS_ON_SHOW](<br/>
-		/// window hint<br/>
-		/// to change this behavior for all newly created windows, or change the<br/>
-		/// behavior for an existing window with <br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// and <br/>
-		/// <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwShowWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ShowWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window)
-		{
-			fixed (GLFWwindow* pwindow = &window)
-			{
-				ShowWindowNative((GLFWwindow*)pwindow);
-			}
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function hides the specified window if it was previously visible.  If<br/>
-		/// the window is already hidden or is in full screen mode, this function does<br/>
-		/// nothing.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// and <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwHideWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void HideWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<GLFWwindow*, void>)funcTable[50])(window);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[50])((nint)window);
-			#endif
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function hides the specified window if it was previously visible.  If<br/>
-		/// the window is already hidden or is in full screen mode, this function does<br/>
-		/// nothing.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// and <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwHideWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void HideWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
-		{
-			HideWindowNative(window);
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function hides the specified window if it was previously visible.  If<br/>
-		/// the window is already hidden or is in full screen mode, this function does<br/>
-		/// nothing.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// and <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwHideWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void HideWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window)
-		{
-			fixed (GLFWwindow* pwindow = &window)
-			{
-				HideWindowNative((GLFWwindow*)pwindow);
-			}
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function brings the specified window to front and sets input focus.<br/>
-		/// The window should already be visible and not iconified.<br/>
-		/// By default, both windowed and full screen mode windows are focused when<br/>
-		/// initially created.  Set the [GLFW_FOCUSED](<br/>
-		/// to<br/>
-		/// disable this behavior.<br/>
-		/// Also by default, windowed mode windows are focused when shown<br/>
-		/// with <br/>
-		/// Set the<br/>
-		/// [GLFW_FOCUS_ON_SHOW](<br/>
-		/// to disable this behavior.<br/>
-		/// __Do not use this function__ to steal focus from other applications unless<br/>
-		/// you are certain that is what the user wants.  Focus stealing can be<br/>
-		/// extremely disruptive.<br/>
-		/// For a less disruptive way of getting the user's attention, see<br/>
-		/// [attention requests](<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// and <br/>
-		/// <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwFocusWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void FocusWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<GLFWwindow*, void>)funcTable[51])(window);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[51])((nint)window);
-			#endif
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function brings the specified window to front and sets input focus.<br/>
-		/// The window should already be visible and not iconified.<br/>
-		/// By default, both windowed and full screen mode windows are focused when<br/>
-		/// initially created.  Set the [GLFW_FOCUSED](<br/>
-		/// to<br/>
-		/// disable this behavior.<br/>
-		/// Also by default, windowed mode windows are focused when shown<br/>
-		/// with <br/>
-		/// Set the<br/>
-		/// [GLFW_FOCUS_ON_SHOW](<br/>
-		/// to disable this behavior.<br/>
-		/// __Do not use this function__ to steal focus from other applications unless<br/>
-		/// you are certain that is what the user wants.  Focus stealing can be<br/>
-		/// extremely disruptive.<br/>
-		/// For a less disruptive way of getting the user's attention, see<br/>
-		/// [attention requests](<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// and <br/>
-		/// <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwFocusWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void FocusWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
-		{
-			FocusWindowNative(window);
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function brings the specified window to front and sets input focus.<br/>
-		/// The window should already be visible and not iconified.<br/>
-		/// By default, both windowed and full screen mode windows are focused when<br/>
-		/// initially created.  Set the [GLFW_FOCUSED](<br/>
-		/// to<br/>
-		/// disable this behavior.<br/>
-		/// Also by default, windowed mode windows are focused when shown<br/>
-		/// with <br/>
-		/// Set the<br/>
-		/// [GLFW_FOCUS_ON_SHOW](<br/>
-		/// to disable this behavior.<br/>
-		/// __Do not use this function__ to steal focus from other applications unless<br/>
-		/// you are certain that is what the user wants.  Focus stealing can be<br/>
-		/// extremely disruptive.<br/>
-		/// For a less disruptive way of getting the user's attention, see<br/>
-		/// [attention requests](<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// and <br/>
-		/// <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwFocusWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void FocusWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window)
-		{
-			fixed (GLFWwindow* pwindow = &window)
-			{
-				FocusWindowNative((GLFWwindow*)pwindow);
-			}
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function requests user attention to the specified window.  On<br/>
-		/// platforms where this is not supported, attention is requested to the<br/>
-		/// application as a whole.<br/>
-		/// Once the user has given attention, usually by focusing the window or<br/>
-		/// application, the system will end the request automatically.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// and <br/>
-		/// <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwRequestWindowAttention")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void RequestWindowAttentionNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<GLFWwindow*, void>)funcTable[52])(window);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[52])((nint)window);
-			#endif
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function requests user attention to the specified window.  On<br/>
-		/// platforms where this is not supported, attention is requested to the<br/>
-		/// application as a whole.<br/>
-		/// Once the user has given attention, usually by focusing the window or<br/>
-		/// application, the system will end the request automatically.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// and <br/>
-		/// <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwRequestWindowAttention")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RequestWindowAttention([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
-		{
-			RequestWindowAttentionNative(window);
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function requests user attention to the specified window.  On<br/>
-		/// platforms where this is not supported, attention is requested to the<br/>
-		/// application as a whole.<br/>
-		/// Once the user has given attention, usually by focusing the window or<br/>
-		/// application, the system will end the request automatically.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// and <br/>
-		/// <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwRequestWindowAttention")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RequestWindowAttention([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window)
-		{
-			fixed (GLFWwindow* pwindow = &window)
-			{
-				RequestWindowAttentionNative((GLFWwindow*)pwindow);
-			}
-		}
-
-		/// <summary>
-		/// <br/>
 		/// This function returns the handle of the monitor that the specified window is<br/>
 		/// in full screen on.<br/>
 		/// <br/>
@@ -565,57 +31,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowMonitor")]
-		[return: NativeName(NativeNameType.Type, "GLFWmonitor*")]
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static GLFWmonitor* GetWindowMonitorNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, GLFWmonitor*>)funcTable[53])(window);
-			#else
-			return (GLFWmonitor*)((delegate* unmanaged[Cdecl]<nint, nint>)funcTable[53])((nint)window);
-			#endif
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the handle of the monitor that the specified window is<br/>
-		/// in full screen on.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowMonitor")]
-		[return: NativeName(NativeNameType.Type, "GLFWmonitor*")]
-		public static GLFWmonitorPtr GetWindowMonitor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
-		{
-			GLFWmonitorPtr ret = GetWindowMonitorNative(window);
-			return ret;
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the handle of the monitor that the specified window is<br/>
-		/// in full screen on.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowMonitor")]
-		[return: NativeName(NativeNameType.Type, "GLFWmonitor*")]
-		public static GLFWmonitorPtr GetWindowMonitor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window)
+		public static GLFWmonitorPtr GetWindowMonitor(ref GLFWwindow window)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -652,10 +68,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowMonitor")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void SetWindowMonitorNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] GLFWmonitor* monitor, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int")] int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int")] int ypos, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "refreshRate")] [NativeName(NativeNameType.Type, "int")] int refreshRate)
+		internal static void SetWindowMonitorNative(GLFWwindow* window, GLFWmonitor* monitor, int xpos, int ypos, int width, int height, int refreshRate)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, GLFWmonitor*, int, int, int, int, int, void>)funcTable[54])(window, monitor, xpos, ypos, width, height, refreshRate);
@@ -692,9 +106,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowMonitor")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowMonitor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] GLFWmonitorPtr monitor, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int")] int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int")] int ypos, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "refreshRate")] [NativeName(NativeNameType.Type, "int")] int refreshRate)
+		public static void SetWindowMonitor(GLFWwindowPtr window, GLFWmonitorPtr monitor, int xpos, int ypos, int width, int height, int refreshRate)
 		{
 			SetWindowMonitorNative(window, monitor, xpos, ypos, width, height, refreshRate);
 		}
@@ -727,9 +139,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowMonitor")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowMonitor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] GLFWmonitorPtr monitor, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int")] int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int")] int ypos, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "refreshRate")] [NativeName(NativeNameType.Type, "int")] int refreshRate)
+		public static void SetWindowMonitor(ref GLFWwindow window, GLFWmonitorPtr monitor, int xpos, int ypos, int width, int height, int refreshRate)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -765,9 +175,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowMonitor")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowMonitor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] ref GLFWmonitor monitor, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int")] int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int")] int ypos, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "refreshRate")] [NativeName(NativeNameType.Type, "int")] int refreshRate)
+		public static void SetWindowMonitor(GLFWwindowPtr window, ref GLFWmonitor monitor, int xpos, int ypos, int width, int height, int refreshRate)
 		{
 			fixed (GLFWmonitor* pmonitor = &monitor)
 			{
@@ -803,9 +211,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowMonitor")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowMonitor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] ref GLFWmonitor monitor, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int")] int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int")] int ypos, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "refreshRate")] [NativeName(NativeNameType.Type, "int")] int refreshRate)
+		public static void SetWindowMonitor(ref GLFWwindow window, ref GLFWmonitor monitor, int xpos, int ypos, int width, int height, int refreshRate)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -835,10 +241,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowAttrib")]
-		[return: NativeName(NativeNameType.Type, "int")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static int GetWindowAttribNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "attrib")] [NativeName(NativeNameType.Type, "int")] int attrib)
+		internal static int GetWindowAttribNative(GLFWwindow* window, int attrib)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, int, int>)funcTable[55])(window, attrib);
@@ -866,9 +270,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowAttrib")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int GetWindowAttrib([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "attrib")] [NativeName(NativeNameType.Type, "int")] int attrib)
+		public static int GetWindowAttrib(GLFWwindowPtr window, int attrib)
 		{
 			int ret = GetWindowAttribNative(window, attrib);
 			return ret;
@@ -893,9 +295,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowAttrib")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int GetWindowAttrib([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "attrib")] [NativeName(NativeNameType.Type, "int")] int attrib)
+		public static int GetWindowAttrib(ref GLFWwindow window, int attrib)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -935,10 +335,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowAttrib")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void SetWindowAttribNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "attrib")] [NativeName(NativeNameType.Type, "int")] int attrib, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value)
+		internal static void SetWindowAttribNative(GLFWwindow* window, int attrib, int value)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, int, int, void>)funcTable[56])(window, attrib, value);
@@ -978,9 +376,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowAttrib")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowAttrib([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "attrib")] [NativeName(NativeNameType.Type, "int")] int attrib, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value)
+		public static void SetWindowAttrib(GLFWwindowPtr window, int attrib, int value)
 		{
 			SetWindowAttribNative(window, attrib, value);
 		}
@@ -1016,9 +412,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowAttrib")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowAttrib([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "attrib")] [NativeName(NativeNameType.Type, "int")] int attrib, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value)
+		public static void SetWindowAttrib(ref GLFWwindow window, int attrib, int value)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1042,10 +436,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowUserPointer")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void SetWindowUserPointerNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "pointer")] [NativeName(NativeNameType.Type, "void*")] void* pointer)
+		internal static void SetWindowUserPointerNative(GLFWwindow* window, void* pointer)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, void*, void>)funcTable[57])(window, pointer);
@@ -1070,9 +462,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowUserPointer")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowUserPointer([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "pointer")] [NativeName(NativeNameType.Type, "void*")] void* pointer)
+		public static void SetWindowUserPointer(GLFWwindowPtr window, void* pointer)
 		{
 			SetWindowUserPointerNative(window, pointer);
 		}
@@ -1093,9 +483,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowUserPointer")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetWindowUserPointer([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "pointer")] [NativeName(NativeNameType.Type, "void*")] void* pointer)
+		public static void SetWindowUserPointer(ref GLFWwindow window, void* pointer)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1118,10 +506,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowUserPointer")]
-		[return: NativeName(NativeNameType.Type, "void*")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void* GetWindowUserPointerNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window)
+		internal static void* GetWindowUserPointerNative(GLFWwindow* window)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, void*>)funcTable[58])(window);
@@ -1145,9 +531,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowUserPointer")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* GetWindowUserPointer([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window)
+		public static void* GetWindowUserPointer(GLFWwindowPtr window)
 		{
 			void* ret = GetWindowUserPointerNative(window);
 			return ret;
@@ -1168,9 +552,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetWindowUserPointer")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* GetWindowUserPointer([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window)
+		public static void* GetWindowUserPointer(ref GLFWwindow window)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1200,10 +582,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowPosCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowposfun")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, int, int, void> SetWindowPosCallbackNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowposfun")] GLFWwindowposfun callback)
+		internal static delegate*<GLFWwindow*, int, int, void> SetWindowPosCallbackNative(GLFWwindow* window, GLFWwindowposfun callback)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, int, void>, delegate*<GLFWwindow*, int, int, void>>)funcTable[59])(window, (delegate*<GLFWwindow*, int, int, void>)Utils.GetFunctionPointerForDelegate(callback));
@@ -1233,9 +613,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowPosCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowposfun")]
-		public static delegate*<GLFWwindow*, int, int, void> SetWindowPosCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowposfun")] GLFWwindowposfun callback)
+		public static delegate*<GLFWwindow*, int, int, void> SetWindowPosCallback(GLFWwindowPtr window, GLFWwindowposfun callback)
 		{
 			delegate*<GLFWwindow*, int, int, void> ret = SetWindowPosCallbackNative(window, callback);
 			return ret;
@@ -1262,9 +640,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowPosCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowposfun")]
-		public static delegate*<GLFWwindow*, int, int, void> SetWindowPosCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowposfun")] GLFWwindowposfun callback)
+		public static delegate*<GLFWwindow*, int, int, void> SetWindowPosCallback(ref GLFWwindow window, GLFWwindowposfun callback)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1292,10 +668,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowSizeCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowsizefun")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, int, int, void> SetWindowSizeCallbackNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowsizefun")] GLFWwindowsizefun callback)
+		internal static delegate*<GLFWwindow*, int, int, void> SetWindowSizeCallbackNative(GLFWwindow* window, GLFWwindowsizefun callback)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, int, void>, delegate*<GLFWwindow*, int, int, void>>)funcTable[60])(window, (delegate*<GLFWwindow*, int, int, void>)Utils.GetFunctionPointerForDelegate(callback));
@@ -1323,9 +697,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowSizeCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowsizefun")]
-		public static delegate*<GLFWwindow*, int, int, void> SetWindowSizeCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowsizefun")] GLFWwindowsizefun callback)
+		public static delegate*<GLFWwindow*, int, int, void> SetWindowSizeCallback(GLFWwindowPtr window, GLFWwindowsizefun callback)
 		{
 			delegate*<GLFWwindow*, int, int, void> ret = SetWindowSizeCallbackNative(window, callback);
 			return ret;
@@ -1350,9 +722,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowSizeCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowsizefun")]
-		public static delegate*<GLFWwindow*, int, int, void> SetWindowSizeCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowsizefun")] GLFWwindowsizefun callback)
+		public static delegate*<GLFWwindow*, int, int, void> SetWindowSizeCallback(ref GLFWwindow window, GLFWwindowsizefun callback)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1384,10 +754,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowCloseCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowclosefun")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, void> SetWindowCloseCallbackNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowclosefun")] GLFWwindowclosefun callback)
+		internal static delegate*<GLFWwindow*, void> SetWindowCloseCallbackNative(GLFWwindow* window, GLFWwindowclosefun callback)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, void>, delegate*<GLFWwindow*, void>>)funcTable[61])(window, (delegate*<GLFWwindow*, void>)Utils.GetFunctionPointerForDelegate(callback));
@@ -1419,9 +787,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowCloseCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowclosefun")]
-		public static delegate*<GLFWwindow*, void> SetWindowCloseCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowclosefun")] GLFWwindowclosefun callback)
+		public static delegate*<GLFWwindow*, void> SetWindowCloseCallback(GLFWwindowPtr window, GLFWwindowclosefun callback)
 		{
 			delegate*<GLFWwindow*, void> ret = SetWindowCloseCallbackNative(window, callback);
 			return ret;
@@ -1450,9 +816,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowCloseCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowclosefun")]
-		public static delegate*<GLFWwindow*, void> SetWindowCloseCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowclosefun")] GLFWwindowclosefun callback)
+		public static delegate*<GLFWwindow*, void> SetWindowCloseCallback(ref GLFWwindow window, GLFWwindowclosefun callback)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1483,10 +847,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowRefreshCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowrefreshfun")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, void> SetWindowRefreshCallbackNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowrefreshfun")] GLFWwindowrefreshfun callback)
+		internal static delegate*<GLFWwindow*, void> SetWindowRefreshCallbackNative(GLFWwindow* window, GLFWwindowrefreshfun callback)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, void>, delegate*<GLFWwindow*, void>>)funcTable[62])(window, (delegate*<GLFWwindow*, void>)Utils.GetFunctionPointerForDelegate(callback));
@@ -1517,9 +879,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowRefreshCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowrefreshfun")]
-		public static delegate*<GLFWwindow*, void> SetWindowRefreshCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowrefreshfun")] GLFWwindowrefreshfun callback)
+		public static delegate*<GLFWwindow*, void> SetWindowRefreshCallback(GLFWwindowPtr window, GLFWwindowrefreshfun callback)
 		{
 			delegate*<GLFWwindow*, void> ret = SetWindowRefreshCallbackNative(window, callback);
 			return ret;
@@ -1547,9 +907,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowRefreshCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowrefreshfun")]
-		public static delegate*<GLFWwindow*, void> SetWindowRefreshCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowrefreshfun")] GLFWwindowrefreshfun callback)
+		public static delegate*<GLFWwindow*, void> SetWindowRefreshCallback(ref GLFWwindow window, GLFWwindowrefreshfun callback)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1580,10 +938,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowFocusCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowfocusfun")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, int, void> SetWindowFocusCallbackNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowfocusfun")] GLFWwindowfocusfun callback)
+		internal static delegate*<GLFWwindow*, int, void> SetWindowFocusCallbackNative(GLFWwindow* window, GLFWwindowfocusfun callback)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, void>, delegate*<GLFWwindow*, int, void>>)funcTable[63])(window, (delegate*<GLFWwindow*, int, void>)Utils.GetFunctionPointerForDelegate(callback));
@@ -1614,9 +970,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowFocusCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowfocusfun")]
-		public static delegate*<GLFWwindow*, int, void> SetWindowFocusCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowfocusfun")] GLFWwindowfocusfun callback)
+		public static delegate*<GLFWwindow*, int, void> SetWindowFocusCallback(GLFWwindowPtr window, GLFWwindowfocusfun callback)
 		{
 			delegate*<GLFWwindow*, int, void> ret = SetWindowFocusCallbackNative(window, callback);
 			return ret;
@@ -1644,9 +998,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowFocusCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowfocusfun")]
-		public static delegate*<GLFWwindow*, int, void> SetWindowFocusCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowfocusfun")] GLFWwindowfocusfun callback)
+		public static delegate*<GLFWwindow*, int, void> SetWindowFocusCallback(ref GLFWwindow window, GLFWwindowfocusfun callback)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1673,10 +1025,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowIconifyCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowiconifyfun")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, int, void> SetWindowIconifyCallbackNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowiconifyfun")] GLFWwindowiconifyfun callback)
+		internal static delegate*<GLFWwindow*, int, void> SetWindowIconifyCallbackNative(GLFWwindow* window, GLFWwindowiconifyfun callback)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, void>, delegate*<GLFWwindow*, int, void>>)funcTable[64])(window, (delegate*<GLFWwindow*, int, void>)Utils.GetFunctionPointerForDelegate(callback));
@@ -1703,9 +1053,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowIconifyCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowiconifyfun")]
-		public static delegate*<GLFWwindow*, int, void> SetWindowIconifyCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowiconifyfun")] GLFWwindowiconifyfun callback)
+		public static delegate*<GLFWwindow*, int, void> SetWindowIconifyCallback(GLFWwindowPtr window, GLFWwindowiconifyfun callback)
 		{
 			delegate*<GLFWwindow*, int, void> ret = SetWindowIconifyCallbackNative(window, callback);
 			return ret;
@@ -1729,9 +1077,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowIconifyCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowiconifyfun")]
-		public static delegate*<GLFWwindow*, int, void> SetWindowIconifyCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowiconifyfun")] GLFWwindowiconifyfun callback)
+		public static delegate*<GLFWwindow*, int, void> SetWindowIconifyCallback(ref GLFWwindow window, GLFWwindowiconifyfun callback)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1758,10 +1104,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowMaximizeCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowmaximizefun")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, int, void> SetWindowMaximizeCallbackNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowmaximizefun")] GLFWwindowmaximizefun callback)
+		internal static delegate*<GLFWwindow*, int, void> SetWindowMaximizeCallbackNative(GLFWwindow* window, GLFWwindowmaximizefun callback)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, void>, delegate*<GLFWwindow*, int, void>>)funcTable[65])(window, (delegate*<GLFWwindow*, int, void>)Utils.GetFunctionPointerForDelegate(callback));
@@ -1788,9 +1132,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowMaximizeCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowmaximizefun")]
-		public static delegate*<GLFWwindow*, int, void> SetWindowMaximizeCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowmaximizefun")] GLFWwindowmaximizefun callback)
+		public static delegate*<GLFWwindow*, int, void> SetWindowMaximizeCallback(GLFWwindowPtr window, GLFWwindowmaximizefun callback)
 		{
 			delegate*<GLFWwindow*, int, void> ret = SetWindowMaximizeCallbackNative(window, callback);
 			return ret;
@@ -1814,9 +1156,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowMaximizeCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowmaximizefun")]
-		public static delegate*<GLFWwindow*, int, void> SetWindowMaximizeCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowmaximizefun")] GLFWwindowmaximizefun callback)
+		public static delegate*<GLFWwindow*, int, void> SetWindowMaximizeCallback(ref GLFWwindow window, GLFWwindowmaximizefun callback)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1843,10 +1183,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetFramebufferSizeCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWframebuffersizefun")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, int, int, void> SetFramebufferSizeCallbackNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWframebuffersizefun")] GLFWframebuffersizefun callback)
+		internal static delegate*<GLFWwindow*, int, int, void> SetFramebufferSizeCallbackNative(GLFWwindow* window, GLFWframebuffersizefun callback)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, int, void>, delegate*<GLFWwindow*, int, int, void>>)funcTable[66])(window, (delegate*<GLFWwindow*, int, int, void>)Utils.GetFunctionPointerForDelegate(callback));
@@ -1873,9 +1211,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetFramebufferSizeCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWframebuffersizefun")]
-		public static delegate*<GLFWwindow*, int, int, void> SetFramebufferSizeCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWframebuffersizefun")] GLFWframebuffersizefun callback)
+		public static delegate*<GLFWwindow*, int, int, void> SetFramebufferSizeCallback(GLFWwindowPtr window, GLFWframebuffersizefun callback)
 		{
 			delegate*<GLFWwindow*, int, int, void> ret = SetFramebufferSizeCallbackNative(window, callback);
 			return ret;
@@ -1899,9 +1235,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetFramebufferSizeCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWframebuffersizefun")]
-		public static delegate*<GLFWwindow*, int, int, void> SetFramebufferSizeCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWframebuffersizefun")] GLFWframebuffersizefun callback)
+		public static delegate*<GLFWwindow*, int, int, void> SetFramebufferSizeCallback(ref GLFWwindow window, GLFWframebuffersizefun callback)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1928,10 +1262,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowContentScaleCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowcontentscalefun")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, float, float, void> SetWindowContentScaleCallbackNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowcontentscalefun")] GLFWwindowcontentscalefun callback)
+		internal static delegate*<GLFWwindow*, float, float, void> SetWindowContentScaleCallbackNative(GLFWwindow* window, GLFWwindowcontentscalefun callback)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, float, float, void>, delegate*<GLFWwindow*, float, float, void>>)funcTable[67])(window, (delegate*<GLFWwindow*, float, float, void>)Utils.GetFunctionPointerForDelegate(callback));
@@ -1958,9 +1290,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowContentScaleCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowcontentscalefun")]
-		public static delegate*<GLFWwindow*, float, float, void> SetWindowContentScaleCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowcontentscalefun")] GLFWwindowcontentscalefun callback)
+		public static delegate*<GLFWwindow*, float, float, void> SetWindowContentScaleCallback(GLFWwindowPtr window, GLFWwindowcontentscalefun callback)
 		{
 			delegate*<GLFWwindow*, float, float, void> ret = SetWindowContentScaleCallbackNative(window, callback);
 			return ret;
@@ -1984,9 +1314,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetWindowContentScaleCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWwindowcontentscalefun")]
-		public static delegate*<GLFWwindow*, float, float, void> SetWindowContentScaleCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWwindowcontentscalefun")] GLFWwindowcontentscalefun callback)
+		public static delegate*<GLFWwindow*, float, float, void> SetWindowContentScaleCallback(ref GLFWwindow window, GLFWwindowcontentscalefun callback)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -2025,8 +1353,6 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwPollEvents")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void PollEventsNative()
 		{
@@ -2067,8 +1393,6 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwPollEvents")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		public static void PollEvents()
 		{
 			PollEventsNative();
@@ -2111,8 +1435,6 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwWaitEvents")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void WaitEventsNative()
 		{
@@ -2160,8 +1482,6 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwWaitEvents")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		public static void WaitEvents()
 		{
 			WaitEventsNative();
@@ -2206,10 +1526,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwWaitEventsTimeout")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void WaitEventsTimeoutNative([NativeName(NativeNameType.Param, "timeout")] [NativeName(NativeNameType.Type, "double")] double timeout)
+		internal static void WaitEventsTimeoutNative(double timeout)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<double, void>)funcTable[70])(timeout);
@@ -2257,9 +1575,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwWaitEventsTimeout")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void WaitEventsTimeout([NativeName(NativeNameType.Param, "timeout")] [NativeName(NativeNameType.Type, "double")] double timeout)
+		public static void WaitEventsTimeout(double timeout)
 		{
 			WaitEventsTimeoutNative(timeout);
 		}
@@ -2280,8 +1596,6 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwPostEmptyEvent")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static void PostEmptyEventNative()
 		{
@@ -2308,8 +1622,6 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwPostEmptyEvent")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		public static void PostEmptyEvent()
 		{
 			PostEmptyEventNative();
@@ -2335,10 +1647,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetInputMode")]
-		[return: NativeName(NativeNameType.Type, "int")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static int GetInputModeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "int")] int mode)
+		internal static int GetInputModeNative(GLFWwindow* window, int mode)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, int, int>)funcTable[72])(window, mode);
@@ -2367,9 +1677,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetInputMode")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int GetInputMode([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "int")] int mode)
+		public static int GetInputMode(GLFWwindowPtr window, int mode)
 		{
 			int ret = GetInputModeNative(window, mode);
 			return ret;
@@ -2395,9 +1703,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetInputMode")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int GetInputMode([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "int")] int mode)
+		public static int GetInputMode(ref GLFWwindow window, int mode)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -2470,10 +1776,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetInputMode")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void SetInputModeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "int")] int mode, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value)
+		internal static void SetInputModeNative(GLFWwindow* window, int mode, int value)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, int, int, void>)funcTable[73])(window, mode, value);
@@ -2546,9 +1850,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetInputMode")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetInputMode([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "int")] int mode, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value)
+		public static void SetInputMode(GLFWwindowPtr window, int mode, int value)
 		{
 			SetInputModeNative(window, mode, value);
 		}
@@ -2617,9 +1919,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetInputMode")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetInputMode([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "int")] int mode, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value)
+		public static void SetInputMode(ref GLFWwindow window, int mode, int value)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -2649,8 +1949,6 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwRawMouseMotionSupported")]
-		[return: NativeName(NativeNameType.Type, "int")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static int RawMouseMotionSupportedNative()
 		{
@@ -2683,8 +1981,6 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwRawMouseMotionSupported")]
-		[return: NativeName(NativeNameType.Type, "int")]
 		public static int RawMouseMotionSupported()
 		{
 			int ret = RawMouseMotionSupportedNative();
@@ -2749,10 +2045,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetKeyName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static byte* GetKeyNameNative([NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "int")] int key, [NativeName(NativeNameType.Param, "scancode")] [NativeName(NativeNameType.Type, "int")] int scancode)
+		internal static byte* GetKeyNameNative(int key, int scancode)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<int, int, byte*>)funcTable[75])(key, scancode);
@@ -2819,9 +2113,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetKeyName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* GetKeyName([NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "int")] int key, [NativeName(NativeNameType.Param, "scancode")] [NativeName(NativeNameType.Type, "int")] int scancode)
+		public static byte* GetKeyName(int key, int scancode)
 		{
 			byte* ret = GetKeyNameNative(key, scancode);
 			return ret;
@@ -2885,9 +2177,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetKeyName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string GetKeyNameS([NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "int")] int key, [NativeName(NativeNameType.Param, "scancode")] [NativeName(NativeNameType.Type, "int")] int scancode)
+		public static string GetKeyNameS(int key, int scancode)
 		{
 			string ret = Utils.DecodeStringUTF8(GetKeyNameNative(key, scancode));
 			return ret;
@@ -2913,10 +2203,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetKeyScancode")]
-		[return: NativeName(NativeNameType.Type, "int")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static int GetKeyScancodeNative([NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "int")] int key)
+		internal static int GetKeyScancodeNative(int key)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<int, int>)funcTable[76])(key);
@@ -2945,9 +2233,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetKeyScancode")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int GetKeyScancode([NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "int")] int key)
+		public static int GetKeyScancode(int key)
 		{
 			int ret = GetKeyScancodeNative(key);
 			return ret;
@@ -2980,10 +2266,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetKey")]
-		[return: NativeName(NativeNameType.Type, "int")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static int GetKeyNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "int")] int key)
+		internal static int GetKeyNative(GLFWwindow* window, int key)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, int, int>)funcTable[77])(window, key);
@@ -3019,9 +2303,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetKey")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int GetKey([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "int")] int key)
+		public static int GetKey(GLFWwindowPtr window, int key)
 		{
 			int ret = GetKeyNative(window, key);
 			return ret;
@@ -3054,9 +2336,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetKey")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int GetKey([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "int")] int key)
+		public static int GetKey(ref GLFWwindow window, int key)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3088,10 +2368,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetMouseButton")]
-		[return: NativeName(NativeNameType.Type, "int")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static int GetMouseButtonNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "int")] int button)
+		internal static int GetMouseButtonNative(GLFWwindow* window, int button)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, int, int>)funcTable[78])(window, button);
@@ -3123,9 +2401,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetMouseButton")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int GetMouseButton([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "int")] int button)
+		public static int GetMouseButton(GLFWwindowPtr window, int button)
 		{
 			int ret = GetMouseButtonNative(window, button);
 			return ret;
@@ -3154,9 +2430,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetMouseButton")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int GetMouseButton([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "int")] int button)
+		public static int GetMouseButton(ref GLFWwindow window, int button)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3189,10 +2463,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetCursorPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void GetCursorPosNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double*")] double* xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double*")] double* ypos)
+		internal static void GetCursorPosNative(GLFWwindow* window, double* xpos, double* ypos)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, double*, double*, void>)funcTable[79])(window, xpos, ypos);
@@ -3225,9 +2497,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetCursorPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetCursorPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double*")] double* xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double*")] double* ypos)
+		public static void GetCursorPos(GLFWwindowPtr window, double* xpos, double* ypos)
 		{
 			GetCursorPosNative(window, xpos, ypos);
 		}
@@ -3256,9 +2526,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetCursorPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetCursorPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double*")] double* xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double*")] double* ypos)
+		public static void GetCursorPos(ref GLFWwindow window, double* xpos, double* ypos)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3290,9 +2558,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetCursorPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetCursorPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double*")] ref double xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double*")] double* ypos)
+		public static void GetCursorPos(GLFWwindowPtr window, ref double xpos, double* ypos)
 		{
 			fixed (double* pxpos = &xpos)
 			{
@@ -3324,9 +2590,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetCursorPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetCursorPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double*")] ref double xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double*")] double* ypos)
+		public static void GetCursorPos(ref GLFWwindow window, ref double xpos, double* ypos)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3361,9 +2625,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetCursorPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetCursorPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double*")] double* xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double*")] ref double ypos)
+		public static void GetCursorPos(GLFWwindowPtr window, double* xpos, ref double ypos)
 		{
 			fixed (double* pypos = &ypos)
 			{
@@ -3395,9 +2657,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetCursorPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetCursorPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double*")] double* xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double*")] ref double ypos)
+		public static void GetCursorPos(ref GLFWwindow window, double* xpos, ref double ypos)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3432,9 +2692,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetCursorPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetCursorPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double*")] ref double xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double*")] ref double ypos)
+		public static void GetCursorPos(GLFWwindowPtr window, ref double xpos, ref double ypos)
 		{
 			fixed (double* pxpos = &xpos)
 			{
@@ -3469,9 +2727,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetCursorPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetCursorPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double*")] ref double xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double*")] ref double ypos)
+		public static void GetCursorPos(ref GLFWwindow window, ref double xpos, ref double ypos)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3513,10 +2769,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetCursorPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void SetCursorPosNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double")] double xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double")] double ypos)
+		internal static void SetCursorPosNative(GLFWwindow* window, double xpos, double ypos)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, double, double, void>)funcTable[80])(window, xpos, ypos);
@@ -3553,9 +2807,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetCursorPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetCursorPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double")] double xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double")] double ypos)
+		public static void SetCursorPos(GLFWwindowPtr window, double xpos, double ypos)
 		{
 			SetCursorPosNative(window, xpos, ypos);
 		}
@@ -3588,9 +2840,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetCursorPos")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetCursorPos([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double")] double xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double")] double ypos)
+		public static void SetCursorPos(ref GLFWwindow window, double xpos, double ypos)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -3624,10 +2874,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwCreateCursor")]
-		[return: NativeName(NativeNameType.Type, "GLFWcursor*")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static GLFWcursor* CreateCursorNative([NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "const GLFWimage*")] GLFWimage* image, [NativeName(NativeNameType.Param, "xhot")] [NativeName(NativeNameType.Type, "int")] int xhot, [NativeName(NativeNameType.Param, "yhot")] [NativeName(NativeNameType.Type, "int")] int yhot)
+		internal static GLFWcursor* CreateCursorNative(GLFWimage* image, int xhot, int yhot)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWimage*, int, int, GLFWcursor*>)funcTable[81])(image, xhot, yhot);
@@ -3662,9 +2910,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwCreateCursor")]
-		[return: NativeName(NativeNameType.Type, "GLFWcursor*")]
-		public static GLFWcursorPtr CreateCursor([NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "const GLFWimage*")] GLFWimagePtr image, [NativeName(NativeNameType.Param, "xhot")] [NativeName(NativeNameType.Type, "int")] int xhot, [NativeName(NativeNameType.Param, "yhot")] [NativeName(NativeNameType.Type, "int")] int yhot)
+		public static GLFWcursorPtr CreateCursor(GLFWimagePtr image, int xhot, int yhot)
 		{
 			GLFWcursorPtr ret = CreateCursorNative(image, xhot, yhot);
 			return ret;
@@ -3696,9 +2942,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwCreateCursor")]
-		[return: NativeName(NativeNameType.Type, "GLFWcursor*")]
-		public static GLFWcursorPtr CreateCursor([NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "const GLFWimage*")] ref GLFWimage image, [NativeName(NativeNameType.Param, "xhot")] [NativeName(NativeNameType.Type, "int")] int xhot, [NativeName(NativeNameType.Param, "yhot")] [NativeName(NativeNameType.Type, "int")] int yhot)
+		public static GLFWcursorPtr CreateCursor(ref GLFWimage image, int xhot, int yhot)
 		{
 			fixed (GLFWimage* pimage = &image)
 			{
@@ -3767,10 +3011,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwCreateStandardCursor")]
-		[return: NativeName(NativeNameType.Type, "GLFWcursor*")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static GLFWcursor* CreateStandardCursorNative([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "int")] int shape)
+		internal static GLFWcursor* CreateStandardCursorNative(int shape)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<int, GLFWcursor*>)funcTable[82])(shape);
@@ -3839,9 +3081,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwCreateStandardCursor")]
-		[return: NativeName(NativeNameType.Type, "GLFWcursor*")]
-		public static GLFWcursorPtr CreateStandardCursor([NativeName(NativeNameType.Param, "shape")] [NativeName(NativeNameType.Type, "int")] int shape)
+		public static GLFWcursorPtr CreateStandardCursor(int shape)
 		{
 			GLFWcursorPtr ret = CreateStandardCursorNative(shape);
 			return ret;
@@ -3866,10 +3106,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwDestroyCursor")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void DestroyCursorNative([NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "GLFWcursor*")] GLFWcursor* cursor)
+		internal static void DestroyCursorNative(GLFWcursor* cursor)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWcursor*, void>)funcTable[83])(cursor);
@@ -3897,9 +3135,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwDestroyCursor")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DestroyCursor([NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "GLFWcursor*")] GLFWcursorPtr cursor)
+		public static void DestroyCursor(GLFWcursorPtr cursor)
 		{
 			DestroyCursorNative(cursor);
 		}
@@ -3923,9 +3159,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwDestroyCursor")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DestroyCursor([NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "GLFWcursor*")] ref GLFWcursor cursor)
+		public static void DestroyCursor(ref GLFWcursor cursor)
 		{
 			fixed (GLFWcursor* pcursor = &cursor)
 			{
@@ -3953,10 +3187,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetCursor")]
-		[return: NativeName(NativeNameType.Type, "void")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void SetCursorNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "GLFWcursor*")] GLFWcursor* cursor)
+		internal static void SetCursorNative(GLFWwindow* window, GLFWcursor* cursor)
 		{
 			#if NET5_0_OR_GREATER
 			((delegate* unmanaged[Cdecl]<GLFWwindow*, GLFWcursor*, void>)funcTable[84])(window, cursor);
@@ -3985,9 +3217,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetCursor")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetCursor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "GLFWcursor*")] GLFWcursorPtr cursor)
+		public static void SetCursor(GLFWwindowPtr window, GLFWcursorPtr cursor)
 		{
 			SetCursorNative(window, cursor);
 		}
@@ -4012,9 +3242,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetCursor")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetCursor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "GLFWcursor*")] GLFWcursorPtr cursor)
+		public static void SetCursor(ref GLFWwindow window, GLFWcursorPtr cursor)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4042,9 +3270,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetCursor")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetCursor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "GLFWcursor*")] ref GLFWcursor cursor)
+		public static void SetCursor(GLFWwindowPtr window, ref GLFWcursor cursor)
 		{
 			fixed (GLFWcursor* pcursor = &cursor)
 			{
@@ -4072,9 +3298,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetCursor")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetCursor([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "GLFWcursor*")] ref GLFWcursor cursor)
+		public static void SetCursor(ref GLFWwindow window, ref GLFWcursor cursor)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4121,10 +3345,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetKeyCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWkeyfun")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, int, int, int, int, void> SetKeyCallbackNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWkeyfun")] GLFWkeyfun callback)
+		internal static delegate*<GLFWwindow*, int, int, int, int, void> SetKeyCallbackNative(GLFWwindow* window, GLFWkeyfun callback)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, int, int, int, void>, delegate*<GLFWwindow*, int, int, int, int, void>>)funcTable[85])(window, (delegate*<GLFWwindow*, int, int, int, int, void>)Utils.GetFunctionPointerForDelegate(callback));
@@ -4169,9 +3391,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetKeyCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWkeyfun")]
-		public static delegate*<GLFWwindow*, int, int, int, int, void> SetKeyCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWkeyfun")] GLFWkeyfun callback)
+		public static delegate*<GLFWwindow*, int, int, int, int, void> SetKeyCallback(GLFWwindowPtr window, GLFWkeyfun callback)
 		{
 			delegate*<GLFWwindow*, int, int, int, int, void> ret = SetKeyCallbackNative(window, callback);
 			return ret;
@@ -4213,9 +3433,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetKeyCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWkeyfun")]
-		public static delegate*<GLFWwindow*, int, int, int, int, void> SetKeyCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWkeyfun")] GLFWkeyfun callback)
+		public static delegate*<GLFWwindow*, int, int, int, int, void> SetKeyCallback(ref GLFWwindow window, GLFWkeyfun callback)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4253,10 +3471,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetCharCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWcharfun")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, uint, void> SetCharCallbackNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWcharfun")] GLFWcharfun callback)
+		internal static delegate*<GLFWwindow*, uint, void> SetCharCallbackNative(GLFWwindow* window, GLFWcharfun callback)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, uint, void>, delegate*<GLFWwindow*, uint, void>>)funcTable[86])(window, (delegate*<GLFWwindow*, uint, void>)Utils.GetFunctionPointerForDelegate(callback));
@@ -4294,9 +3510,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetCharCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWcharfun")]
-		public static delegate*<GLFWwindow*, uint, void> SetCharCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWcharfun")] GLFWcharfun callback)
+		public static delegate*<GLFWwindow*, uint, void> SetCharCallback(GLFWwindowPtr window, GLFWcharfun callback)
 		{
 			delegate*<GLFWwindow*, uint, void> ret = SetCharCallbackNative(window, callback);
 			return ret;
@@ -4331,9 +3545,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetCharCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWcharfun")]
-		public static delegate*<GLFWwindow*, uint, void> SetCharCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWcharfun")] GLFWcharfun callback)
+		public static delegate*<GLFWwindow*, uint, void> SetCharCallback(ref GLFWwindow window, GLFWcharfun callback)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4372,10 +3584,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetCharModsCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWcharmodsfun")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, uint, int, void> SetCharModsCallbackNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWcharmodsfun")] GLFWcharmodsfun callback)
+		internal static delegate*<GLFWwindow*, uint, int, void> SetCharModsCallbackNative(GLFWwindow* window, GLFWcharmodsfun callback)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, uint, int, void>, delegate*<GLFWwindow*, uint, int, void>>)funcTable[87])(window, (delegate*<GLFWwindow*, uint, int, void>)Utils.GetFunctionPointerForDelegate(callback));
@@ -4414,9 +3624,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetCharModsCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWcharmodsfun")]
-		public static delegate*<GLFWwindow*, uint, int, void> SetCharModsCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWcharmodsfun")] GLFWcharmodsfun callback)
+		public static delegate*<GLFWwindow*, uint, int, void> SetCharModsCallback(GLFWwindowPtr window, GLFWcharmodsfun callback)
 		{
 			delegate*<GLFWwindow*, uint, int, void> ret = SetCharModsCallbackNative(window, callback);
 			return ret;
@@ -4452,9 +3660,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetCharModsCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWcharmodsfun")]
-		public static delegate*<GLFWwindow*, uint, int, void> SetCharModsCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWcharmodsfun")] GLFWcharmodsfun callback)
+		public static delegate*<GLFWwindow*, uint, int, void> SetCharModsCallback(ref GLFWwindow window, GLFWcharmodsfun callback)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4493,10 +3699,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetMouseButtonCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWmousebuttonfun")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, int, int, int, void> SetMouseButtonCallbackNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWmousebuttonfun")] GLFWmousebuttonfun callback)
+		internal static delegate*<GLFWwindow*, int, int, int, void> SetMouseButtonCallbackNative(GLFWwindow* window, GLFWmousebuttonfun callback)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, int, int, void>, delegate*<GLFWwindow*, int, int, int, void>>)funcTable[88])(window, (delegate*<GLFWwindow*, int, int, int, void>)Utils.GetFunctionPointerForDelegate(callback));
@@ -4535,9 +3739,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetMouseButtonCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWmousebuttonfun")]
-		public static delegate*<GLFWwindow*, int, int, int, void> SetMouseButtonCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWmousebuttonfun")] GLFWmousebuttonfun callback)
+		public static delegate*<GLFWwindow*, int, int, int, void> SetMouseButtonCallback(GLFWwindowPtr window, GLFWmousebuttonfun callback)
 		{
 			delegate*<GLFWwindow*, int, int, int, void> ret = SetMouseButtonCallbackNative(window, callback);
 			return ret;
@@ -4573,9 +3775,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetMouseButtonCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWmousebuttonfun")]
-		public static delegate*<GLFWwindow*, int, int, int, void> SetMouseButtonCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWmousebuttonfun")] GLFWmousebuttonfun callback)
+		public static delegate*<GLFWwindow*, int, int, int, void> SetMouseButtonCallback(ref GLFWwindow window, GLFWmousebuttonfun callback)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4604,10 +3804,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetCursorPosCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWcursorposfun")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, double, double, void> SetCursorPosCallbackNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWcursorposfun")] GLFWcursorposfun callback)
+		internal static delegate*<GLFWwindow*, double, double, void> SetCursorPosCallbackNative(GLFWwindow* window, GLFWcursorposfun callback)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, double, double, void>, delegate*<GLFWwindow*, double, double, void>>)funcTable[89])(window, (delegate*<GLFWwindow*, double, double, void>)Utils.GetFunctionPointerForDelegate(callback));
@@ -4636,9 +3834,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetCursorPosCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWcursorposfun")]
-		public static delegate*<GLFWwindow*, double, double, void> SetCursorPosCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWcursorposfun")] GLFWcursorposfun callback)
+		public static delegate*<GLFWwindow*, double, double, void> SetCursorPosCallback(GLFWwindowPtr window, GLFWcursorposfun callback)
 		{
 			delegate*<GLFWwindow*, double, double, void> ret = SetCursorPosCallbackNative(window, callback);
 			return ret;
@@ -4664,9 +3860,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetCursorPosCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWcursorposfun")]
-		public static delegate*<GLFWwindow*, double, double, void> SetCursorPosCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWcursorposfun")] GLFWcursorposfun callback)
+		public static delegate*<GLFWwindow*, double, double, void> SetCursorPosCallback(ref GLFWwindow window, GLFWcursorposfun callback)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4694,10 +3888,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetCursorEnterCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWcursorenterfun")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, int, void> SetCursorEnterCallbackNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWcursorenterfun")] GLFWcursorenterfun callback)
+		internal static delegate*<GLFWwindow*, int, void> SetCursorEnterCallbackNative(GLFWwindow* window, GLFWcursorenterfun callback)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, void>, delegate*<GLFWwindow*, int, void>>)funcTable[90])(window, (delegate*<GLFWwindow*, int, void>)Utils.GetFunctionPointerForDelegate(callback));
@@ -4725,9 +3917,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetCursorEnterCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWcursorenterfun")]
-		public static delegate*<GLFWwindow*, int, void> SetCursorEnterCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWcursorenterfun")] GLFWcursorenterfun callback)
+		public static delegate*<GLFWwindow*, int, void> SetCursorEnterCallback(GLFWwindowPtr window, GLFWcursorenterfun callback)
 		{
 			delegate*<GLFWwindow*, int, void> ret = SetCursorEnterCallbackNative(window, callback);
 			return ret;
@@ -4752,9 +3942,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetCursorEnterCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWcursorenterfun")]
-		public static delegate*<GLFWwindow*, int, void> SetCursorEnterCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWcursorenterfun")] GLFWcursorenterfun callback)
+		public static delegate*<GLFWwindow*, int, void> SetCursorEnterCallback(ref GLFWwindow window, GLFWcursorenterfun callback)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4784,10 +3972,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetScrollCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWscrollfun")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, double, double, void> SetScrollCallbackNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWscrollfun")] GLFWscrollfun callback)
+		internal static delegate*<GLFWwindow*, double, double, void> SetScrollCallbackNative(GLFWwindow* window, GLFWscrollfun callback)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, double, double, void>, delegate*<GLFWwindow*, double, double, void>>)funcTable[91])(window, (delegate*<GLFWwindow*, double, double, void>)Utils.GetFunctionPointerForDelegate(callback));
@@ -4817,9 +4003,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetScrollCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWscrollfun")]
-		public static delegate*<GLFWwindow*, double, double, void> SetScrollCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWscrollfun")] GLFWscrollfun callback)
+		public static delegate*<GLFWwindow*, double, double, void> SetScrollCallback(GLFWwindowPtr window, GLFWscrollfun callback)
 		{
 			delegate*<GLFWwindow*, double, double, void> ret = SetScrollCallbackNative(window, callback);
 			return ret;
@@ -4846,9 +4030,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetScrollCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWscrollfun")]
-		public static delegate*<GLFWwindow*, double, double, void> SetScrollCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWscrollfun")] GLFWscrollfun callback)
+		public static delegate*<GLFWwindow*, double, double, void> SetScrollCallback(ref GLFWwindow window, GLFWscrollfun callback)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4879,10 +4061,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetDropCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWdropfun")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, int, byte**, void> SetDropCallbackNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWdropfun")] GLFWdropfun callback)
+		internal static delegate*<GLFWwindow*, int, byte**, void> SetDropCallbackNative(GLFWwindow* window, GLFWdropfun callback)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, byte**, void>, delegate*<GLFWwindow*, int, byte**, void>>)funcTable[92])(window, (delegate*<GLFWwindow*, int, byte**, void>)Utils.GetFunctionPointerForDelegate(callback));
@@ -4913,9 +4093,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetDropCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWdropfun")]
-		public static delegate*<GLFWwindow*, int, byte**, void> SetDropCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindowPtr window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWdropfun")] GLFWdropfun callback)
+		public static delegate*<GLFWwindow*, int, byte**, void> SetDropCallback(GLFWwindowPtr window, GLFWdropfun callback)
 		{
 			delegate*<GLFWwindow*, int, byte**, void> ret = SetDropCallbackNative(window, callback);
 			return ret;
@@ -4943,9 +4121,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwSetDropCallback")]
-		[return: NativeName(NativeNameType.Type, "GLFWdropfun")]
-		public static delegate*<GLFWwindow*, int, byte**, void> SetDropCallback([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] ref GLFWwindow window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "GLFWdropfun")] GLFWdropfun callback)
+		public static delegate*<GLFWwindow*, int, byte**, void> SetDropCallback(ref GLFWwindow window, GLFWdropfun callback)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -4972,10 +4148,8 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwJoystickPresent")]
-		[return: NativeName(NativeNameType.Type, "int")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static int JoystickPresentNative([NativeName(NativeNameType.Param, "jid")] [NativeName(NativeNameType.Type, "int")] int jid)
+		internal static int JoystickPresentNative(int jid)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<int, int>)funcTable[93])(jid);
@@ -5002,9 +4176,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwJoystickPresent")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int JoystickPresent([NativeName(NativeNameType.Param, "jid")] [NativeName(NativeNameType.Type, "int")] int jid)
+		public static int JoystickPresent(int jid)
 		{
 			int ret = JoystickPresentNative(jid);
 			return ret;
@@ -5033,15 +4205,824 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "glfwGetJoystickAxes")]
-		[return: NativeName(NativeNameType.Type, "const float*")]
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static float* GetJoystickAxesNative([NativeName(NativeNameType.Param, "jid")] [NativeName(NativeNameType.Type, "int")] int jid, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int*")] int* count)
+		internal static float* GetJoystickAxesNative(int jid, int* count)
 		{
 			#if NET5_0_OR_GREATER
 			return ((delegate* unmanaged[Cdecl]<int, int*, float*>)funcTable[94])(jid, count);
 			#else
 			return (float*)((delegate* unmanaged[Cdecl]<int, nint, nint>)funcTable[94])(jid, (nint)count);
+			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the values of all axes of the specified joystick.<br/>
+		/// Each element in the array is a value between -1.0 and 1.0.<br/>
+		/// If the specified joystick is not present this function will return `NULL`<br/>
+		/// but will not generate an error.  This can be used instead of first calling<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// and <br/>
+		/// <br/>
+		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
+		/// should not free it yourself.  It is valid until the specified joystick is<br/>
+		/// disconnected or the library is terminated.<br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static float* GetJoystickAxes(int jid, int* count)
+		{
+			float* ret = GetJoystickAxesNative(jid, count);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the values of all axes of the specified joystick.<br/>
+		/// Each element in the array is a value between -1.0 and 1.0.<br/>
+		/// If the specified joystick is not present this function will return `NULL`<br/>
+		/// but will not generate an error.  This can be used instead of first calling<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// and <br/>
+		/// <br/>
+		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
+		/// should not free it yourself.  It is valid until the specified joystick is<br/>
+		/// disconnected or the library is terminated.<br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static float* GetJoystickAxes(int jid, ref int count)
+		{
+			fixed (int* pcount = &count)
+			{
+				float* ret = GetJoystickAxesNative(jid, (int*)pcount);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the state of all buttons of the specified joystick.<br/>
+		/// Each element in the array is either `GLFW_PRESS` or `GLFW_RELEASE`.<br/>
+		/// For backward compatibility with earlier versions that did not have <br/>
+		/// the button array also includes all hats, each<br/>
+		/// represented as four buttons.  The hats are in the same order as returned by<br/>
+		/// __glfwGetJoystickHats__ and are in the order _up_, _right_, _down_ and<br/>
+		/// _left_.  To disable these extra buttons, set the <br/>
+		/// init hint before initialization.<br/>
+		/// If the specified joystick is not present this function will return `NULL`<br/>
+		/// but will not generate an error.  This can be used instead of first calling<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// and <br/>
+		/// <br/>
+		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
+		/// should not free it yourself.  It is valid until the specified joystick is<br/>
+		/// disconnected or the library is terminated.<br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static byte* GetJoystickButtonsNative(int jid, int* count)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<int, int*, byte*>)funcTable[95])(jid, count);
+			#else
+			return (byte*)((delegate* unmanaged[Cdecl]<int, nint, nint>)funcTable[95])(jid, (nint)count);
+			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the state of all buttons of the specified joystick.<br/>
+		/// Each element in the array is either `GLFW_PRESS` or `GLFW_RELEASE`.<br/>
+		/// For backward compatibility with earlier versions that did not have <br/>
+		/// the button array also includes all hats, each<br/>
+		/// represented as four buttons.  The hats are in the same order as returned by<br/>
+		/// __glfwGetJoystickHats__ and are in the order _up_, _right_, _down_ and<br/>
+		/// _left_.  To disable these extra buttons, set the <br/>
+		/// init hint before initialization.<br/>
+		/// If the specified joystick is not present this function will return `NULL`<br/>
+		/// but will not generate an error.  This can be used instead of first calling<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// and <br/>
+		/// <br/>
+		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
+		/// should not free it yourself.  It is valid until the specified joystick is<br/>
+		/// disconnected or the library is terminated.<br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static byte* GetJoystickButtons(int jid, int* count)
+		{
+			byte* ret = GetJoystickButtonsNative(jid, count);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the state of all buttons of the specified joystick.<br/>
+		/// Each element in the array is either `GLFW_PRESS` or `GLFW_RELEASE`.<br/>
+		/// For backward compatibility with earlier versions that did not have <br/>
+		/// the button array also includes all hats, each<br/>
+		/// represented as four buttons.  The hats are in the same order as returned by<br/>
+		/// __glfwGetJoystickHats__ and are in the order _up_, _right_, _down_ and<br/>
+		/// _left_.  To disable these extra buttons, set the <br/>
+		/// init hint before initialization.<br/>
+		/// If the specified joystick is not present this function will return `NULL`<br/>
+		/// but will not generate an error.  This can be used instead of first calling<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// and <br/>
+		/// <br/>
+		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
+		/// should not free it yourself.  It is valid until the specified joystick is<br/>
+		/// disconnected or the library is terminated.<br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static string GetJoystickButtonsS(int jid, int* count)
+		{
+			string ret = Utils.DecodeStringUTF8(GetJoystickButtonsNative(jid, count));
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the state of all buttons of the specified joystick.<br/>
+		/// Each element in the array is either `GLFW_PRESS` or `GLFW_RELEASE`.<br/>
+		/// For backward compatibility with earlier versions that did not have <br/>
+		/// the button array also includes all hats, each<br/>
+		/// represented as four buttons.  The hats are in the same order as returned by<br/>
+		/// __glfwGetJoystickHats__ and are in the order _up_, _right_, _down_ and<br/>
+		/// _left_.  To disable these extra buttons, set the <br/>
+		/// init hint before initialization.<br/>
+		/// If the specified joystick is not present this function will return `NULL`<br/>
+		/// but will not generate an error.  This can be used instead of first calling<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// and <br/>
+		/// <br/>
+		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
+		/// should not free it yourself.  It is valid until the specified joystick is<br/>
+		/// disconnected or the library is terminated.<br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static byte* GetJoystickButtons(int jid, ref int count)
+		{
+			fixed (int* pcount = &count)
+			{
+				byte* ret = GetJoystickButtonsNative(jid, (int*)pcount);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the state of all buttons of the specified joystick.<br/>
+		/// Each element in the array is either `GLFW_PRESS` or `GLFW_RELEASE`.<br/>
+		/// For backward compatibility with earlier versions that did not have <br/>
+		/// the button array also includes all hats, each<br/>
+		/// represented as four buttons.  The hats are in the same order as returned by<br/>
+		/// __glfwGetJoystickHats__ and are in the order _up_, _right_, _down_ and<br/>
+		/// _left_.  To disable these extra buttons, set the <br/>
+		/// init hint before initialization.<br/>
+		/// If the specified joystick is not present this function will return `NULL`<br/>
+		/// but will not generate an error.  This can be used instead of first calling<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// and <br/>
+		/// <br/>
+		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
+		/// should not free it yourself.  It is valid until the specified joystick is<br/>
+		/// disconnected or the library is terminated.<br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static string GetJoystickButtonsS(int jid, ref int count)
+		{
+			fixed (int* pcount = &count)
+			{
+				string ret = Utils.DecodeStringUTF8(GetJoystickButtonsNative(jid, (int*)pcount));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the state of all hats of the specified joystick.<br/>
+		/// Each element in the array is one of the following values:<br/>
+		/// Name                  | Value<br/>
+		/// ----                  | -----<br/>
+		/// `GLFW_HAT_CENTERED`   | 0<br/>
+		/// `GLFW_HAT_UP`         | 1<br/>
+		/// `GLFW_HAT_RIGHT`      | 2<br/>
+		/// `GLFW_HAT_DOWN`       | 4<br/>
+		/// `GLFW_HAT_LEFT`       | 8<br/>
+		/// `GLFW_HAT_RIGHT_UP`   | `GLFW_HAT_RIGHT` <br/>
+		/// \<br/>
+		/// | `GLFW_HAT_UP`<br/>
+		/// `GLFW_HAT_RIGHT_DOWN` | `GLFW_HAT_RIGHT` <br/>
+		/// \<br/>
+		/// | `GLFW_HAT_DOWN`<br/>
+		/// `GLFW_HAT_LEFT_UP`    | `GLFW_HAT_LEFT` <br/>
+		/// \<br/>
+		/// | `GLFW_HAT_UP`<br/>
+		/// `GLFW_HAT_LEFT_DOWN`  | `GLFW_HAT_LEFT` <br/>
+		/// \<br/>
+		/// | `GLFW_HAT_DOWN`<br/>
+		/// The diagonal directions are bitwise combinations of the primary (up, right,<br/>
+		/// down and left) directions and you can test for these individually by ANDing<br/>
+		/// it with the corresponding direction.<br/>
+		/// <br/>
+		/// If the specified joystick is not present this function will return `NULL`<br/>
+		/// but will not generate an error.  This can be used instead of first calling<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// and <br/>
+		/// <br/>
+		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
+		/// should not free it yourself.  It is valid until the specified joystick is<br/>
+		/// disconnected, this function is called again for that joystick or the library<br/>
+		/// is terminated.<br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static byte* GetJoystickHatsNative(int jid, int* count)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<int, int*, byte*>)funcTable[96])(jid, count);
+			#else
+			return (byte*)((delegate* unmanaged[Cdecl]<int, nint, nint>)funcTable[96])(jid, (nint)count);
+			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the state of all hats of the specified joystick.<br/>
+		/// Each element in the array is one of the following values:<br/>
+		/// Name                  | Value<br/>
+		/// ----                  | -----<br/>
+		/// `GLFW_HAT_CENTERED`   | 0<br/>
+		/// `GLFW_HAT_UP`         | 1<br/>
+		/// `GLFW_HAT_RIGHT`      | 2<br/>
+		/// `GLFW_HAT_DOWN`       | 4<br/>
+		/// `GLFW_HAT_LEFT`       | 8<br/>
+		/// `GLFW_HAT_RIGHT_UP`   | `GLFW_HAT_RIGHT` <br/>
+		/// \<br/>
+		/// | `GLFW_HAT_UP`<br/>
+		/// `GLFW_HAT_RIGHT_DOWN` | `GLFW_HAT_RIGHT` <br/>
+		/// \<br/>
+		/// | `GLFW_HAT_DOWN`<br/>
+		/// `GLFW_HAT_LEFT_UP`    | `GLFW_HAT_LEFT` <br/>
+		/// \<br/>
+		/// | `GLFW_HAT_UP`<br/>
+		/// `GLFW_HAT_LEFT_DOWN`  | `GLFW_HAT_LEFT` <br/>
+		/// \<br/>
+		/// | `GLFW_HAT_DOWN`<br/>
+		/// The diagonal directions are bitwise combinations of the primary (up, right,<br/>
+		/// down and left) directions and you can test for these individually by ANDing<br/>
+		/// it with the corresponding direction.<br/>
+		/// <br/>
+		/// If the specified joystick is not present this function will return `NULL`<br/>
+		/// but will not generate an error.  This can be used instead of first calling<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// and <br/>
+		/// <br/>
+		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
+		/// should not free it yourself.  It is valid until the specified joystick is<br/>
+		/// disconnected, this function is called again for that joystick or the library<br/>
+		/// is terminated.<br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static byte* GetJoystickHats(int jid, int* count)
+		{
+			byte* ret = GetJoystickHatsNative(jid, count);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the state of all hats of the specified joystick.<br/>
+		/// Each element in the array is one of the following values:<br/>
+		/// Name                  | Value<br/>
+		/// ----                  | -----<br/>
+		/// `GLFW_HAT_CENTERED`   | 0<br/>
+		/// `GLFW_HAT_UP`         | 1<br/>
+		/// `GLFW_HAT_RIGHT`      | 2<br/>
+		/// `GLFW_HAT_DOWN`       | 4<br/>
+		/// `GLFW_HAT_LEFT`       | 8<br/>
+		/// `GLFW_HAT_RIGHT_UP`   | `GLFW_HAT_RIGHT` <br/>
+		/// \<br/>
+		/// | `GLFW_HAT_UP`<br/>
+		/// `GLFW_HAT_RIGHT_DOWN` | `GLFW_HAT_RIGHT` <br/>
+		/// \<br/>
+		/// | `GLFW_HAT_DOWN`<br/>
+		/// `GLFW_HAT_LEFT_UP`    | `GLFW_HAT_LEFT` <br/>
+		/// \<br/>
+		/// | `GLFW_HAT_UP`<br/>
+		/// `GLFW_HAT_LEFT_DOWN`  | `GLFW_HAT_LEFT` <br/>
+		/// \<br/>
+		/// | `GLFW_HAT_DOWN`<br/>
+		/// The diagonal directions are bitwise combinations of the primary (up, right,<br/>
+		/// down and left) directions and you can test for these individually by ANDing<br/>
+		/// it with the corresponding direction.<br/>
+		/// <br/>
+		/// If the specified joystick is not present this function will return `NULL`<br/>
+		/// but will not generate an error.  This can be used instead of first calling<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// and <br/>
+		/// <br/>
+		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
+		/// should not free it yourself.  It is valid until the specified joystick is<br/>
+		/// disconnected, this function is called again for that joystick or the library<br/>
+		/// is terminated.<br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static string GetJoystickHatsS(int jid, int* count)
+		{
+			string ret = Utils.DecodeStringUTF8(GetJoystickHatsNative(jid, count));
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the state of all hats of the specified joystick.<br/>
+		/// Each element in the array is one of the following values:<br/>
+		/// Name                  | Value<br/>
+		/// ----                  | -----<br/>
+		/// `GLFW_HAT_CENTERED`   | 0<br/>
+		/// `GLFW_HAT_UP`         | 1<br/>
+		/// `GLFW_HAT_RIGHT`      | 2<br/>
+		/// `GLFW_HAT_DOWN`       | 4<br/>
+		/// `GLFW_HAT_LEFT`       | 8<br/>
+		/// `GLFW_HAT_RIGHT_UP`   | `GLFW_HAT_RIGHT` <br/>
+		/// \<br/>
+		/// | `GLFW_HAT_UP`<br/>
+		/// `GLFW_HAT_RIGHT_DOWN` | `GLFW_HAT_RIGHT` <br/>
+		/// \<br/>
+		/// | `GLFW_HAT_DOWN`<br/>
+		/// `GLFW_HAT_LEFT_UP`    | `GLFW_HAT_LEFT` <br/>
+		/// \<br/>
+		/// | `GLFW_HAT_UP`<br/>
+		/// `GLFW_HAT_LEFT_DOWN`  | `GLFW_HAT_LEFT` <br/>
+		/// \<br/>
+		/// | `GLFW_HAT_DOWN`<br/>
+		/// The diagonal directions are bitwise combinations of the primary (up, right,<br/>
+		/// down and left) directions and you can test for these individually by ANDing<br/>
+		/// it with the corresponding direction.<br/>
+		/// <br/>
+		/// If the specified joystick is not present this function will return `NULL`<br/>
+		/// but will not generate an error.  This can be used instead of first calling<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// and <br/>
+		/// <br/>
+		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
+		/// should not free it yourself.  It is valid until the specified joystick is<br/>
+		/// disconnected, this function is called again for that joystick or the library<br/>
+		/// is terminated.<br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static byte* GetJoystickHats(int jid, ref int count)
+		{
+			fixed (int* pcount = &count)
+			{
+				byte* ret = GetJoystickHatsNative(jid, (int*)pcount);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the state of all hats of the specified joystick.<br/>
+		/// Each element in the array is one of the following values:<br/>
+		/// Name                  | Value<br/>
+		/// ----                  | -----<br/>
+		/// `GLFW_HAT_CENTERED`   | 0<br/>
+		/// `GLFW_HAT_UP`         | 1<br/>
+		/// `GLFW_HAT_RIGHT`      | 2<br/>
+		/// `GLFW_HAT_DOWN`       | 4<br/>
+		/// `GLFW_HAT_LEFT`       | 8<br/>
+		/// `GLFW_HAT_RIGHT_UP`   | `GLFW_HAT_RIGHT` <br/>
+		/// \<br/>
+		/// | `GLFW_HAT_UP`<br/>
+		/// `GLFW_HAT_RIGHT_DOWN` | `GLFW_HAT_RIGHT` <br/>
+		/// \<br/>
+		/// | `GLFW_HAT_DOWN`<br/>
+		/// `GLFW_HAT_LEFT_UP`    | `GLFW_HAT_LEFT` <br/>
+		/// \<br/>
+		/// | `GLFW_HAT_UP`<br/>
+		/// `GLFW_HAT_LEFT_DOWN`  | `GLFW_HAT_LEFT` <br/>
+		/// \<br/>
+		/// | `GLFW_HAT_DOWN`<br/>
+		/// The diagonal directions are bitwise combinations of the primary (up, right,<br/>
+		/// down and left) directions and you can test for these individually by ANDing<br/>
+		/// it with the corresponding direction.<br/>
+		/// <br/>
+		/// If the specified joystick is not present this function will return `NULL`<br/>
+		/// but will not generate an error.  This can be used instead of first calling<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// and <br/>
+		/// <br/>
+		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
+		/// should not free it yourself.  It is valid until the specified joystick is<br/>
+		/// disconnected, this function is called again for that joystick or the library<br/>
+		/// is terminated.<br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static string GetJoystickHatsS(int jid, ref int count)
+		{
+			fixed (int* pcount = &count)
+			{
+				string ret = Utils.DecodeStringUTF8(GetJoystickHatsNative(jid, (int*)pcount));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the name, encoded as UTF-8, of the specified joystick.<br/>
+		/// The returned string is allocated and freed by GLFW.  You should not free it<br/>
+		/// yourself.<br/>
+		/// If the specified joystick is not present this function will return `NULL`<br/>
+		/// but will not generate an error.  This can be used instead of first calling<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// and <br/>
+		/// <br/>
+		/// _lifetime The returned string is allocated and freed by GLFW.  You<br/>
+		/// should not free it yourself.  It is valid until the specified joystick is<br/>
+		/// disconnected or the library is terminated.<br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static byte* GetJoystickNameNative(int jid)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<int, byte*>)funcTable[97])(jid);
+			#else
+			return (byte*)((delegate* unmanaged[Cdecl]<int, nint>)funcTable[97])(jid);
+			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the name, encoded as UTF-8, of the specified joystick.<br/>
+		/// The returned string is allocated and freed by GLFW.  You should not free it<br/>
+		/// yourself.<br/>
+		/// If the specified joystick is not present this function will return `NULL`<br/>
+		/// but will not generate an error.  This can be used instead of first calling<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// and <br/>
+		/// <br/>
+		/// _lifetime The returned string is allocated and freed by GLFW.  You<br/>
+		/// should not free it yourself.  It is valid until the specified joystick is<br/>
+		/// disconnected or the library is terminated.<br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static byte* GetJoystickName(int jid)
+		{
+			byte* ret = GetJoystickNameNative(jid);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the name, encoded as UTF-8, of the specified joystick.<br/>
+		/// The returned string is allocated and freed by GLFW.  You should not free it<br/>
+		/// yourself.<br/>
+		/// If the specified joystick is not present this function will return `NULL`<br/>
+		/// but will not generate an error.  This can be used instead of first calling<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// and <br/>
+		/// <br/>
+		/// _lifetime The returned string is allocated and freed by GLFW.  You<br/>
+		/// should not free it yourself.  It is valid until the specified joystick is<br/>
+		/// disconnected or the library is terminated.<br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static string GetJoystickNameS(int jid)
+		{
+			string ret = Utils.DecodeStringUTF8(GetJoystickNameNative(jid));
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the SDL compatible GUID, as a UTF-8 encoded<br/>
+		/// hexadecimal string, of the specified joystick.  The returned string is<br/>
+		/// allocated and freed by GLFW.  You should not free it yourself.<br/>
+		/// The GUID is what connects a joystick to a gamepad mapping.  A connected<br/>
+		/// joystick will always have a GUID even if there is no gamepad mapping<br/>
+		/// assigned to it.<br/>
+		/// If the specified joystick is not present this function will return `NULL`<br/>
+		/// but will not generate an error.  This can be used instead of first calling<br/>
+		/// <br/>
+		/// The GUID uses the format introduced in SDL 2.0.5.  This GUID tries to<br/>
+		/// uniquely identify the make and model of a joystick but does not identify<br/>
+		/// a specific unit, e.g. all wired Xbox 360 controllers will have the same<br/>
+		/// GUID on that platform.  The GUID for a unit may vary between platforms<br/>
+		/// depending on what hardware information the platform specific APIs provide.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// and <br/>
+		/// <br/>
+		/// _lifetime The returned string is allocated and freed by GLFW.  You<br/>
+		/// should not free it yourself.  It is valid until the specified joystick is<br/>
+		/// disconnected or the library is terminated.<br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static byte* GetJoystickGUIDNative(int jid)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<int, byte*>)funcTable[98])(jid);
+			#else
+			return (byte*)((delegate* unmanaged[Cdecl]<int, nint>)funcTable[98])(jid);
+			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the SDL compatible GUID, as a UTF-8 encoded<br/>
+		/// hexadecimal string, of the specified joystick.  The returned string is<br/>
+		/// allocated and freed by GLFW.  You should not free it yourself.<br/>
+		/// The GUID is what connects a joystick to a gamepad mapping.  A connected<br/>
+		/// joystick will always have a GUID even if there is no gamepad mapping<br/>
+		/// assigned to it.<br/>
+		/// If the specified joystick is not present this function will return `NULL`<br/>
+		/// but will not generate an error.  This can be used instead of first calling<br/>
+		/// <br/>
+		/// The GUID uses the format introduced in SDL 2.0.5.  This GUID tries to<br/>
+		/// uniquely identify the make and model of a joystick but does not identify<br/>
+		/// a specific unit, e.g. all wired Xbox 360 controllers will have the same<br/>
+		/// GUID on that platform.  The GUID for a unit may vary between platforms<br/>
+		/// depending on what hardware information the platform specific APIs provide.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// and <br/>
+		/// <br/>
+		/// _lifetime The returned string is allocated and freed by GLFW.  You<br/>
+		/// should not free it yourself.  It is valid until the specified joystick is<br/>
+		/// disconnected or the library is terminated.<br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static byte* GetJoystickGUID(int jid)
+		{
+			byte* ret = GetJoystickGUIDNative(jid);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the SDL compatible GUID, as a UTF-8 encoded<br/>
+		/// hexadecimal string, of the specified joystick.  The returned string is<br/>
+		/// allocated and freed by GLFW.  You should not free it yourself.<br/>
+		/// The GUID is what connects a joystick to a gamepad mapping.  A connected<br/>
+		/// joystick will always have a GUID even if there is no gamepad mapping<br/>
+		/// assigned to it.<br/>
+		/// If the specified joystick is not present this function will return `NULL`<br/>
+		/// but will not generate an error.  This can be used instead of first calling<br/>
+		/// <br/>
+		/// The GUID uses the format introduced in SDL 2.0.5.  This GUID tries to<br/>
+		/// uniquely identify the make and model of a joystick but does not identify<br/>
+		/// a specific unit, e.g. all wired Xbox 360 controllers will have the same<br/>
+		/// GUID on that platform.  The GUID for a unit may vary between platforms<br/>
+		/// depending on what hardware information the platform specific APIs provide.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// and <br/>
+		/// <br/>
+		/// _lifetime The returned string is allocated and freed by GLFW.  You<br/>
+		/// should not free it yourself.  It is valid until the specified joystick is<br/>
+		/// disconnected or the library is terminated.<br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static string GetJoystickGUIDS(int jid)
+		{
+			string ret = Utils.DecodeStringUTF8(GetJoystickGUIDNative(jid));
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the user-defined pointer of the specified joystick.  The<br/>
+		/// current value is retained until the joystick is disconnected.  The initial<br/>
+		/// value is `NULL`.<br/>
+		/// This function may be called from the joystick callback, even for a joystick<br/>
+		/// that is being disconnected.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function may be called from any thread.  Access is not<br/>
+		/// synchronized.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void SetJoystickUserPointerNative(int jid, void* pointer)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<int, void*, void>)funcTable[99])(jid, pointer);
+			#else
+			((delegate* unmanaged[Cdecl]<int, nint, void>)funcTable[99])(jid, (nint)pointer);
+			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the user-defined pointer of the specified joystick.  The<br/>
+		/// current value is retained until the joystick is disconnected.  The initial<br/>
+		/// value is `NULL`.<br/>
+		/// This function may be called from the joystick callback, even for a joystick<br/>
+		/// that is being disconnected.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function may be called from any thread.  Access is not<br/>
+		/// synchronized.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static void SetJoystickUserPointer(int jid, void* pointer)
+		{
+			SetJoystickUserPointerNative(jid, pointer);
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the current value of the user-defined pointer of the<br/>
+		/// specified joystick.  The initial value is `NULL`.<br/>
+		/// This function may be called from the joystick callback, even for a joystick<br/>
+		/// that is being disconnected.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function may be called from any thread.  Access is not<br/>
+		/// synchronized.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static void* GetJoystickUserPointerNative(int jid)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<int, void*>)funcTable[100])(jid);
+			#else
+			return (void*)((delegate* unmanaged[Cdecl]<int, nint>)funcTable[100])(jid);
 			#endif
 		}
 	}
