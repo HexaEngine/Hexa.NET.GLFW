@@ -1,16 +1,15 @@
 ﻿using HexaGen;
 using HexaGen.Patching;
 
-CsCodeGeneratorConfig config = CsCodeGeneratorConfig.Load("generator.json");
-CsCodeGenerator generator = new(config);
-generator.PatchEngine.RegisterPrePatch(new NamingPatch(["Glfw"], NamingPatchOptions.None));
-generator.PatchEngine.RegisterPrePatch(new ConstantsToEnumPatch("GLFW_KEY_", "GlfwKey", "int"));
-generator.PatchEngine.RegisterPrePatch(new ConstantsToEnumPatch("GLFW_MOD_", "GlfwMod", "int"));
-generator.PatchEngine.RegisterPrePatch(new ConstantsToEnumPatch("GLFW_MOUSE_", "GlfwMouse", "int"));
-generator.PatchEngine.RegisterPrePatch(new ConstantsToEnumPatch("GLFW_HAT_", "GlfwHat", "int"));
-generator.PatchEngine.RegisterPrePatch(new ConstantsToEnumPatch("GLFW_JOYSTICK_", "GlfwJoystick", "int"));
-generator.PatchEngine.RegisterPrePatch(new ConstantsToEnumPatch("GLFW_GAMEPAD_", "GlfwGamepad", "int"));
-generator.LogToConsole();
-
-generator.Generate("include/main.h", "../../../../Hexa.NET.GLFW/Generated");
-generator.GetMetadata().Save("metadata.json");
+BatchGenerator batch = new();
+batch.Start()
+    .Setup<CsCodeGenerator>("generator.json")
+    .AddPrePatch(new NamingPatch(["Glfw"], NamingPatchOptions.None))
+    .AddPrePatch(new ConstantsToEnumPatch("GLFW_KEY_", "GlfwKey", "int"))
+    .AddPrePatch(new ConstantsToEnumPatch("GLFW_MOD_", "GlfwMod", "int"))
+    .AddPrePatch(new ConstantsToEnumPatch("GLFW_MOUSE_", "GlfwMouse", "int"))
+    .AddPrePatch(new ConstantsToEnumPatch("GLFW_HAT_", "GlfwHat", "int"))
+    .AddPrePatch(new ConstantsToEnumPatch("GLFW_JOYSTICK_", "GlfwJoystick", "int"))
+    .AddPrePatch(new ConstantsToEnumPatch("GLFW_GAMEPAD_", "GlfwGamepad", "int"))
+    .Generate("include/main.h", "../../../../Hexa.NET.GLFW/Generated", [.. Directory.GetFiles("include")])
+    .Finish();

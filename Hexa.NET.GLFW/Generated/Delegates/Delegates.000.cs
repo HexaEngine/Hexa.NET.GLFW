@@ -22,7 +22,7 @@ namespace Hexa.NET.GLFW
 	/// allocation function.<br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void* Allocate([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void*")] void* user);
+	public unsafe delegate void* Allocate([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] nuint size, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void *")] void* user);
 
 	#else
 	/// <summary>
@@ -31,7 +31,7 @@ namespace Hexa.NET.GLFW
 	/// allocation function.<br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate nint Allocate([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void*")] nint user);
+	public unsafe delegate nint Allocate([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] nuint size, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void *")] nint user);
 
 	#endif
 
@@ -42,7 +42,7 @@ namespace Hexa.NET.GLFW
 	/// reallocation function.<br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void* Reallocate([NativeName(NativeNameType.Param, "block")] [NativeName(NativeNameType.Type, "void*")] void* block, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void*")] void* user);
+	public unsafe delegate void* Reallocate([NativeName(NativeNameType.Param, "block")] [NativeName(NativeNameType.Type, "void *")] void* block, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] nuint size, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void *")] void* user);
 
 	#else
 	/// <summary>
@@ -51,7 +51,7 @@ namespace Hexa.NET.GLFW
 	/// reallocation function.<br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate nint Reallocate([NativeName(NativeNameType.Param, "block")] [NativeName(NativeNameType.Type, "void*")] nint block, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void*")] nint user);
+	public unsafe delegate nint Reallocate([NativeName(NativeNameType.Param, "block")] [NativeName(NativeNameType.Type, "void *")] nint block, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] nuint size, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void *")] nint user);
 
 	#endif
 
@@ -62,7 +62,7 @@ namespace Hexa.NET.GLFW
 	/// deallocation function.<br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void Deallocate([NativeName(NativeNameType.Param, "block")] [NativeName(NativeNameType.Type, "void*")] void* block, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void*")] void* user);
+	public unsafe delegate void Deallocate([NativeName(NativeNameType.Param, "block")] [NativeName(NativeNameType.Type, "void *")] void* block, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void *")] void* user);
 
 	#else
 	/// <summary>
@@ -71,7 +71,7 @@ namespace Hexa.NET.GLFW
 	/// deallocation function.<br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void Deallocate([NativeName(NativeNameType.Param, "block")] [NativeName(NativeNameType.Type, "void*")] nint block, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void*")] nint user);
+	public unsafe delegate void Deallocate([NativeName(NativeNameType.Param, "block")] [NativeName(NativeNameType.Type, "void *")] nint block, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void *")] nint user);
 
 	#endif
 
@@ -170,7 +170,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void* GLFWallocatefun([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void*")] void* user);
+	public unsafe delegate void* GLFWallocatefun([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] nuint size, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void *")] void* user);
 
 	#else
 	/// <summary>
@@ -211,7 +211,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate nint GLFWallocatefun([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void*")] nint user);
+	public unsafe delegate nint GLFWallocatefun([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] nuint size, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void *")] nint user);
 
 	#endif
 
@@ -256,7 +256,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void* GLFWreallocatefun([NativeName(NativeNameType.Param, "block")] [NativeName(NativeNameType.Type, "void*")] void* block, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void*")] void* user);
+	public unsafe delegate void* GLFWreallocatefun([NativeName(NativeNameType.Param, "block")] [NativeName(NativeNameType.Type, "void *")] void* block, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] nuint size, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void *")] void* user);
 
 	#else
 	/// <summary>
@@ -299,7 +299,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate nint GLFWreallocatefun([NativeName(NativeNameType.Param, "block")] [NativeName(NativeNameType.Type, "void*")] nint block, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void*")] nint user);
+	public unsafe delegate nint GLFWreallocatefun([NativeName(NativeNameType.Param, "block")] [NativeName(NativeNameType.Type, "void *")] nint block, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] nuint size, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void *")] nint user);
 
 	#endif
 
@@ -335,7 +335,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWdeallocatefun([NativeName(NativeNameType.Param, "block")] [NativeName(NativeNameType.Type, "void*")] void* block, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void*")] void* user);
+	public unsafe delegate void GLFWdeallocatefun([NativeName(NativeNameType.Param, "block")] [NativeName(NativeNameType.Type, "void *")] void* block, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void *")] void* user);
 
 	#else
 	/// <summary>
@@ -369,7 +369,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWdeallocatefun([NativeName(NativeNameType.Param, "block")] [NativeName(NativeNameType.Type, "void*")] nint block, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void*")] nint user);
+	public unsafe delegate void GLFWdeallocatefun([NativeName(NativeNameType.Param, "block")] [NativeName(NativeNameType.Type, "void *")] nint block, [NativeName(NativeNameType.Param, "user")] [NativeName(NativeNameType.Type, "void *")] nint user);
 
 	#endif
 
@@ -389,7 +389,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWerrorfun([NativeName(NativeNameType.Param, "error_code")] [NativeName(NativeNameType.Type, "int")] int errorCode, [NativeName(NativeNameType.Param, "description")] [NativeName(NativeNameType.Type, "const char*")] byte* description);
+	public unsafe delegate void GLFWerrorfun([NativeName(NativeNameType.Param, "error_code")] [NativeName(NativeNameType.Type, "int")] int errorCode, [NativeName(NativeNameType.Param, "description")] [NativeName(NativeNameType.Type, "char const *")] byte* description);
 
 	#else
 	/// <summary>
@@ -407,7 +407,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWerrorfun([NativeName(NativeNameType.Param, "error_code")] [NativeName(NativeNameType.Type, "int")] int errorCode, [NativeName(NativeNameType.Param, "description")] [NativeName(NativeNameType.Type, "const char*")] nint description);
+	public unsafe delegate void GLFWerrorfun([NativeName(NativeNameType.Param, "error_code")] [NativeName(NativeNameType.Type, "int")] int errorCode, [NativeName(NativeNameType.Param, "description")] [NativeName(NativeNameType.Type, "char const *")] nint description);
 
 	#endif
 
@@ -424,7 +424,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWwindowposfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int")] int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int")] int ypos);
+	public unsafe delegate void GLFWwindowposfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] GLFWwindow* window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int")] int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int")] int ypos);
 
 	#else
 	/// <summary>
@@ -439,7 +439,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWwindowposfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] nint window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int")] int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int")] int ypos);
+	public unsafe delegate void GLFWwindowposfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] nint window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "int")] int xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "int")] int ypos);
 
 	#endif
 
@@ -456,7 +456,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWwindowsizefun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height);
+	public unsafe delegate void GLFWwindowsizefun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] GLFWwindow* window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height);
 
 	#else
 	/// <summary>
@@ -471,7 +471,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWwindowsizefun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] nint window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height);
+	public unsafe delegate void GLFWwindowsizefun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] nint window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height);
 
 	#endif
 
@@ -488,7 +488,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWwindowclosefun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window);
+	public unsafe delegate void GLFWwindowclosefun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] GLFWwindow* window);
 
 	#else
 	/// <summary>
@@ -503,7 +503,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWwindowclosefun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] nint window);
+	public unsafe delegate void GLFWwindowclosefun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] nint window);
 
 	#endif
 
@@ -520,7 +520,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWwindowrefreshfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window);
+	public unsafe delegate void GLFWwindowrefreshfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] GLFWwindow* window);
 
 	#else
 	/// <summary>
@@ -535,7 +535,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWwindowrefreshfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] nint window);
+	public unsafe delegate void GLFWwindowrefreshfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] nint window);
 
 	#endif
 
@@ -552,7 +552,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWwindowfocusfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "focused")] [NativeName(NativeNameType.Type, "int")] int focused);
+	public unsafe delegate void GLFWwindowfocusfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] GLFWwindow* window, [NativeName(NativeNameType.Param, "focused")] [NativeName(NativeNameType.Type, "int")] int focused);
 
 	#else
 	/// <summary>
@@ -567,7 +567,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWwindowfocusfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] nint window, [NativeName(NativeNameType.Param, "focused")] [NativeName(NativeNameType.Type, "int")] int focused);
+	public unsafe delegate void GLFWwindowfocusfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] nint window, [NativeName(NativeNameType.Param, "focused")] [NativeName(NativeNameType.Type, "int")] int focused);
 
 	#endif
 
@@ -584,7 +584,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWwindowiconifyfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "iconified")] [NativeName(NativeNameType.Type, "int")] int iconified);
+	public unsafe delegate void GLFWwindowiconifyfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] GLFWwindow* window, [NativeName(NativeNameType.Param, "iconified")] [NativeName(NativeNameType.Type, "int")] int iconified);
 
 	#else
 	/// <summary>
@@ -599,7 +599,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWwindowiconifyfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] nint window, [NativeName(NativeNameType.Param, "iconified")] [NativeName(NativeNameType.Type, "int")] int iconified);
+	public unsafe delegate void GLFWwindowiconifyfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] nint window, [NativeName(NativeNameType.Param, "iconified")] [NativeName(NativeNameType.Type, "int")] int iconified);
 
 	#endif
 
@@ -616,7 +616,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWwindowmaximizefun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "maximized")] [NativeName(NativeNameType.Type, "int")] int maximized);
+	public unsafe delegate void GLFWwindowmaximizefun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] GLFWwindow* window, [NativeName(NativeNameType.Param, "maximized")] [NativeName(NativeNameType.Type, "int")] int maximized);
 
 	#else
 	/// <summary>
@@ -631,7 +631,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWwindowmaximizefun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] nint window, [NativeName(NativeNameType.Param, "maximized")] [NativeName(NativeNameType.Type, "int")] int maximized);
+	public unsafe delegate void GLFWwindowmaximizefun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] nint window, [NativeName(NativeNameType.Param, "maximized")] [NativeName(NativeNameType.Type, "int")] int maximized);
 
 	#endif
 
@@ -648,7 +648,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWframebuffersizefun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height);
+	public unsafe delegate void GLFWframebuffersizefun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] GLFWwindow* window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height);
 
 	#else
 	/// <summary>
@@ -663,7 +663,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWframebuffersizefun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] nint window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height);
+	public unsafe delegate void GLFWframebuffersizefun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] nint window, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height);
 
 	#endif
 
@@ -680,7 +680,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWwindowcontentscalefun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "xscale")] [NativeName(NativeNameType.Type, "float")] float xscale, [NativeName(NativeNameType.Param, "yscale")] [NativeName(NativeNameType.Type, "float")] float yscale);
+	public unsafe delegate void GLFWwindowcontentscalefun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] GLFWwindow* window, [NativeName(NativeNameType.Param, "xscale")] [NativeName(NativeNameType.Type, "float")] float xscale, [NativeName(NativeNameType.Param, "yscale")] [NativeName(NativeNameType.Type, "float")] float yscale);
 
 	#else
 	/// <summary>
@@ -695,7 +695,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWwindowcontentscalefun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] nint window, [NativeName(NativeNameType.Param, "xscale")] [NativeName(NativeNameType.Type, "float")] float xscale, [NativeName(NativeNameType.Param, "yscale")] [NativeName(NativeNameType.Type, "float")] float yscale);
+	public unsafe delegate void GLFWwindowcontentscalefun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] nint window, [NativeName(NativeNameType.Param, "xscale")] [NativeName(NativeNameType.Type, "float")] float xscale, [NativeName(NativeNameType.Param, "yscale")] [NativeName(NativeNameType.Type, "float")] float yscale);
 
 	#endif
 
@@ -712,7 +712,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWmousebuttonfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "int")] int button, [NativeName(NativeNameType.Param, "action")] [NativeName(NativeNameType.Type, "int")] int action, [NativeName(NativeNameType.Param, "mods")] [NativeName(NativeNameType.Type, "int")] int mods);
+	public unsafe delegate void GLFWmousebuttonfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] GLFWwindow* window, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "int")] int button, [NativeName(NativeNameType.Param, "action")] [NativeName(NativeNameType.Type, "int")] int action, [NativeName(NativeNameType.Param, "mods")] [NativeName(NativeNameType.Type, "int")] int mods);
 
 	#else
 	/// <summary>
@@ -727,7 +727,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWmousebuttonfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] nint window, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "int")] int button, [NativeName(NativeNameType.Param, "action")] [NativeName(NativeNameType.Type, "int")] int action, [NativeName(NativeNameType.Param, "mods")] [NativeName(NativeNameType.Type, "int")] int mods);
+	public unsafe delegate void GLFWmousebuttonfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] nint window, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "int")] int button, [NativeName(NativeNameType.Param, "action")] [NativeName(NativeNameType.Type, "int")] int action, [NativeName(NativeNameType.Param, "mods")] [NativeName(NativeNameType.Type, "int")] int mods);
 
 	#endif
 
@@ -744,7 +744,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWcursorposfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double")] double xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double")] double ypos);
+	public unsafe delegate void GLFWcursorposfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] GLFWwindow* window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double")] double xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double")] double ypos);
 
 	#else
 	/// <summary>
@@ -759,7 +759,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWcursorposfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] nint window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double")] double xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double")] double ypos);
+	public unsafe delegate void GLFWcursorposfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] nint window, [NativeName(NativeNameType.Param, "xpos")] [NativeName(NativeNameType.Type, "double")] double xpos, [NativeName(NativeNameType.Param, "ypos")] [NativeName(NativeNameType.Type, "double")] double ypos);
 
 	#endif
 
@@ -776,7 +776,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWcursorenterfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "entered")] [NativeName(NativeNameType.Type, "int")] int entered);
+	public unsafe delegate void GLFWcursorenterfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] GLFWwindow* window, [NativeName(NativeNameType.Param, "entered")] [NativeName(NativeNameType.Type, "int")] int entered);
 
 	#else
 	/// <summary>
@@ -791,7 +791,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWcursorenterfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] nint window, [NativeName(NativeNameType.Param, "entered")] [NativeName(NativeNameType.Type, "int")] int entered);
+	public unsafe delegate void GLFWcursorenterfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] nint window, [NativeName(NativeNameType.Param, "entered")] [NativeName(NativeNameType.Type, "int")] int entered);
 
 	#endif
 
@@ -808,7 +808,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWscrollfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "double")] double xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "double")] double yoffset);
+	public unsafe delegate void GLFWscrollfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] GLFWwindow* window, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "double")] double xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "double")] double yoffset);
 
 	#else
 	/// <summary>
@@ -823,7 +823,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWscrollfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] nint window, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "double")] double xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "double")] double yoffset);
+	public unsafe delegate void GLFWscrollfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] nint window, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "double")] double xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "double")] double yoffset);
 
 	#endif
 
@@ -840,7 +840,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWkeyfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "int")] int key, [NativeName(NativeNameType.Param, "scancode")] [NativeName(NativeNameType.Type, "int")] int scancode, [NativeName(NativeNameType.Param, "action")] [NativeName(NativeNameType.Type, "int")] int action, [NativeName(NativeNameType.Param, "mods")] [NativeName(NativeNameType.Type, "int")] int mods);
+	public unsafe delegate void GLFWkeyfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] GLFWwindow* window, [NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "int")] int key, [NativeName(NativeNameType.Param, "scancode")] [NativeName(NativeNameType.Type, "int")] int scancode, [NativeName(NativeNameType.Param, "action")] [NativeName(NativeNameType.Type, "int")] int action, [NativeName(NativeNameType.Param, "mods")] [NativeName(NativeNameType.Type, "int")] int mods);
 
 	#else
 	/// <summary>
@@ -855,7 +855,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWkeyfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] nint window, [NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "int")] int key, [NativeName(NativeNameType.Param, "scancode")] [NativeName(NativeNameType.Type, "int")] int scancode, [NativeName(NativeNameType.Param, "action")] [NativeName(NativeNameType.Type, "int")] int action, [NativeName(NativeNameType.Param, "mods")] [NativeName(NativeNameType.Type, "int")] int mods);
+	public unsafe delegate void GLFWkeyfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] nint window, [NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "int")] int key, [NativeName(NativeNameType.Param, "scancode")] [NativeName(NativeNameType.Type, "int")] int scancode, [NativeName(NativeNameType.Param, "action")] [NativeName(NativeNameType.Type, "int")] int action, [NativeName(NativeNameType.Param, "mods")] [NativeName(NativeNameType.Type, "int")] int mods);
 
 	#endif
 
@@ -872,7 +872,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWcharfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "codepoint")] [NativeName(NativeNameType.Type, "unsigned int")] uint codepoint);
+	public unsafe delegate void GLFWcharfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] GLFWwindow* window, [NativeName(NativeNameType.Param, "codepoint")] [NativeName(NativeNameType.Type, "unsigned int")] uint codepoint);
 
 	#else
 	/// <summary>
@@ -887,7 +887,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWcharfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] nint window, [NativeName(NativeNameType.Param, "codepoint")] [NativeName(NativeNameType.Type, "unsigned int")] uint codepoint);
+	public unsafe delegate void GLFWcharfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] nint window, [NativeName(NativeNameType.Param, "codepoint")] [NativeName(NativeNameType.Type, "unsigned int")] uint codepoint);
 
 	#endif
 
@@ -907,7 +907,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWcharmodsfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "codepoint")] [NativeName(NativeNameType.Type, "unsigned int")] uint codepoint, [NativeName(NativeNameType.Param, "mods")] [NativeName(NativeNameType.Type, "int")] int mods);
+	public unsafe delegate void GLFWcharmodsfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] GLFWwindow* window, [NativeName(NativeNameType.Param, "codepoint")] [NativeName(NativeNameType.Type, "unsigned int")] uint codepoint, [NativeName(NativeNameType.Param, "mods")] [NativeName(NativeNameType.Type, "int")] int mods);
 
 	#else
 	/// <summary>
@@ -925,7 +925,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWcharmodsfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] nint window, [NativeName(NativeNameType.Param, "codepoint")] [NativeName(NativeNameType.Type, "unsigned int")] uint codepoint, [NativeName(NativeNameType.Param, "mods")] [NativeName(NativeNameType.Type, "int")] int mods);
+	public unsafe delegate void GLFWcharmodsfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] nint window, [NativeName(NativeNameType.Param, "codepoint")] [NativeName(NativeNameType.Type, "unsigned int")] uint codepoint, [NativeName(NativeNameType.Param, "mods")] [NativeName(NativeNameType.Type, "int")] int mods);
 
 	#endif
 
@@ -945,7 +945,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWdropfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] GLFWwindow* window, [NativeName(NativeNameType.Param, "path_count")] [NativeName(NativeNameType.Type, "int")] int pathCount, [NativeName(NativeNameType.Param, "paths")] [NativeName(NativeNameType.Type, "const char*[-1]")] byte** paths);
+	public unsafe delegate void GLFWdropfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] GLFWwindow* window, [NativeName(NativeNameType.Param, "path_count")] [NativeName(NativeNameType.Type, "int")] int pathCount, [NativeName(NativeNameType.Param, "paths")] [NativeName(NativeNameType.Type, "char const *[-1]")] byte** paths);
 
 	#else
 	/// <summary>
@@ -963,7 +963,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWdropfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow*")] nint window, [NativeName(NativeNameType.Param, "path_count")] [NativeName(NativeNameType.Type, "int")] int pathCount, [NativeName(NativeNameType.Param, "paths")] [NativeName(NativeNameType.Type, "const char*[-1]")] nint paths);
+	public unsafe delegate void GLFWdropfun([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "GLFWwindow *")] nint window, [NativeName(NativeNameType.Param, "path_count")] [NativeName(NativeNameType.Type, "int")] int pathCount, [NativeName(NativeNameType.Param, "paths")] [NativeName(NativeNameType.Type, "char const *[-1]")] nint paths);
 
 	#endif
 
@@ -980,7 +980,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWmonitorfun([NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] GLFWmonitor* monitor, [NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "int")] int evnt);
+	public unsafe delegate void GLFWmonitorfun([NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor *")] GLFWmonitor* monitor, [NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "int")] int evnt);
 
 	#else
 	/// <summary>
@@ -995,7 +995,7 @@ namespace Hexa.NET.GLFW
 	/// <br/>
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate void GLFWmonitorfun([NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor*")] nint monitor, [NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "int")] int evnt);
+	public unsafe delegate void GLFWmonitorfun([NativeName(NativeNameType.Param, "monitor")] [NativeName(NativeNameType.Type, "GLFWmonitor *")] nint monitor, [NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "int")] int evnt);
 
 	#endif
 
