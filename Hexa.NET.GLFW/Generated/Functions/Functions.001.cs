@@ -96,11 +96,32 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		public static GLFWwindowPtr CreateWindow(int width, int height, byte* title, GLFWmonitorPtr monitor, ref GLFWwindow share)
+		public static GLFWwindowPtr CreateWindow(int width, int height, string title, ref GLFWmonitor monitor, GLFWwindowPtr share)
 		{
-			fixed (GLFWwindow* pshare = &share)
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (title != null)
 			{
-				GLFWwindowPtr ret = CreateWindowNative(width, height, title, monitor, (GLFWwindow*)pshare);
+				pStrSize0 = Utils.GetByteCountUTF8(title);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(title, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (GLFWmonitor* pmonitor = &monitor)
+			{
+				GLFWwindowPtr ret = CreateWindowNative(width, height, pStr0, (GLFWmonitor*)pmonitor, (GLFWwindow*)share);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
 				return ret;
 			}
 		}
@@ -184,13 +205,101 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		public static GLFWwindowPtr CreateWindow(int width, int height, ref byte title, GLFWmonitorPtr monitor, ref GLFWwindow share)
+		public static GLFWwindowPtr CreateWindow(int width, int height, byte* title, GLFWmonitorPtr monitor, ref GLFWwindow share)
+		{
+			fixed (GLFWwindow* pshare = &share)
+			{
+				GLFWwindowPtr ret = CreateWindowNative(width, height, title, (GLFWmonitor*)monitor, (GLFWwindow*)pshare);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function creates a window and its associated OpenGL or OpenGL ES<br/>
+		/// context.  Most of the options controlling how the window and its context<br/>
+		/// should be created are specified with [window hints](<br/>
+		/// Successful creation does not change which context is current.  Before you<br/>
+		/// can use the newly created context, you need to<br/>
+		/// [make it current](<br/>
+		/// For information about the `share`<br/>
+		/// parameter, see <br/>
+		/// The created window, framebuffer and context may differ from what you<br/>
+		/// requested, as not all parameters and hints are<br/>
+		/// [hard constraints](<br/>
+		/// This includes the size of the<br/>
+		/// window, especially for full screen windows.  To query the actual attributes<br/>
+		/// of the created window, framebuffer and context, see <br/>
+		/// <br/>
+		/// and <br/>
+		/// To create a full screen window, you need to specify the monitor the window<br/>
+		/// will cover.  If no monitor is specified, the window will be windowed mode.<br/>
+		/// Unless you have a way for the user to choose a specific monitor, it is<br/>
+		/// recommended that you pick the primary monitor.  For more information on how<br/>
+		/// to query connected monitors, see <br/>
+		/// For full screen windows, the specified size becomes the resolution of the<br/>
+		/// window's _desired video mode_.  As long as a full screen window is not<br/>
+		/// iconified, the supported video mode most closely matching the desired video<br/>
+		/// mode is set for the specified monitor.  For more information about full<br/>
+		/// screen windows, including the creation of so called _windowed full screen_<br/>
+		/// or _borderless full screen_ windows, see <br/>
+		/// Once you have created the window, you can switch it between windowed and<br/>
+		/// full screen mode with <br/>
+		/// This will not affect its<br/>
+		/// OpenGL or OpenGL ES context.<br/>
+		/// By default, newly created windows use the placement recommended by the<br/>
+		/// window system.  To create the window at a specific position, set the <br/>
+		/// and <br/>
+		/// window hints before creation.  To<br/>
+		/// restore the default behavior, set either or both hints back to<br/>
+		/// `GLFW_ANY_POSITION`.<br/>
+		/// As long as at least one full screen window is not iconified, the screensaver<br/>
+		/// is prohibited from starting.<br/>
+		/// Window systems put limits on window sizes.  Very large or very small window<br/>
+		/// dimensions may be overridden by the window system on creation.  Check the<br/>
+		/// actual [size](<br/>
+		/// after creation.<br/>
+		/// The [swap interval](<br/>
+		/// is not set during window creation and<br/>
+		/// the initial value may vary depending on driver settings and defaults.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// and <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// [bundle-guide]: https://developer.apple.com/library/mac/documentation/CoreFoundation/Conceptual/CFBundles/<br/>
+		/// <br/>
+		/// [hidpi-guide]: https://developer.apple.com/library/mac/documentation/GraphicsAnimation/Conceptual/HighResolutionOSX/Explained/Explained.html<br/>
+		/// <br/>
+		/// <br/>
+		/// [libdecor]: https://gitlab.freedesktop.org/libdecor/libdecor<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static GLFWwindowPtr CreateWindow(int width, int height, in byte title, GLFWmonitorPtr monitor, ref GLFWwindow share)
 		{
 			fixed (byte* ptitle = &title)
 			{
 				fixed (GLFWwindow* pshare = &share)
 				{
-					GLFWwindowPtr ret = CreateWindowNative(width, height, (byte*)ptitle, monitor, (GLFWwindow*)pshare);
+					GLFWwindowPtr ret = CreateWindowNative(width, height, (byte*)ptitle, (GLFWmonitor*)monitor, (GLFWwindow*)pshare);
 					return ret;
 				}
 			}
@@ -281,7 +390,7 @@ namespace Hexa.NET.GLFW
 			{
 				fixed (GLFWwindow* pshare = &share)
 				{
-					GLFWwindowPtr ret = CreateWindowNative(width, height, (byte*)ptitle, monitor, (GLFWwindow*)pshare);
+					GLFWwindowPtr ret = CreateWindowNative(width, height, (byte*)ptitle, (GLFWmonitor*)monitor, (GLFWwindow*)pshare);
 					return ret;
 				}
 			}
@@ -387,7 +496,7 @@ namespace Hexa.NET.GLFW
 			}
 			fixed (GLFWwindow* pshare = &share)
 			{
-				GLFWwindowPtr ret = CreateWindowNative(width, height, pStr0, monitor, (GLFWwindow*)pshare);
+				GLFWwindowPtr ret = CreateWindowNative(width, height, pStr0, (GLFWmonitor*)monitor, (GLFWwindow*)pshare);
 				if (pStrSize0 >= Utils.MaxStackallocSize)
 				{
 					Utils.Free(pStr0);
@@ -566,7 +675,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		public static GLFWwindowPtr CreateWindow(int width, int height, ref byte title, ref GLFWmonitor monitor, ref GLFWwindow share)
+		public static GLFWwindowPtr CreateWindow(int width, int height, in byte title, ref GLFWmonitor monitor, ref GLFWwindow share)
 		{
 			fixed (byte* ptitle = &title)
 			{
@@ -839,7 +948,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void DestroyWindow(GLFWwindowPtr window)
 		{
-			DestroyWindowNative(window);
+			DestroyWindowNative((GLFWwindow*)window);
 		}
 
 		/// <summary>
@@ -910,7 +1019,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static int WindowShouldClose(GLFWwindowPtr window)
 		{
-			int ret = WindowShouldCloseNative(window);
+			int ret = WindowShouldCloseNative((GLFWwindow*)window);
 			return ret;
 		}
 
@@ -981,7 +1090,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void SetWindowShouldClose(GLFWwindowPtr window, int value)
 		{
-			SetWindowShouldCloseNative(window, value);
+			SetWindowShouldCloseNative((GLFWwindow*)window, value);
 		}
 
 		/// <summary>
@@ -1064,7 +1173,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static byte* GetWindowTitle(GLFWwindowPtr window)
 		{
-			byte* ret = GetWindowTitleNative(window);
+			byte* ret = GetWindowTitleNative((GLFWwindow*)window);
 			return ret;
 		}
 
@@ -1092,7 +1201,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static string GetWindowTitleS(GLFWwindowPtr window)
 		{
-			string ret = Utils.DecodeStringUTF8(GetWindowTitleNative(window));
+			string ret = Utils.DecodeStringUTF8(GetWindowTitleNative((GLFWwindow*)window));
 			return ret;
 		}
 
@@ -1202,7 +1311,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void SetWindowTitle(GLFWwindowPtr window, byte* title)
 		{
-			SetWindowTitleNative(window, title);
+			SetWindowTitleNative((GLFWwindow*)window, title);
 		}
 
 		/// <summary>
@@ -1245,11 +1354,11 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		public static void SetWindowTitle(GLFWwindowPtr window, ref byte title)
+		public static void SetWindowTitle(GLFWwindowPtr window, in byte title)
 		{
 			fixed (byte* ptitle = &title)
 			{
-				SetWindowTitleNative(window, (byte*)ptitle);
+				SetWindowTitleNative((GLFWwindow*)window, (byte*)ptitle);
 			}
 		}
 
@@ -1273,7 +1382,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (byte* ptitle = title)
 			{
-				SetWindowTitleNative(window, (byte*)ptitle);
+				SetWindowTitleNative((GLFWwindow*)window, (byte*)ptitle);
 			}
 		}
 
@@ -1312,7 +1421,7 @@ namespace Hexa.NET.GLFW
 				int pStrOffset0 = Utils.EncodeStringUTF8(title, pStr0, pStrSize0);
 				pStr0[pStrOffset0] = 0;
 			}
-			SetWindowTitleNative(window, pStr0);
+			SetWindowTitleNative((GLFWwindow*)window, pStr0);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
 				Utils.Free(pStr0);
@@ -1335,7 +1444,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		public static void SetWindowTitle(ref GLFWwindow window, ref byte title)
+		public static void SetWindowTitle(ref GLFWwindow window, in byte title)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1494,7 +1603,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void SetWindowIcon(GLFWwindowPtr window, int count, GLFWimagePtr images)
 		{
-			SetWindowIconNative(window, count, images);
+			SetWindowIconNative((GLFWwindow*)window, count, (GLFWimage*)images);
 		}
 
 		/// <summary>
@@ -1533,7 +1642,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
-				SetWindowIconNative((GLFWwindow*)pwindow, count, images);
+				SetWindowIconNative((GLFWwindow*)pwindow, count, (GLFWimage*)images);
 			}
 		}
 
@@ -1569,11 +1678,11 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		public static void SetWindowIcon(GLFWwindowPtr window, int count, ref GLFWimage images)
+		public static void SetWindowIcon(GLFWwindowPtr window, int count, in GLFWimage images)
 		{
 			fixed (GLFWimage* pimages = &images)
 			{
-				SetWindowIconNative(window, count, (GLFWimage*)pimages);
+				SetWindowIconNative((GLFWwindow*)window, count, (GLFWimage*)pimages);
 			}
 		}
 
@@ -1609,7 +1718,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		public static void SetWindowIcon(ref GLFWwindow window, int count, ref GLFWimage images)
+		public static void SetWindowIcon(ref GLFWwindow window, int count, in GLFWimage images)
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
@@ -1672,7 +1781,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void GetWindowPos(GLFWwindowPtr window, int* xpos, int* ypos)
 		{
-			GetWindowPosNative(window, xpos, ypos);
+			GetWindowPosNative((GLFWwindow*)window, xpos, ypos);
 		}
 
 		/// <summary>
@@ -1727,7 +1836,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (int* pxpos = &xpos)
 			{
-				GetWindowPosNative(window, (int*)pxpos, ypos);
+				GetWindowPosNative((GLFWwindow*)window, (int*)pxpos, ypos);
 			}
 		}
 
@@ -1786,7 +1895,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (int* pypos = &ypos)
 			{
-				GetWindowPosNative(window, xpos, (int*)pypos);
+				GetWindowPosNative((GLFWwindow*)window, xpos, (int*)pypos);
 			}
 		}
 
@@ -1847,7 +1956,7 @@ namespace Hexa.NET.GLFW
 			{
 				fixed (int* pypos = &ypos)
 				{
-					GetWindowPosNative(window, (int*)pxpos, (int*)pypos);
+					GetWindowPosNative((GLFWwindow*)window, (int*)pxpos, (int*)pypos);
 				}
 			}
 		}
@@ -1944,7 +2053,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void SetWindowPos(GLFWwindowPtr window, int xpos, int ypos)
 		{
-			SetWindowPosNative(window, xpos, ypos);
+			SetWindowPosNative((GLFWwindow*)window, xpos, ypos);
 		}
 
 		/// <summary>
@@ -2026,7 +2135,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void GetWindowSize(GLFWwindowPtr window, int* width, int* height)
 		{
-			GetWindowSizeNative(window, width, height);
+			GetWindowSizeNative((GLFWwindow*)window, width, height);
 		}
 
 		/// <summary>
@@ -2077,7 +2186,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (int* pwidth = &width)
 			{
-				GetWindowSizeNative(window, (int*)pwidth, height);
+				GetWindowSizeNative((GLFWwindow*)window, (int*)pwidth, height);
 			}
 		}
 
@@ -2132,7 +2241,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (int* pheight = &height)
 			{
-				GetWindowSizeNative(window, width, (int*)pheight);
+				GetWindowSizeNative((GLFWwindow*)window, width, (int*)pheight);
 			}
 		}
 
@@ -2189,7 +2298,7 @@ namespace Hexa.NET.GLFW
 			{
 				fixed (int* pheight = &height)
 				{
-					GetWindowSizeNative(window, (int*)pwidth, (int*)pheight);
+					GetWindowSizeNative((GLFWwindow*)window, (int*)pwidth, (int*)pheight);
 				}
 			}
 		}
@@ -2286,7 +2395,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void SetWindowSizeLimits(GLFWwindowPtr window, int minwidth, int minheight, int maxwidth, int maxheight)
 		{
-			SetWindowSizeLimitsNative(window, minwidth, minheight, maxwidth, maxheight);
+			SetWindowSizeLimitsNative((GLFWwindow*)window, minwidth, minheight, maxwidth, maxheight);
 		}
 
 		/// <summary>
@@ -2387,7 +2496,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void SetWindowAspectRatio(GLFWwindowPtr window, int numer, int denom)
 		{
-			SetWindowAspectRatioNative(window, numer, denom);
+			SetWindowAspectRatioNative((GLFWwindow*)window, numer, denom);
 		}
 
 		/// <summary>
@@ -2483,7 +2592,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void SetWindowSize(GLFWwindowPtr window, int width, int height)
 		{
-			SetWindowSizeNative(window, width, height);
+			SetWindowSizeNative((GLFWwindow*)window, width, height);
 		}
 
 		/// <summary>
@@ -2565,7 +2674,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void GetFramebufferSize(GLFWwindowPtr window, int* width, int* height)
 		{
-			GetFramebufferSizeNative(window, width, height);
+			GetFramebufferSizeNative((GLFWwindow*)window, width, height);
 		}
 
 		/// <summary>
@@ -2616,7 +2725,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (int* pwidth = &width)
 			{
-				GetFramebufferSizeNative(window, (int*)pwidth, height);
+				GetFramebufferSizeNative((GLFWwindow*)window, (int*)pwidth, height);
 			}
 		}
 
@@ -2671,7 +2780,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (int* pheight = &height)
 			{
-				GetFramebufferSizeNative(window, width, (int*)pheight);
+				GetFramebufferSizeNative((GLFWwindow*)window, width, (int*)pheight);
 			}
 		}
 
@@ -2728,7 +2837,7 @@ namespace Hexa.NET.GLFW
 			{
 				fixed (int* pheight = &height)
 				{
-					GetFramebufferSizeNative(window, (int*)pwidth, (int*)pheight);
+					GetFramebufferSizeNative((GLFWwindow*)window, (int*)pwidth, (int*)pheight);
 				}
 			}
 		}
@@ -2823,7 +2932,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void GetWindowFrameSize(GLFWwindowPtr window, int* left, int* top, int* right, int* bottom)
 		{
-			GetWindowFrameSizeNative(window, left, top, right, bottom);
+			GetWindowFrameSizeNative((GLFWwindow*)window, left, top, right, bottom);
 		}
 
 		/// <summary>
@@ -2884,7 +2993,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (int* pleft = &left)
 			{
-				GetWindowFrameSizeNative(window, (int*)pleft, top, right, bottom);
+				GetWindowFrameSizeNative((GLFWwindow*)window, (int*)pleft, top, right, bottom);
 			}
 		}
 
@@ -2949,7 +3058,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (int* ptop = &top)
 			{
-				GetWindowFrameSizeNative(window, left, (int*)ptop, right, bottom);
+				GetWindowFrameSizeNative((GLFWwindow*)window, left, (int*)ptop, right, bottom);
 			}
 		}
 
@@ -3016,7 +3125,7 @@ namespace Hexa.NET.GLFW
 			{
 				fixed (int* ptop = &top)
 				{
-					GetWindowFrameSizeNative(window, (int*)pleft, (int*)ptop, right, bottom);
+					GetWindowFrameSizeNative((GLFWwindow*)window, (int*)pleft, (int*)ptop, right, bottom);
 				}
 			}
 		}
@@ -3085,7 +3194,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (int* pright = &right)
 			{
-				GetWindowFrameSizeNative(window, left, top, (int*)pright, bottom);
+				GetWindowFrameSizeNative((GLFWwindow*)window, left, top, (int*)pright, bottom);
 			}
 		}
 
@@ -3152,7 +3261,7 @@ namespace Hexa.NET.GLFW
 			{
 				fixed (int* pright = &right)
 				{
-					GetWindowFrameSizeNative(window, (int*)pleft, top, (int*)pright, bottom);
+					GetWindowFrameSizeNative((GLFWwindow*)window, (int*)pleft, top, (int*)pright, bottom);
 				}
 			}
 		}
@@ -3223,7 +3332,7 @@ namespace Hexa.NET.GLFW
 			{
 				fixed (int* pright = &right)
 				{
-					GetWindowFrameSizeNative(window, left, (int*)ptop, (int*)pright, bottom);
+					GetWindowFrameSizeNative((GLFWwindow*)window, left, (int*)ptop, (int*)pright, bottom);
 				}
 			}
 		}
@@ -3296,7 +3405,7 @@ namespace Hexa.NET.GLFW
 				{
 					fixed (int* pright = &right)
 					{
-						GetWindowFrameSizeNative(window, (int*)pleft, (int*)ptop, (int*)pright, bottom);
+						GetWindowFrameSizeNative((GLFWwindow*)window, (int*)pleft, (int*)ptop, (int*)pright, bottom);
 					}
 				}
 			}
@@ -3369,7 +3478,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (int* pbottom = &bottom)
 			{
-				GetWindowFrameSizeNative(window, left, top, right, (int*)pbottom);
+				GetWindowFrameSizeNative((GLFWwindow*)window, left, top, right, (int*)pbottom);
 			}
 		}
 
@@ -3436,7 +3545,7 @@ namespace Hexa.NET.GLFW
 			{
 				fixed (int* pbottom = &bottom)
 				{
-					GetWindowFrameSizeNative(window, (int*)pleft, top, right, (int*)pbottom);
+					GetWindowFrameSizeNative((GLFWwindow*)window, (int*)pleft, top, right, (int*)pbottom);
 				}
 			}
 		}
@@ -3507,7 +3616,7 @@ namespace Hexa.NET.GLFW
 			{
 				fixed (int* pbottom = &bottom)
 				{
-					GetWindowFrameSizeNative(window, left, (int*)ptop, right, (int*)pbottom);
+					GetWindowFrameSizeNative((GLFWwindow*)window, left, (int*)ptop, right, (int*)pbottom);
 				}
 			}
 		}
@@ -3580,7 +3689,7 @@ namespace Hexa.NET.GLFW
 				{
 					fixed (int* pbottom = &bottom)
 					{
-						GetWindowFrameSizeNative(window, (int*)pleft, (int*)ptop, right, (int*)pbottom);
+						GetWindowFrameSizeNative((GLFWwindow*)window, (int*)pleft, (int*)ptop, right, (int*)pbottom);
 					}
 				}
 			}
@@ -3655,7 +3764,7 @@ namespace Hexa.NET.GLFW
 			{
 				fixed (int* pbottom = &bottom)
 				{
-					GetWindowFrameSizeNative(window, left, top, (int*)pright, (int*)pbottom);
+					GetWindowFrameSizeNative((GLFWwindow*)window, left, top, (int*)pright, (int*)pbottom);
 				}
 			}
 		}
@@ -3728,7 +3837,7 @@ namespace Hexa.NET.GLFW
 				{
 					fixed (int* pbottom = &bottom)
 					{
-						GetWindowFrameSizeNative(window, (int*)pleft, top, (int*)pright, (int*)pbottom);
+						GetWindowFrameSizeNative((GLFWwindow*)window, (int*)pleft, top, (int*)pright, (int*)pbottom);
 					}
 				}
 			}
@@ -3805,7 +3914,7 @@ namespace Hexa.NET.GLFW
 				{
 					fixed (int* pbottom = &bottom)
 					{
-						GetWindowFrameSizeNative(window, left, (int*)ptop, (int*)pright, (int*)pbottom);
+						GetWindowFrameSizeNative((GLFWwindow*)window, left, (int*)ptop, (int*)pright, (int*)pbottom);
 					}
 				}
 			}
@@ -3884,7 +3993,7 @@ namespace Hexa.NET.GLFW
 					{
 						fixed (int* pbottom = &bottom)
 						{
-							GetWindowFrameSizeNative(window, (int*)pleft, (int*)ptop, (int*)pright, (int*)pbottom);
+							GetWindowFrameSizeNative((GLFWwindow*)window, (int*)pleft, (int*)ptop, (int*)pright, (int*)pbottom);
 						}
 					}
 				}
@@ -3992,7 +4101,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void GetWindowContentScale(GLFWwindowPtr window, float* xscale, float* yscale)
 		{
-			GetWindowContentScaleNative(window, xscale, yscale);
+			GetWindowContentScaleNative((GLFWwindow*)window, xscale, yscale);
 		}
 
 		/// <summary>
@@ -4053,7 +4162,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (float* pxscale = &xscale)
 			{
-				GetWindowContentScaleNative(window, (float*)pxscale, yscale);
+				GetWindowContentScaleNative((GLFWwindow*)window, (float*)pxscale, yscale);
 			}
 		}
 
@@ -4118,7 +4227,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (float* pyscale = &yscale)
 			{
-				GetWindowContentScaleNative(window, xscale, (float*)pyscale);
+				GetWindowContentScaleNative((GLFWwindow*)window, xscale, (float*)pyscale);
 			}
 		}
 
@@ -4185,7 +4294,7 @@ namespace Hexa.NET.GLFW
 			{
 				fixed (float* pyscale = &yscale)
 				{
-					GetWindowContentScaleNative(window, (float*)pxscale, (float*)pyscale);
+					GetWindowContentScaleNative((GLFWwindow*)window, (float*)pxscale, (float*)pyscale);
 				}
 			}
 		}
@@ -4275,7 +4384,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static float GetWindowOpacity(GLFWwindowPtr window)
 		{
-			float ret = GetWindowOpacityNative(window);
+			float ret = GetWindowOpacityNative((GLFWwindow*)window);
 			return ret;
 		}
 
@@ -4362,7 +4471,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void SetWindowOpacity(GLFWwindowPtr window, float opacity)
 		{
-			SetWindowOpacityNative(window, opacity);
+			SetWindowOpacityNative((GLFWwindow*)window, opacity);
 		}
 
 		/// <summary>
@@ -4447,7 +4556,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void IconifyWindow(GLFWwindowPtr window)
 		{
-			IconifyWindowNative(window);
+			IconifyWindowNative((GLFWwindow*)window);
 		}
 
 		/// <summary>
@@ -4526,7 +4635,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void RestoreWindow(GLFWwindowPtr window)
 		{
-			RestoreWindowNative(window);
+			RestoreWindowNative((GLFWwindow*)window);
 		}
 
 		/// <summary>
@@ -4597,7 +4706,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void MaximizeWindow(GLFWwindowPtr window)
 		{
-			MaximizeWindowNative(window);
+			MaximizeWindowNative((GLFWwindow*)window);
 		}
 
 		/// <summary>
@@ -4679,7 +4788,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void ShowWindow(GLFWwindowPtr window)
 		{
-			ShowWindowNative(window);
+			ShowWindowNative((GLFWwindow*)window);
 		}
 
 		/// <summary>
@@ -4756,7 +4865,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void HideWindow(GLFWwindowPtr window)
 		{
-			HideWindowNative(window);
+			HideWindowNative((GLFWwindow*)window);
 		}
 
 		/// <summary>
@@ -4855,7 +4964,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void FocusWindow(GLFWwindowPtr window)
 		{
-			FocusWindowNative(window);
+			FocusWindowNative((GLFWwindow*)window);
 		}
 
 		/// <summary>
@@ -4923,101 +5032,6 @@ namespace Hexa.NET.GLFW
 			#else
 			((delegate* unmanaged[Cdecl]<nint, void>)funcTable[52])((nint)window);
 			#endif
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function requests user attention to the specified window.  On<br/>
-		/// platforms where this is not supported, attention is requested to the<br/>
-		/// application as a whole.<br/>
-		/// Once the user has given attention, usually by focusing the window or<br/>
-		/// application, the system will end the request automatically.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// and <br/>
-		/// <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static void RequestWindowAttention(GLFWwindowPtr window)
-		{
-			RequestWindowAttentionNative(window);
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function requests user attention to the specified window.  On<br/>
-		/// platforms where this is not supported, attention is requested to the<br/>
-		/// application as a whole.<br/>
-		/// Once the user has given attention, usually by focusing the window or<br/>
-		/// application, the system will end the request automatically.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// and <br/>
-		/// <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static void RequestWindowAttention(ref GLFWwindow window)
-		{
-			fixed (GLFWwindow* pwindow = &window)
-			{
-				RequestWindowAttentionNative((GLFWwindow*)pwindow);
-			}
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the handle of the monitor that the specified window is<br/>
-		/// in full screen on.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static GLFWmonitor* GetWindowMonitorNative(GLFWwindow* window)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, GLFWmonitor*>)funcTable[53])(window);
-			#else
-			return (GLFWmonitor*)((delegate* unmanaged[Cdecl]<nint, nint>)funcTable[53])((nint)window);
-			#endif
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the handle of the monitor that the specified window is<br/>
-		/// in full screen on.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static GLFWmonitorPtr GetWindowMonitor(GLFWwindowPtr window)
-		{
-			GLFWmonitorPtr ret = GetWindowMonitorNative(window);
-			return ret;
 		}
 	}
 }

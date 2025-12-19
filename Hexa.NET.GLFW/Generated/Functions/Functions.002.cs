@@ -19,6 +19,101 @@ namespace Hexa.NET.GLFW
 
 		/// <summary>
 		/// <br/>
+		/// This function requests user attention to the specified window.  On<br/>
+		/// platforms where this is not supported, attention is requested to the<br/>
+		/// application as a whole.<br/>
+		/// Once the user has given attention, usually by focusing the window or<br/>
+		/// application, the system will end the request automatically.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// and <br/>
+		/// <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static void RequestWindowAttention(GLFWwindowPtr window)
+		{
+			RequestWindowAttentionNative((GLFWwindow*)window);
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function requests user attention to the specified window.  On<br/>
+		/// platforms where this is not supported, attention is requested to the<br/>
+		/// application as a whole.<br/>
+		/// Once the user has given attention, usually by focusing the window or<br/>
+		/// application, the system will end the request automatically.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// and <br/>
+		/// <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static void RequestWindowAttention(ref GLFWwindow window)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				RequestWindowAttentionNative((GLFWwindow*)pwindow);
+			}
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the handle of the monitor that the specified window is<br/>
+		/// in full screen on.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		internal static GLFWmonitor* GetWindowMonitorNative(GLFWwindow* window)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, GLFWmonitor*>)funcTable[53])(window);
+			#else
+			return (GLFWmonitor*)((delegate* unmanaged[Cdecl]<nint, nint>)funcTable[53])((nint)window);
+			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function returns the handle of the monitor that the specified window is<br/>
+		/// in full screen on.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static GLFWmonitorPtr GetWindowMonitor(GLFWwindowPtr window)
+		{
+			GLFWmonitorPtr ret = GetWindowMonitorNative((GLFWwindow*)window);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
 		/// This function returns the handle of the monitor that the specified window is<br/>
 		/// in full screen on.<br/>
 		/// <br/>
@@ -108,7 +203,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void SetWindowMonitor(GLFWwindowPtr window, GLFWmonitorPtr monitor, int xpos, int ypos, int width, int height, int refreshRate)
 		{
-			SetWindowMonitorNative(window, monitor, xpos, ypos, width, height, refreshRate);
+			SetWindowMonitorNative((GLFWwindow*)window, (GLFWmonitor*)monitor, xpos, ypos, width, height, refreshRate);
 		}
 
 		/// <summary>
@@ -143,7 +238,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
-				SetWindowMonitorNative((GLFWwindow*)pwindow, monitor, xpos, ypos, width, height, refreshRate);
+				SetWindowMonitorNative((GLFWwindow*)pwindow, (GLFWmonitor*)monitor, xpos, ypos, width, height, refreshRate);
 			}
 		}
 
@@ -179,7 +274,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (GLFWmonitor* pmonitor = &monitor)
 			{
-				SetWindowMonitorNative(window, (GLFWmonitor*)pmonitor, xpos, ypos, width, height, refreshRate);
+				SetWindowMonitorNative((GLFWwindow*)window, (GLFWmonitor*)pmonitor, xpos, ypos, width, height, refreshRate);
 			}
 		}
 
@@ -272,7 +367,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static int GetWindowAttrib(GLFWwindowPtr window, int attrib)
 		{
-			int ret = GetWindowAttribNative(window, attrib);
+			int ret = GetWindowAttribNative((GLFWwindow*)window, attrib);
 			return ret;
 		}
 
@@ -378,7 +473,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void SetWindowAttrib(GLFWwindowPtr window, int attrib, int value)
 		{
-			SetWindowAttribNative(window, attrib, value);
+			SetWindowAttribNative((GLFWwindow*)window, attrib, value);
 		}
 
 		/// <summary>
@@ -464,7 +559,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void SetWindowUserPointer(GLFWwindowPtr window, void* pointer)
 		{
-			SetWindowUserPointerNative(window, pointer);
+			SetWindowUserPointerNative((GLFWwindow*)window, pointer);
 		}
 
 		/// <summary>
@@ -488,6 +583,51 @@ namespace Hexa.NET.GLFW
 			fixed (GLFWwindow* pwindow = &window)
 			{
 				SetWindowUserPointerNative((GLFWwindow*)pwindow, pointer);
+			}
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the user-defined pointer of the specified window.  The<br/>
+		/// current value is retained until the window is destroyed.  The initial value<br/>
+		/// is `NULL`.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function may be called from any thread.  Access is not<br/>
+		/// synchronized.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static void SetWindowUserPointer(GLFWwindowPtr window, nint pointer)
+		{
+			SetWindowUserPointerNative((GLFWwindow*)window, (void*)pointer);
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the user-defined pointer of the specified window.  The<br/>
+		/// current value is retained until the window is destroyed.  The initial value<br/>
+		/// is `NULL`.<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function may be called from any thread.  Access is not<br/>
+		/// synchronized.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static void SetWindowUserPointer(ref GLFWwindow window, nint pointer)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				SetWindowUserPointerNative((GLFWwindow*)pwindow, (void*)pointer);
 			}
 		}
 
@@ -533,7 +673,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void* GetWindowUserPointer(GLFWwindowPtr window)
 		{
-			void* ret = GetWindowUserPointerNative(window);
+			void* ret = GetWindowUserPointerNative((GLFWwindow*)window);
 			return ret;
 		}
 
@@ -583,13 +723,70 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, int, int, void> SetWindowPosCallbackNative(GLFWwindow* window, GLFWwindowposfun callback)
+		internal static delegate*<GLFWwindow*, int, int, void> SetWindowPosCallbackNative(GLFWwindow* window, delegate*<GLFWwindow*, int, int, void> callback)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, int, void>, delegate*<GLFWwindow*, int, int, void>>)funcTable[59])(window, (delegate*<GLFWwindow*, int, int, void>)Utils.GetFunctionPointerForDelegate(callback));
+			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, int, void>, delegate*<GLFWwindow*, int, int, void>>)funcTable[59])(window, callback);
 			#else
-			return (delegate*<GLFWwindow*, int, int, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[59])((nint)window, (nint)Utils.GetFunctionPointerForDelegate(callback));
+			return (delegate*<GLFWwindow*, int, int, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[59])((nint)window, (nint)callback);
 			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the position callback of the specified window, which is<br/>
+		/// called when the window is moved.  The callback is provided with the<br/>
+		/// position, in screen coordinates, of the upper-left corner of the content<br/>
+		/// area of the window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, int, int, void> SetWindowPosCallback(GLFWwindowPtr window, delegate*<GLFWwindow*, int, int, void> callback)
+		{
+			delegate*<GLFWwindow*, int, int, void> ret = SetWindowPosCallbackNative((GLFWwindow*)window, callback);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the position callback of the specified window, which is<br/>
+		/// called when the window is moved.  The callback is provided with the<br/>
+		/// position, in screen coordinates, of the upper-left corner of the content<br/>
+		/// area of the window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, int, int, void> SetWindowPosCallback(ref GLFWwindow window, delegate*<GLFWwindow*, int, int, void> callback)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				delegate*<GLFWwindow*, int, int, void> ret = SetWindowPosCallbackNative((GLFWwindow*)pwindow, callback);
+				return ret;
+			}
 		}
 
 		/// <summary>
@@ -615,7 +812,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static delegate*<GLFWwindow*, int, int, void> SetWindowPosCallback(GLFWwindowPtr window, GLFWwindowposfun callback)
 		{
-			delegate*<GLFWwindow*, int, int, void> ret = SetWindowPosCallbackNative(window, callback);
+			delegate*<GLFWwindow*, int, int, void> ret = SetWindowPosCallbackNative((GLFWwindow*)window, (delegate*<GLFWwindow*, int, int, void>)Utils.GetFunctionPointerForDelegate(callback));
 			return ret;
 		}
 
@@ -644,7 +841,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
-				delegate*<GLFWwindow*, int, int, void> ret = SetWindowPosCallbackNative((GLFWwindow*)pwindow, callback);
+				delegate*<GLFWwindow*, int, int, void> ret = SetWindowPosCallbackNative((GLFWwindow*)pwindow, (delegate*<GLFWwindow*, int, int, void>)Utils.GetFunctionPointerForDelegate(callback));
 				return ret;
 			}
 		}
@@ -669,13 +866,66 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, int, int, void> SetWindowSizeCallbackNative(GLFWwindow* window, GLFWwindowsizefun callback)
+		internal static delegate*<GLFWwindow*, int, int, void> SetWindowSizeCallbackNative(GLFWwindow* window, delegate*<GLFWwindow*, int, int, void> callback)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, int, void>, delegate*<GLFWwindow*, int, int, void>>)funcTable[60])(window, (delegate*<GLFWwindow*, int, int, void>)Utils.GetFunctionPointerForDelegate(callback));
+			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, int, void>, delegate*<GLFWwindow*, int, int, void>>)funcTable[60])(window, callback);
 			#else
-			return (delegate*<GLFWwindow*, int, int, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[60])((nint)window, (nint)Utils.GetFunctionPointerForDelegate(callback));
+			return (delegate*<GLFWwindow*, int, int, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[60])((nint)window, (nint)callback);
 			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the size callback of the specified window, which is<br/>
+		/// called when the window is resized.  The callback is provided with the size,<br/>
+		/// in screen coordinates, of the content area of the window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, int, int, void> SetWindowSizeCallback(GLFWwindowPtr window, delegate*<GLFWwindow*, int, int, void> callback)
+		{
+			delegate*<GLFWwindow*, int, int, void> ret = SetWindowSizeCallbackNative((GLFWwindow*)window, callback);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the size callback of the specified window, which is<br/>
+		/// called when the window is resized.  The callback is provided with the size,<br/>
+		/// in screen coordinates, of the content area of the window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, int, int, void> SetWindowSizeCallback(ref GLFWwindow window, delegate*<GLFWwindow*, int, int, void> callback)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				delegate*<GLFWwindow*, int, int, void> ret = SetWindowSizeCallbackNative((GLFWwindow*)pwindow, callback);
+				return ret;
+			}
 		}
 
 		/// <summary>
@@ -699,7 +949,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static delegate*<GLFWwindow*, int, int, void> SetWindowSizeCallback(GLFWwindowPtr window, GLFWwindowsizefun callback)
 		{
-			delegate*<GLFWwindow*, int, int, void> ret = SetWindowSizeCallbackNative(window, callback);
+			delegate*<GLFWwindow*, int, int, void> ret = SetWindowSizeCallbackNative((GLFWwindow*)window, (delegate*<GLFWwindow*, int, int, void>)Utils.GetFunctionPointerForDelegate(callback));
 			return ret;
 		}
 
@@ -726,7 +976,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
-				delegate*<GLFWwindow*, int, int, void> ret = SetWindowSizeCallbackNative((GLFWwindow*)pwindow, callback);
+				delegate*<GLFWwindow*, int, int, void> ret = SetWindowSizeCallbackNative((GLFWwindow*)pwindow, (delegate*<GLFWwindow*, int, int, void>)Utils.GetFunctionPointerForDelegate(callback));
 				return ret;
 			}
 		}
@@ -755,13 +1005,74 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, void> SetWindowCloseCallbackNative(GLFWwindow* window, GLFWwindowclosefun callback)
+		internal static delegate*<GLFWwindow*, void> SetWindowCloseCallbackNative(GLFWwindow* window, delegate*<GLFWwindow*, void> callback)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, void>, delegate*<GLFWwindow*, void>>)funcTable[61])(window, (delegate*<GLFWwindow*, void>)Utils.GetFunctionPointerForDelegate(callback));
+			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, void>, delegate*<GLFWwindow*, void>>)funcTable[61])(window, callback);
 			#else
-			return (delegate*<GLFWwindow*, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[61])((nint)window, (nint)Utils.GetFunctionPointerForDelegate(callback));
+			return (delegate*<GLFWwindow*, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[61])((nint)window, (nint)callback);
 			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the close callback of the specified window, which is<br/>
+		/// called when the user attempts to close the window, for example by clicking<br/>
+		/// the close widget in the title bar.<br/>
+		/// The close flag is set before this callback is called, but you can modify it<br/>
+		/// at any time with <br/>
+		/// The close callback is not triggered by <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, void> SetWindowCloseCallback(GLFWwindowPtr window, delegate*<GLFWwindow*, void> callback)
+		{
+			delegate*<GLFWwindow*, void> ret = SetWindowCloseCallbackNative((GLFWwindow*)window, callback);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the close callback of the specified window, which is<br/>
+		/// called when the user attempts to close the window, for example by clicking<br/>
+		/// the close widget in the title bar.<br/>
+		/// The close flag is set before this callback is called, but you can modify it<br/>
+		/// at any time with <br/>
+		/// The close callback is not triggered by <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, void> SetWindowCloseCallback(ref GLFWwindow window, delegate*<GLFWwindow*, void> callback)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				delegate*<GLFWwindow*, void> ret = SetWindowCloseCallbackNative((GLFWwindow*)pwindow, callback);
+				return ret;
+			}
 		}
 
 		/// <summary>
@@ -789,7 +1100,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static delegate*<GLFWwindow*, void> SetWindowCloseCallback(GLFWwindowPtr window, GLFWwindowclosefun callback)
 		{
-			delegate*<GLFWwindow*, void> ret = SetWindowCloseCallbackNative(window, callback);
+			delegate*<GLFWwindow*, void> ret = SetWindowCloseCallbackNative((GLFWwindow*)window, (delegate*<GLFWwindow*, void>)Utils.GetFunctionPointerForDelegate(callback));
 			return ret;
 		}
 
@@ -820,7 +1131,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
-				delegate*<GLFWwindow*, void> ret = SetWindowCloseCallbackNative((GLFWwindow*)pwindow, callback);
+				delegate*<GLFWwindow*, void> ret = SetWindowCloseCallbackNative((GLFWwindow*)pwindow, (delegate*<GLFWwindow*, void>)Utils.GetFunctionPointerForDelegate(callback));
 				return ret;
 			}
 		}
@@ -848,13 +1159,72 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, void> SetWindowRefreshCallbackNative(GLFWwindow* window, GLFWwindowrefreshfun callback)
+		internal static delegate*<GLFWwindow*, void> SetWindowRefreshCallbackNative(GLFWwindow* window, delegate*<GLFWwindow*, void> callback)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, void>, delegate*<GLFWwindow*, void>>)funcTable[62])(window, (delegate*<GLFWwindow*, void>)Utils.GetFunctionPointerForDelegate(callback));
+			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, void>, delegate*<GLFWwindow*, void>>)funcTable[62])(window, callback);
 			#else
-			return (delegate*<GLFWwindow*, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[62])((nint)window, (nint)Utils.GetFunctionPointerForDelegate(callback));
+			return (delegate*<GLFWwindow*, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[62])((nint)window, (nint)callback);
 			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the refresh callback of the specified window, which is<br/>
+		/// called when the content area of the window needs to be redrawn, for example<br/>
+		/// if the window has been exposed after having been covered by another window.<br/>
+		/// On compositing window systems such as Aero, Compiz, Aqua or Wayland, where<br/>
+		/// the window contents are saved off-screen, this callback may be called only<br/>
+		/// very infrequently or never at all.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, void> SetWindowRefreshCallback(GLFWwindowPtr window, delegate*<GLFWwindow*, void> callback)
+		{
+			delegate*<GLFWwindow*, void> ret = SetWindowRefreshCallbackNative((GLFWwindow*)window, callback);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the refresh callback of the specified window, which is<br/>
+		/// called when the content area of the window needs to be redrawn, for example<br/>
+		/// if the window has been exposed after having been covered by another window.<br/>
+		/// On compositing window systems such as Aero, Compiz, Aqua or Wayland, where<br/>
+		/// the window contents are saved off-screen, this callback may be called only<br/>
+		/// very infrequently or never at all.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, void> SetWindowRefreshCallback(ref GLFWwindow window, delegate*<GLFWwindow*, void> callback)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				delegate*<GLFWwindow*, void> ret = SetWindowRefreshCallbackNative((GLFWwindow*)pwindow, callback);
+				return ret;
+			}
 		}
 
 		/// <summary>
@@ -881,7 +1251,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static delegate*<GLFWwindow*, void> SetWindowRefreshCallback(GLFWwindowPtr window, GLFWwindowrefreshfun callback)
 		{
-			delegate*<GLFWwindow*, void> ret = SetWindowRefreshCallbackNative(window, callback);
+			delegate*<GLFWwindow*, void> ret = SetWindowRefreshCallbackNative((GLFWwindow*)window, (delegate*<GLFWwindow*, void>)Utils.GetFunctionPointerForDelegate(callback));
 			return ret;
 		}
 
@@ -911,7 +1281,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
-				delegate*<GLFWwindow*, void> ret = SetWindowRefreshCallbackNative((GLFWwindow*)pwindow, callback);
+				delegate*<GLFWwindow*, void> ret = SetWindowRefreshCallbackNative((GLFWwindow*)pwindow, (delegate*<GLFWwindow*, void>)Utils.GetFunctionPointerForDelegate(callback));
 				return ret;
 			}
 		}
@@ -939,13 +1309,72 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, int, void> SetWindowFocusCallbackNative(GLFWwindow* window, GLFWwindowfocusfun callback)
+		internal static delegate*<GLFWwindow*, int, void> SetWindowFocusCallbackNative(GLFWwindow* window, delegate*<GLFWwindow*, int, void> callback)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, void>, delegate*<GLFWwindow*, int, void>>)funcTable[63])(window, (delegate*<GLFWwindow*, int, void>)Utils.GetFunctionPointerForDelegate(callback));
+			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, void>, delegate*<GLFWwindow*, int, void>>)funcTable[63])(window, callback);
 			#else
-			return (delegate*<GLFWwindow*, int, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[63])((nint)window, (nint)Utils.GetFunctionPointerForDelegate(callback));
+			return (delegate*<GLFWwindow*, int, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[63])((nint)window, (nint)callback);
 			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the focus callback of the specified window, which is<br/>
+		/// called when the window gains or loses input focus.<br/>
+		/// After the focus callback is called for a window that lost input focus,<br/>
+		/// synthetic key and mouse button release events will be generated for all such<br/>
+		/// that had been pressed.  For more information, see <br/>
+		/// and <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, int, void> SetWindowFocusCallback(GLFWwindowPtr window, delegate*<GLFWwindow*, int, void> callback)
+		{
+			delegate*<GLFWwindow*, int, void> ret = SetWindowFocusCallbackNative((GLFWwindow*)window, callback);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the focus callback of the specified window, which is<br/>
+		/// called when the window gains or loses input focus.<br/>
+		/// After the focus callback is called for a window that lost input focus,<br/>
+		/// synthetic key and mouse button release events will be generated for all such<br/>
+		/// that had been pressed.  For more information, see <br/>
+		/// and <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, int, void> SetWindowFocusCallback(ref GLFWwindow window, delegate*<GLFWwindow*, int, void> callback)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				delegate*<GLFWwindow*, int, void> ret = SetWindowFocusCallbackNative((GLFWwindow*)pwindow, callback);
+				return ret;
+			}
 		}
 
 		/// <summary>
@@ -972,7 +1401,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static delegate*<GLFWwindow*, int, void> SetWindowFocusCallback(GLFWwindowPtr window, GLFWwindowfocusfun callback)
 		{
-			delegate*<GLFWwindow*, int, void> ret = SetWindowFocusCallbackNative(window, callback);
+			delegate*<GLFWwindow*, int, void> ret = SetWindowFocusCallbackNative((GLFWwindow*)window, (delegate*<GLFWwindow*, int, void>)Utils.GetFunctionPointerForDelegate(callback));
 			return ret;
 		}
 
@@ -1002,7 +1431,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
-				delegate*<GLFWwindow*, int, void> ret = SetWindowFocusCallbackNative((GLFWwindow*)pwindow, callback);
+				delegate*<GLFWwindow*, int, void> ret = SetWindowFocusCallbackNative((GLFWwindow*)pwindow, (delegate*<GLFWwindow*, int, void>)Utils.GetFunctionPointerForDelegate(callback));
 				return ret;
 			}
 		}
@@ -1026,13 +1455,64 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, int, void> SetWindowIconifyCallbackNative(GLFWwindow* window, GLFWwindowiconifyfun callback)
+		internal static delegate*<GLFWwindow*, int, void> SetWindowIconifyCallbackNative(GLFWwindow* window, delegate*<GLFWwindow*, int, void> callback)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, void>, delegate*<GLFWwindow*, int, void>>)funcTable[64])(window, (delegate*<GLFWwindow*, int, void>)Utils.GetFunctionPointerForDelegate(callback));
+			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, void>, delegate*<GLFWwindow*, int, void>>)funcTable[64])(window, callback);
 			#else
-			return (delegate*<GLFWwindow*, int, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[64])((nint)window, (nint)Utils.GetFunctionPointerForDelegate(callback));
+			return (delegate*<GLFWwindow*, int, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[64])((nint)window, (nint)callback);
 			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the iconification callback of the specified window, which<br/>
+		/// is called when the window is iconified or restored.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, int, void> SetWindowIconifyCallback(GLFWwindowPtr window, delegate*<GLFWwindow*, int, void> callback)
+		{
+			delegate*<GLFWwindow*, int, void> ret = SetWindowIconifyCallbackNative((GLFWwindow*)window, callback);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the iconification callback of the specified window, which<br/>
+		/// is called when the window is iconified or restored.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, int, void> SetWindowIconifyCallback(ref GLFWwindow window, delegate*<GLFWwindow*, int, void> callback)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				delegate*<GLFWwindow*, int, void> ret = SetWindowIconifyCallbackNative((GLFWwindow*)pwindow, callback);
+				return ret;
+			}
 		}
 
 		/// <summary>
@@ -1055,7 +1535,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static delegate*<GLFWwindow*, int, void> SetWindowIconifyCallback(GLFWwindowPtr window, GLFWwindowiconifyfun callback)
 		{
-			delegate*<GLFWwindow*, int, void> ret = SetWindowIconifyCallbackNative(window, callback);
+			delegate*<GLFWwindow*, int, void> ret = SetWindowIconifyCallbackNative((GLFWwindow*)window, (delegate*<GLFWwindow*, int, void>)Utils.GetFunctionPointerForDelegate(callback));
 			return ret;
 		}
 
@@ -1081,7 +1561,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
-				delegate*<GLFWwindow*, int, void> ret = SetWindowIconifyCallbackNative((GLFWwindow*)pwindow, callback);
+				delegate*<GLFWwindow*, int, void> ret = SetWindowIconifyCallbackNative((GLFWwindow*)pwindow, (delegate*<GLFWwindow*, int, void>)Utils.GetFunctionPointerForDelegate(callback));
 				return ret;
 			}
 		}
@@ -1105,13 +1585,64 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, int, void> SetWindowMaximizeCallbackNative(GLFWwindow* window, GLFWwindowmaximizefun callback)
+		internal static delegate*<GLFWwindow*, int, void> SetWindowMaximizeCallbackNative(GLFWwindow* window, delegate*<GLFWwindow*, int, void> callback)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, void>, delegate*<GLFWwindow*, int, void>>)funcTable[65])(window, (delegate*<GLFWwindow*, int, void>)Utils.GetFunctionPointerForDelegate(callback));
+			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, void>, delegate*<GLFWwindow*, int, void>>)funcTable[65])(window, callback);
 			#else
-			return (delegate*<GLFWwindow*, int, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[65])((nint)window, (nint)Utils.GetFunctionPointerForDelegate(callback));
+			return (delegate*<GLFWwindow*, int, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[65])((nint)window, (nint)callback);
 			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the maximization callback of the specified window, which<br/>
+		/// is called when the window is maximized or restored.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, int, void> SetWindowMaximizeCallback(GLFWwindowPtr window, delegate*<GLFWwindow*, int, void> callback)
+		{
+			delegate*<GLFWwindow*, int, void> ret = SetWindowMaximizeCallbackNative((GLFWwindow*)window, callback);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the maximization callback of the specified window, which<br/>
+		/// is called when the window is maximized or restored.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, int, void> SetWindowMaximizeCallback(ref GLFWwindow window, delegate*<GLFWwindow*, int, void> callback)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				delegate*<GLFWwindow*, int, void> ret = SetWindowMaximizeCallbackNative((GLFWwindow*)pwindow, callback);
+				return ret;
+			}
 		}
 
 		/// <summary>
@@ -1134,7 +1665,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static delegate*<GLFWwindow*, int, void> SetWindowMaximizeCallback(GLFWwindowPtr window, GLFWwindowmaximizefun callback)
 		{
-			delegate*<GLFWwindow*, int, void> ret = SetWindowMaximizeCallbackNative(window, callback);
+			delegate*<GLFWwindow*, int, void> ret = SetWindowMaximizeCallbackNative((GLFWwindow*)window, (delegate*<GLFWwindow*, int, void>)Utils.GetFunctionPointerForDelegate(callback));
 			return ret;
 		}
 
@@ -1160,7 +1691,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
-				delegate*<GLFWwindow*, int, void> ret = SetWindowMaximizeCallbackNative((GLFWwindow*)pwindow, callback);
+				delegate*<GLFWwindow*, int, void> ret = SetWindowMaximizeCallbackNative((GLFWwindow*)pwindow, (delegate*<GLFWwindow*, int, void>)Utils.GetFunctionPointerForDelegate(callback));
 				return ret;
 			}
 		}
@@ -1184,13 +1715,64 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, int, int, void> SetFramebufferSizeCallbackNative(GLFWwindow* window, GLFWframebuffersizefun callback)
+		internal static delegate*<GLFWwindow*, int, int, void> SetFramebufferSizeCallbackNative(GLFWwindow* window, delegate*<GLFWwindow*, int, int, void> callback)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, int, void>, delegate*<GLFWwindow*, int, int, void>>)funcTable[66])(window, (delegate*<GLFWwindow*, int, int, void>)Utils.GetFunctionPointerForDelegate(callback));
+			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, int, void>, delegate*<GLFWwindow*, int, int, void>>)funcTable[66])(window, callback);
 			#else
-			return (delegate*<GLFWwindow*, int, int, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[66])((nint)window, (nint)Utils.GetFunctionPointerForDelegate(callback));
+			return (delegate*<GLFWwindow*, int, int, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[66])((nint)window, (nint)callback);
 			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the framebuffer resize callback of the specified window,<br/>
+		/// which is called when the framebuffer of the specified window is resized.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, int, int, void> SetFramebufferSizeCallback(GLFWwindowPtr window, delegate*<GLFWwindow*, int, int, void> callback)
+		{
+			delegate*<GLFWwindow*, int, int, void> ret = SetFramebufferSizeCallbackNative((GLFWwindow*)window, callback);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the framebuffer resize callback of the specified window,<br/>
+		/// which is called when the framebuffer of the specified window is resized.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, int, int, void> SetFramebufferSizeCallback(ref GLFWwindow window, delegate*<GLFWwindow*, int, int, void> callback)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				delegate*<GLFWwindow*, int, int, void> ret = SetFramebufferSizeCallbackNative((GLFWwindow*)pwindow, callback);
+				return ret;
+			}
 		}
 
 		/// <summary>
@@ -1213,7 +1795,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static delegate*<GLFWwindow*, int, int, void> SetFramebufferSizeCallback(GLFWwindowPtr window, GLFWframebuffersizefun callback)
 		{
-			delegate*<GLFWwindow*, int, int, void> ret = SetFramebufferSizeCallbackNative(window, callback);
+			delegate*<GLFWwindow*, int, int, void> ret = SetFramebufferSizeCallbackNative((GLFWwindow*)window, (delegate*<GLFWwindow*, int, int, void>)Utils.GetFunctionPointerForDelegate(callback));
 			return ret;
 		}
 
@@ -1239,7 +1821,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
-				delegate*<GLFWwindow*, int, int, void> ret = SetFramebufferSizeCallbackNative((GLFWwindow*)pwindow, callback);
+				delegate*<GLFWwindow*, int, int, void> ret = SetFramebufferSizeCallbackNative((GLFWwindow*)pwindow, (delegate*<GLFWwindow*, int, int, void>)Utils.GetFunctionPointerForDelegate(callback));
 				return ret;
 			}
 		}
@@ -1263,13 +1845,64 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, float, float, void> SetWindowContentScaleCallbackNative(GLFWwindow* window, GLFWwindowcontentscalefun callback)
+		internal static delegate*<GLFWwindow*, float, float, void> SetWindowContentScaleCallbackNative(GLFWwindow* window, delegate*<GLFWwindow*, float, float, void> callback)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, float, float, void>, delegate*<GLFWwindow*, float, float, void>>)funcTable[67])(window, (delegate*<GLFWwindow*, float, float, void>)Utils.GetFunctionPointerForDelegate(callback));
+			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, float, float, void>, delegate*<GLFWwindow*, float, float, void>>)funcTable[67])(window, callback);
 			#else
-			return (delegate*<GLFWwindow*, float, float, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[67])((nint)window, (nint)Utils.GetFunctionPointerForDelegate(callback));
+			return (delegate*<GLFWwindow*, float, float, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[67])((nint)window, (nint)callback);
 			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the window content scale callback of the specified window,<br/>
+		/// which is called when the content scale of the specified window changes.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, float, float, void> SetWindowContentScaleCallback(GLFWwindowPtr window, delegate*<GLFWwindow*, float, float, void> callback)
+		{
+			delegate*<GLFWwindow*, float, float, void> ret = SetWindowContentScaleCallbackNative((GLFWwindow*)window, callback);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the window content scale callback of the specified window,<br/>
+		/// which is called when the content scale of the specified window changes.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, float, float, void> SetWindowContentScaleCallback(ref GLFWwindow window, delegate*<GLFWwindow*, float, float, void> callback)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				delegate*<GLFWwindow*, float, float, void> ret = SetWindowContentScaleCallbackNative((GLFWwindow*)pwindow, callback);
+				return ret;
+			}
 		}
 
 		/// <summary>
@@ -1292,7 +1925,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static delegate*<GLFWwindow*, float, float, void> SetWindowContentScaleCallback(GLFWwindowPtr window, GLFWwindowcontentscalefun callback)
 		{
-			delegate*<GLFWwindow*, float, float, void> ret = SetWindowContentScaleCallbackNative(window, callback);
+			delegate*<GLFWwindow*, float, float, void> ret = SetWindowContentScaleCallbackNative((GLFWwindow*)window, (delegate*<GLFWwindow*, float, float, void>)Utils.GetFunctionPointerForDelegate(callback));
 			return ret;
 		}
 
@@ -1318,7 +1951,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
-				delegate*<GLFWwindow*, float, float, void> ret = SetWindowContentScaleCallbackNative((GLFWwindow*)pwindow, callback);
+				delegate*<GLFWwindow*, float, float, void> ret = SetWindowContentScaleCallbackNative((GLFWwindow*)pwindow, (delegate*<GLFWwindow*, float, float, void>)Utils.GetFunctionPointerForDelegate(callback));
 				return ret;
 			}
 		}
@@ -1679,7 +2312,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static int GetInputMode(GLFWwindowPtr window, int mode)
 		{
-			int ret = GetInputModeNative(window, mode);
+			int ret = GetInputModeNative((GLFWwindow*)window, mode);
 			return ret;
 		}
 
@@ -1852,7 +2485,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void SetInputMode(GLFWwindowPtr window, int mode, int value)
 		{
-			SetInputModeNative(window, mode, value);
+			SetInputModeNative((GLFWwindow*)window, mode, value);
 		}
 
 		/// <summary>
@@ -2305,7 +2938,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static int GetKey(GLFWwindowPtr window, int key)
 		{
-			int ret = GetKeyNative(window, key);
+			int ret = GetKeyNative((GLFWwindow*)window, key);
 			return ret;
 		}
 
@@ -2403,7 +3036,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static int GetMouseButton(GLFWwindowPtr window, int button)
 		{
-			int ret = GetMouseButtonNative(window, button);
+			int ret = GetMouseButtonNative((GLFWwindow*)window, button);
 			return ret;
 		}
 
@@ -2499,7 +3132,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void GetCursorPos(GLFWwindowPtr window, double* xpos, double* ypos)
 		{
-			GetCursorPosNative(window, xpos, ypos);
+			GetCursorPosNative((GLFWwindow*)window, xpos, ypos);
 		}
 
 		/// <summary>
@@ -2562,7 +3195,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (double* pxpos = &xpos)
 			{
-				GetCursorPosNative(window, (double*)pxpos, ypos);
+				GetCursorPosNative((GLFWwindow*)window, (double*)pxpos, ypos);
 			}
 		}
 
@@ -2629,7 +3262,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (double* pypos = &ypos)
 			{
-				GetCursorPosNative(window, xpos, (double*)pypos);
+				GetCursorPosNative((GLFWwindow*)window, xpos, (double*)pypos);
 			}
 		}
 
@@ -2698,7 +3331,7 @@ namespace Hexa.NET.GLFW
 			{
 				fixed (double* pypos = &ypos)
 				{
-					GetCursorPosNative(window, (double*)pxpos, (double*)pypos);
+					GetCursorPosNative((GLFWwindow*)window, (double*)pxpos, (double*)pypos);
 				}
 			}
 		}
@@ -2809,7 +3442,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void SetCursorPos(GLFWwindowPtr window, double xpos, double ypos)
 		{
-			SetCursorPosNative(window, xpos, ypos);
+			SetCursorPosNative((GLFWwindow*)window, xpos, ypos);
 		}
 
 		/// <summary>
@@ -2912,7 +3545,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static GLFWcursorPtr CreateCursor(GLFWimagePtr image, int xhot, int yhot)
 		{
-			GLFWcursorPtr ret = CreateCursorNative(image, xhot, yhot);
+			GLFWcursorPtr ret = CreateCursorNative((GLFWimage*)image, xhot, yhot);
 			return ret;
 		}
 
@@ -2942,7 +3575,7 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		public static GLFWcursorPtr CreateCursor(ref GLFWimage image, int xhot, int yhot)
+		public static GLFWcursorPtr CreateCursor(in GLFWimage image, int xhot, int yhot)
 		{
 			fixed (GLFWimage* pimage = &image)
 			{
@@ -3137,7 +3770,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void DestroyCursor(GLFWcursorPtr cursor)
 		{
-			DestroyCursorNative(cursor);
+			DestroyCursorNative((GLFWcursor*)cursor);
 		}
 
 		/// <summary>
@@ -3219,7 +3852,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static void SetCursor(GLFWwindowPtr window, GLFWcursorPtr cursor)
 		{
-			SetCursorNative(window, cursor);
+			SetCursorNative((GLFWwindow*)window, (GLFWcursor*)cursor);
 		}
 
 		/// <summary>
@@ -3246,7 +3879,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
-				SetCursorNative((GLFWwindow*)pwindow, cursor);
+				SetCursorNative((GLFWwindow*)pwindow, (GLFWcursor*)cursor);
 			}
 		}
 
@@ -3274,7 +3907,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (GLFWcursor* pcursor = &cursor)
 			{
-				SetCursorNative(window, (GLFWcursor*)pcursor);
+				SetCursorNative((GLFWwindow*)window, (GLFWcursor*)pcursor);
 			}
 		}
 
@@ -3346,13 +3979,100 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, int, int, int, int, void> SetKeyCallbackNative(GLFWwindow* window, GLFWkeyfun callback)
+		internal static delegate*<GLFWwindow*, int, int, int, int, void> SetKeyCallbackNative(GLFWwindow* window, delegate*<GLFWwindow*, int, int, int, int, void> callback)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, int, int, int, void>, delegate*<GLFWwindow*, int, int, int, int, void>>)funcTable[85])(window, (delegate*<GLFWwindow*, int, int, int, int, void>)Utils.GetFunctionPointerForDelegate(callback));
+			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, int, int, int, void>, delegate*<GLFWwindow*, int, int, int, int, void>>)funcTable[85])(window, callback);
 			#else
-			return (delegate*<GLFWwindow*, int, int, int, int, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[85])((nint)window, (nint)Utils.GetFunctionPointerForDelegate(callback));
+			return (delegate*<GLFWwindow*, int, int, int, int, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[85])((nint)window, (nint)callback);
 			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the key callback of the specified window, which is called<br/>
+		/// when a key is pressed, repeated or released.<br/>
+		/// The key functions deal with physical keys, with layout independent<br/>
+		/// [key tokens](<br/>
+		/// named after their values in the standard US keyboard<br/>
+		/// layout.  If you want to input text, use the<br/>
+		/// [character callback](<br/>
+		/// instead.<br/>
+		/// When a window loses input focus, it will generate synthetic key release<br/>
+		/// events for all pressed keys with associated key tokens.  You can tell these<br/>
+		/// events from user-generated events by the fact that the synthetic ones are<br/>
+		/// generated after the focus loss event has been processed, i.e. after the<br/>
+		/// [window focus callback](<br/>
+		/// has been called.<br/>
+		/// The scancode of a key is specific to that platform or sometimes even to that<br/>
+		/// machine.  Scancodes are intended to allow users to bind keys that don't have<br/>
+		/// a GLFW key token.  Such keys have `key` set to `GLFW_KEY_UNKNOWN`, their<br/>
+		/// state is not saved and so it cannot be queried with <br/>
+		/// Sometimes GLFW needs to generate synthetic key events, in which case the<br/>
+		/// scancode may be zero.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, int, int, int, int, void> SetKeyCallback(GLFWwindowPtr window, delegate*<GLFWwindow*, int, int, int, int, void> callback)
+		{
+			delegate*<GLFWwindow*, int, int, int, int, void> ret = SetKeyCallbackNative((GLFWwindow*)window, callback);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the key callback of the specified window, which is called<br/>
+		/// when a key is pressed, repeated or released.<br/>
+		/// The key functions deal with physical keys, with layout independent<br/>
+		/// [key tokens](<br/>
+		/// named after their values in the standard US keyboard<br/>
+		/// layout.  If you want to input text, use the<br/>
+		/// [character callback](<br/>
+		/// instead.<br/>
+		/// When a window loses input focus, it will generate synthetic key release<br/>
+		/// events for all pressed keys with associated key tokens.  You can tell these<br/>
+		/// events from user-generated events by the fact that the synthetic ones are<br/>
+		/// generated after the focus loss event has been processed, i.e. after the<br/>
+		/// [window focus callback](<br/>
+		/// has been called.<br/>
+		/// The scancode of a key is specific to that platform or sometimes even to that<br/>
+		/// machine.  Scancodes are intended to allow users to bind keys that don't have<br/>
+		/// a GLFW key token.  Such keys have `key` set to `GLFW_KEY_UNKNOWN`, their<br/>
+		/// state is not saved and so it cannot be queried with <br/>
+		/// Sometimes GLFW needs to generate synthetic key events, in which case the<br/>
+		/// scancode may be zero.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, int, int, int, int, void> SetKeyCallback(ref GLFWwindow window, delegate*<GLFWwindow*, int, int, int, int, void> callback)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				delegate*<GLFWwindow*, int, int, int, int, void> ret = SetKeyCallbackNative((GLFWwindow*)pwindow, callback);
+				return ret;
+			}
 		}
 
 		/// <summary>
@@ -3393,7 +4113,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static delegate*<GLFWwindow*, int, int, int, int, void> SetKeyCallback(GLFWwindowPtr window, GLFWkeyfun callback)
 		{
-			delegate*<GLFWwindow*, int, int, int, int, void> ret = SetKeyCallbackNative(window, callback);
+			delegate*<GLFWwindow*, int, int, int, int, void> ret = SetKeyCallbackNative((GLFWwindow*)window, (delegate*<GLFWwindow*, int, int, int, int, void>)Utils.GetFunctionPointerForDelegate(callback));
 			return ret;
 		}
 
@@ -3437,7 +4157,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
-				delegate*<GLFWwindow*, int, int, int, int, void> ret = SetKeyCallbackNative((GLFWwindow*)pwindow, callback);
+				delegate*<GLFWwindow*, int, int, int, int, void> ret = SetKeyCallbackNative((GLFWwindow*)pwindow, (delegate*<GLFWwindow*, int, int, int, int, void>)Utils.GetFunctionPointerForDelegate(callback));
 				return ret;
 			}
 		}
@@ -3472,13 +4192,86 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, uint, void> SetCharCallbackNative(GLFWwindow* window, GLFWcharfun callback)
+		internal static delegate*<GLFWwindow*, uint, void> SetCharCallbackNative(GLFWwindow* window, delegate*<GLFWwindow*, uint, void> callback)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, uint, void>, delegate*<GLFWwindow*, uint, void>>)funcTable[86])(window, (delegate*<GLFWwindow*, uint, void>)Utils.GetFunctionPointerForDelegate(callback));
+			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, uint, void>, delegate*<GLFWwindow*, uint, void>>)funcTable[86])(window, callback);
 			#else
-			return (delegate*<GLFWwindow*, uint, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[86])((nint)window, (nint)Utils.GetFunctionPointerForDelegate(callback));
+			return (delegate*<GLFWwindow*, uint, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[86])((nint)window, (nint)callback);
 			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the character callback of the specified window, which is<br/>
+		/// called when a Unicode character is input.<br/>
+		/// The character callback is intended for Unicode text input.  As it deals with<br/>
+		/// characters, it is keyboard layout dependent, whereas the<br/>
+		/// [key callback](<br/>
+		/// is not.  Characters do not map 1:1<br/>
+		/// to physical keys, as a key may produce zero, one or more characters.  If you<br/>
+		/// want to know whether a specific physical key was pressed or released, see<br/>
+		/// the key callback instead.<br/>
+		/// The character callback behaves as system text input normally does and will<br/>
+		/// not be called if modifier keys are held down that would prevent normal text<br/>
+		/// input on that platform, for example a Super (Command) key on macOS or Alt key<br/>
+		/// on Windows.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, uint, void> SetCharCallback(GLFWwindowPtr window, delegate*<GLFWwindow*, uint, void> callback)
+		{
+			delegate*<GLFWwindow*, uint, void> ret = SetCharCallbackNative((GLFWwindow*)window, callback);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the character callback of the specified window, which is<br/>
+		/// called when a Unicode character is input.<br/>
+		/// The character callback is intended for Unicode text input.  As it deals with<br/>
+		/// characters, it is keyboard layout dependent, whereas the<br/>
+		/// [key callback](<br/>
+		/// is not.  Characters do not map 1:1<br/>
+		/// to physical keys, as a key may produce zero, one or more characters.  If you<br/>
+		/// want to know whether a specific physical key was pressed or released, see<br/>
+		/// the key callback instead.<br/>
+		/// The character callback behaves as system text input normally does and will<br/>
+		/// not be called if modifier keys are held down that would prevent normal text<br/>
+		/// input on that platform, for example a Super (Command) key on macOS or Alt key<br/>
+		/// on Windows.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, uint, void> SetCharCallback(ref GLFWwindow window, delegate*<GLFWwindow*, uint, void> callback)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				delegate*<GLFWwindow*, uint, void> ret = SetCharCallbackNative((GLFWwindow*)pwindow, callback);
+				return ret;
+			}
 		}
 
 		/// <summary>
@@ -3512,7 +4305,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static delegate*<GLFWwindow*, uint, void> SetCharCallback(GLFWwindowPtr window, GLFWcharfun callback)
 		{
-			delegate*<GLFWwindow*, uint, void> ret = SetCharCallbackNative(window, callback);
+			delegate*<GLFWwindow*, uint, void> ret = SetCharCallbackNative((GLFWwindow*)window, (delegate*<GLFWwindow*, uint, void>)Utils.GetFunctionPointerForDelegate(callback));
 			return ret;
 		}
 
@@ -3549,7 +4342,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
-				delegate*<GLFWwindow*, uint, void> ret = SetCharCallbackNative((GLFWwindow*)pwindow, callback);
+				delegate*<GLFWwindow*, uint, void> ret = SetCharCallbackNative((GLFWwindow*)pwindow, (delegate*<GLFWwindow*, uint, void>)Utils.GetFunctionPointerForDelegate(callback));
 				return ret;
 			}
 		}
@@ -3585,13 +4378,88 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, uint, int, void> SetCharModsCallbackNative(GLFWwindow* window, GLFWcharmodsfun callback)
+		internal static delegate*<GLFWwindow*, uint, int, void> SetCharModsCallbackNative(GLFWwindow* window, delegate*<GLFWwindow*, uint, int, void> callback)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, uint, int, void>, delegate*<GLFWwindow*, uint, int, void>>)funcTable[87])(window, (delegate*<GLFWwindow*, uint, int, void>)Utils.GetFunctionPointerForDelegate(callback));
+			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, uint, int, void>, delegate*<GLFWwindow*, uint, int, void>>)funcTable[87])(window, callback);
 			#else
-			return (delegate*<GLFWwindow*, uint, int, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[87])((nint)window, (nint)Utils.GetFunctionPointerForDelegate(callback));
+			return (delegate*<GLFWwindow*, uint, int, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[87])((nint)window, (nint)callback);
 			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the character with modifiers callback of the specified<br/>
+		/// window, which is called when a Unicode character is input regardless of what<br/>
+		/// modifier keys are used.<br/>
+		/// The character with modifiers callback is intended for implementing custom<br/>
+		/// Unicode character input.  For regular Unicode text input, see the<br/>
+		/// [character callback](<br/>
+		/// Like the character<br/>
+		/// callback, the character with modifiers callback deals with characters and is<br/>
+		/// keyboard layout dependent.  Characters do not map 1:1 to physical keys, as<br/>
+		/// a key may produce zero, one or more characters.  If you want to know whether<br/>
+		/// a specific physical key was pressed or released, see the<br/>
+		/// [key callback](<br/>
+		/// instead.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, uint, int, void> SetCharModsCallback(GLFWwindowPtr window, delegate*<GLFWwindow*, uint, int, void> callback)
+		{
+			delegate*<GLFWwindow*, uint, int, void> ret = SetCharModsCallbackNative((GLFWwindow*)window, callback);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the character with modifiers callback of the specified<br/>
+		/// window, which is called when a Unicode character is input regardless of what<br/>
+		/// modifier keys are used.<br/>
+		/// The character with modifiers callback is intended for implementing custom<br/>
+		/// Unicode character input.  For regular Unicode text input, see the<br/>
+		/// [character callback](<br/>
+		/// Like the character<br/>
+		/// callback, the character with modifiers callback deals with characters and is<br/>
+		/// keyboard layout dependent.  Characters do not map 1:1 to physical keys, as<br/>
+		/// a key may produce zero, one or more characters.  If you want to know whether<br/>
+		/// a specific physical key was pressed or released, see the<br/>
+		/// [key callback](<br/>
+		/// instead.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, uint, int, void> SetCharModsCallback(ref GLFWwindow window, delegate*<GLFWwindow*, uint, int, void> callback)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				delegate*<GLFWwindow*, uint, int, void> ret = SetCharModsCallbackNative((GLFWwindow*)pwindow, callback);
+				return ret;
+			}
 		}
 
 		/// <summary>
@@ -3626,7 +4494,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static delegate*<GLFWwindow*, uint, int, void> SetCharModsCallback(GLFWwindowPtr window, GLFWcharmodsfun callback)
 		{
-			delegate*<GLFWwindow*, uint, int, void> ret = SetCharModsCallbackNative(window, callback);
+			delegate*<GLFWwindow*, uint, int, void> ret = SetCharModsCallbackNative((GLFWwindow*)window, (delegate*<GLFWwindow*, uint, int, void>)Utils.GetFunctionPointerForDelegate(callback));
 			return ret;
 		}
 
@@ -3664,7 +4532,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
-				delegate*<GLFWwindow*, uint, int, void> ret = SetCharModsCallbackNative((GLFWwindow*)pwindow, callback);
+				delegate*<GLFWwindow*, uint, int, void> ret = SetCharModsCallbackNative((GLFWwindow*)pwindow, (delegate*<GLFWwindow*, uint, int, void>)Utils.GetFunctionPointerForDelegate(callback));
 				return ret;
 			}
 		}
@@ -3700,13 +4568,88 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, int, int, int, void> SetMouseButtonCallbackNative(GLFWwindow* window, GLFWmousebuttonfun callback)
+		internal static delegate*<GLFWwindow*, int, int, int, void> SetMouseButtonCallbackNative(GLFWwindow* window, delegate*<GLFWwindow*, int, int, int, void> callback)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, int, int, void>, delegate*<GLFWwindow*, int, int, int, void>>)funcTable[88])(window, (delegate*<GLFWwindow*, int, int, int, void>)Utils.GetFunctionPointerForDelegate(callback));
+			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, int, int, void>, delegate*<GLFWwindow*, int, int, int, void>>)funcTable[88])(window, callback);
 			#else
-			return (delegate*<GLFWwindow*, int, int, int, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[88])((nint)window, (nint)Utils.GetFunctionPointerForDelegate(callback));
+			return (delegate*<GLFWwindow*, int, int, int, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[88])((nint)window, (nint)callback);
 			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the mouse button callback of the specified window, which<br/>
+		/// is called when a mouse button is pressed or released.<br/>
+		/// When a window loses input focus, it will generate synthetic mouse button<br/>
+		/// release events for all pressed mouse buttons with associated button tokens.<br/>
+		/// You can tell these events from user-generated events by the fact that the<br/>
+		/// synthetic ones are generated after the focus loss event has been processed,<br/>
+		/// i.e. after the [window focus callback](<br/>
+		/// has<br/>
+		/// been called.<br/>
+		/// The reported `button` value can be higher than `GLFW_MOUSE_BUTTON_LAST` if<br/>
+		/// the button does not have an associated [button token](<br/>
+		/// and the<br/>
+		/// <br/>
+		/// input mode is set.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, int, int, int, void> SetMouseButtonCallback(GLFWwindowPtr window, delegate*<GLFWwindow*, int, int, int, void> callback)
+		{
+			delegate*<GLFWwindow*, int, int, int, void> ret = SetMouseButtonCallbackNative((GLFWwindow*)window, callback);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the mouse button callback of the specified window, which<br/>
+		/// is called when a mouse button is pressed or released.<br/>
+		/// When a window loses input focus, it will generate synthetic mouse button<br/>
+		/// release events for all pressed mouse buttons with associated button tokens.<br/>
+		/// You can tell these events from user-generated events by the fact that the<br/>
+		/// synthetic ones are generated after the focus loss event has been processed,<br/>
+		/// i.e. after the [window focus callback](<br/>
+		/// has<br/>
+		/// been called.<br/>
+		/// The reported `button` value can be higher than `GLFW_MOUSE_BUTTON_LAST` if<br/>
+		/// the button does not have an associated [button token](<br/>
+		/// and the<br/>
+		/// <br/>
+		/// input mode is set.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, int, int, int, void> SetMouseButtonCallback(ref GLFWwindow window, delegate*<GLFWwindow*, int, int, int, void> callback)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				delegate*<GLFWwindow*, int, int, int, void> ret = SetMouseButtonCallbackNative((GLFWwindow*)pwindow, callback);
+				return ret;
+			}
 		}
 
 		/// <summary>
@@ -3741,7 +4684,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static delegate*<GLFWwindow*, int, int, int, void> SetMouseButtonCallback(GLFWwindowPtr window, GLFWmousebuttonfun callback)
 		{
-			delegate*<GLFWwindow*, int, int, int, void> ret = SetMouseButtonCallbackNative(window, callback);
+			delegate*<GLFWwindow*, int, int, int, void> ret = SetMouseButtonCallbackNative((GLFWwindow*)window, (delegate*<GLFWwindow*, int, int, int, void>)Utils.GetFunctionPointerForDelegate(callback));
 			return ret;
 		}
 
@@ -3779,7 +4722,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
-				delegate*<GLFWwindow*, int, int, int, void> ret = SetMouseButtonCallbackNative((GLFWwindow*)pwindow, callback);
+				delegate*<GLFWwindow*, int, int, int, void> ret = SetMouseButtonCallbackNative((GLFWwindow*)pwindow, (delegate*<GLFWwindow*, int, int, int, void>)Utils.GetFunctionPointerForDelegate(callback));
 				return ret;
 			}
 		}
@@ -3805,13 +4748,68 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, double, double, void> SetCursorPosCallbackNative(GLFWwindow* window, GLFWcursorposfun callback)
+		internal static delegate*<GLFWwindow*, double, double, void> SetCursorPosCallbackNative(GLFWwindow* window, delegate*<GLFWwindow*, double, double, void> callback)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, double, double, void>, delegate*<GLFWwindow*, double, double, void>>)funcTable[89])(window, (delegate*<GLFWwindow*, double, double, void>)Utils.GetFunctionPointerForDelegate(callback));
+			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, double, double, void>, delegate*<GLFWwindow*, double, double, void>>)funcTable[89])(window, callback);
 			#else
-			return (delegate*<GLFWwindow*, double, double, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[89])((nint)window, (nint)Utils.GetFunctionPointerForDelegate(callback));
+			return (delegate*<GLFWwindow*, double, double, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[89])((nint)window, (nint)callback);
 			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the cursor position callback of the specified window,<br/>
+		/// which is called when the cursor is moved.  The callback is provided with the<br/>
+		/// position, in screen coordinates, relative to the upper-left corner of the<br/>
+		/// content area of the window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, double, double, void> SetCursorPosCallback(GLFWwindowPtr window, delegate*<GLFWwindow*, double, double, void> callback)
+		{
+			delegate*<GLFWwindow*, double, double, void> ret = SetCursorPosCallbackNative((GLFWwindow*)window, callback);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the cursor position callback of the specified window,<br/>
+		/// which is called when the cursor is moved.  The callback is provided with the<br/>
+		/// position, in screen coordinates, relative to the upper-left corner of the<br/>
+		/// content area of the window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, double, double, void> SetCursorPosCallback(ref GLFWwindow window, delegate*<GLFWwindow*, double, double, void> callback)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				delegate*<GLFWwindow*, double, double, void> ret = SetCursorPosCallbackNative((GLFWwindow*)pwindow, callback);
+				return ret;
+			}
 		}
 
 		/// <summary>
@@ -3836,7 +4834,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static delegate*<GLFWwindow*, double, double, void> SetCursorPosCallback(GLFWwindowPtr window, GLFWcursorposfun callback)
 		{
-			delegate*<GLFWwindow*, double, double, void> ret = SetCursorPosCallbackNative(window, callback);
+			delegate*<GLFWwindow*, double, double, void> ret = SetCursorPosCallbackNative((GLFWwindow*)window, (delegate*<GLFWwindow*, double, double, void>)Utils.GetFunctionPointerForDelegate(callback));
 			return ret;
 		}
 
@@ -3864,7 +4862,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
-				delegate*<GLFWwindow*, double, double, void> ret = SetCursorPosCallbackNative((GLFWwindow*)pwindow, callback);
+				delegate*<GLFWwindow*, double, double, void> ret = SetCursorPosCallbackNative((GLFWwindow*)pwindow, (delegate*<GLFWwindow*, double, double, void>)Utils.GetFunctionPointerForDelegate(callback));
 				return ret;
 			}
 		}
@@ -3889,13 +4887,66 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, int, void> SetCursorEnterCallbackNative(GLFWwindow* window, GLFWcursorenterfun callback)
+		internal static delegate*<GLFWwindow*, int, void> SetCursorEnterCallbackNative(GLFWwindow* window, delegate*<GLFWwindow*, int, void> callback)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, void>, delegate*<GLFWwindow*, int, void>>)funcTable[90])(window, (delegate*<GLFWwindow*, int, void>)Utils.GetFunctionPointerForDelegate(callback));
+			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, void>, delegate*<GLFWwindow*, int, void>>)funcTable[90])(window, callback);
 			#else
-			return (delegate*<GLFWwindow*, int, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[90])((nint)window, (nint)Utils.GetFunctionPointerForDelegate(callback));
+			return (delegate*<GLFWwindow*, int, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[90])((nint)window, (nint)callback);
 			#endif
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the cursor boundary crossing callback of the specified<br/>
+		/// window, which is called when the cursor enters or leaves the content area of<br/>
+		/// the window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, int, void> SetCursorEnterCallback(GLFWwindowPtr window, delegate*<GLFWwindow*, int, void> callback)
+		{
+			delegate*<GLFWwindow*, int, void> ret = SetCursorEnterCallbackNative((GLFWwindow*)window, callback);
+			return ret;
+		}
+
+		/// <summary>
+		/// <br/>
+		/// This function sets the cursor boundary crossing callback of the specified<br/>
+		/// window, which is called when the cursor enters or leaves the content area of<br/>
+		/// the window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// For more information about the callback parameters, see the<br/>
+		/// [function pointer type](<br/>
+		/// <br/>
+		/// Possible errors include <br/>
+		/// <br/>
+		/// _safety This function must only be called from the main thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		public static delegate*<GLFWwindow*, int, void> SetCursorEnterCallback(ref GLFWwindow window, delegate*<GLFWwindow*, int, void> callback)
+		{
+			fixed (GLFWwindow* pwindow = &window)
+			{
+				delegate*<GLFWwindow*, int, void> ret = SetCursorEnterCallbackNative((GLFWwindow*)pwindow, callback);
+				return ret;
+			}
 		}
 
 		/// <summary>
@@ -3919,7 +4970,7 @@ namespace Hexa.NET.GLFW
 		/// </summary>
 		public static delegate*<GLFWwindow*, int, void> SetCursorEnterCallback(GLFWwindowPtr window, GLFWcursorenterfun callback)
 		{
-			delegate*<GLFWwindow*, int, void> ret = SetCursorEnterCallbackNative(window, callback);
+			delegate*<GLFWwindow*, int, void> ret = SetCursorEnterCallbackNative((GLFWwindow*)window, (delegate*<GLFWwindow*, int, void>)Utils.GetFunctionPointerForDelegate(callback));
 			return ret;
 		}
 
@@ -3946,7 +4997,7 @@ namespace Hexa.NET.GLFW
 		{
 			fixed (GLFWwindow* pwindow = &window)
 			{
-				delegate*<GLFWwindow*, int, void> ret = SetCursorEnterCallbackNative((GLFWwindow*)pwindow, callback);
+				delegate*<GLFWwindow*, int, void> ret = SetCursorEnterCallbackNative((GLFWwindow*)pwindow, (delegate*<GLFWwindow*, int, void>)Utils.GetFunctionPointerForDelegate(callback));
 				return ret;
 			}
 		}
@@ -3973,1056 +5024,12 @@ namespace Hexa.NET.GLFW
 		/// <br/>
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, double, double, void> SetScrollCallbackNative(GLFWwindow* window, GLFWscrollfun callback)
+		internal static delegate*<GLFWwindow*, double, double, void> SetScrollCallbackNative(GLFWwindow* window, delegate*<GLFWwindow*, double, double, void> callback)
 		{
 			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, double, double, void>, delegate*<GLFWwindow*, double, double, void>>)funcTable[91])(window, (delegate*<GLFWwindow*, double, double, void>)Utils.GetFunctionPointerForDelegate(callback));
+			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, double, double, void>, delegate*<GLFWwindow*, double, double, void>>)funcTable[91])(window, callback);
 			#else
-			return (delegate*<GLFWwindow*, double, double, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[91])((nint)window, (nint)Utils.GetFunctionPointerForDelegate(callback));
-			#endif
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function sets the scroll callback of the specified window, which is<br/>
-		/// called when a scrolling device is used, such as a mouse wheel or scrolling<br/>
-		/// area of a touchpad.<br/>
-		/// The scroll callback receives all scrolling input, like that from a mouse<br/>
-		/// wheel or a touchpad scrolling area.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// For more information about the callback parameters, see the<br/>
-		/// [function pointer type](<br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static delegate*<GLFWwindow*, double, double, void> SetScrollCallback(GLFWwindowPtr window, GLFWscrollfun callback)
-		{
-			delegate*<GLFWwindow*, double, double, void> ret = SetScrollCallbackNative(window, callback);
-			return ret;
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function sets the scroll callback of the specified window, which is<br/>
-		/// called when a scrolling device is used, such as a mouse wheel or scrolling<br/>
-		/// area of a touchpad.<br/>
-		/// The scroll callback receives all scrolling input, like that from a mouse<br/>
-		/// wheel or a touchpad scrolling area.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// For more information about the callback parameters, see the<br/>
-		/// [function pointer type](<br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static delegate*<GLFWwindow*, double, double, void> SetScrollCallback(ref GLFWwindow window, GLFWscrollfun callback)
-		{
-			fixed (GLFWwindow* pwindow = &window)
-			{
-				delegate*<GLFWwindow*, double, double, void> ret = SetScrollCallbackNative((GLFWwindow*)pwindow, callback);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function sets the path drop callback of the specified window, which is<br/>
-		/// called when one or more dragged paths are dropped on the window.<br/>
-		/// Because the path array and its strings may have been generated specifically<br/>
-		/// for that event, they are not guaranteed to be valid after the callback has<br/>
-		/// returned.  If you wish to use them after the callback returns, you need to<br/>
-		/// make a deep copy.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// For more information about the callback parameters, see the<br/>
-		/// [function pointer type](<br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static delegate*<GLFWwindow*, int, byte**, void> SetDropCallbackNative(GLFWwindow* window, GLFWdropfun callback)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<GLFWwindow*, delegate*<GLFWwindow*, int, byte**, void>, delegate*<GLFWwindow*, int, byte**, void>>)funcTable[92])(window, (delegate*<GLFWwindow*, int, byte**, void>)Utils.GetFunctionPointerForDelegate(callback));
-			#else
-			return (delegate*<GLFWwindow*, int, byte**, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[92])((nint)window, (nint)Utils.GetFunctionPointerForDelegate(callback));
-			#endif
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function sets the path drop callback of the specified window, which is<br/>
-		/// called when one or more dragged paths are dropped on the window.<br/>
-		/// Because the path array and its strings may have been generated specifically<br/>
-		/// for that event, they are not guaranteed to be valid after the callback has<br/>
-		/// returned.  If you wish to use them after the callback returns, you need to<br/>
-		/// make a deep copy.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// For more information about the callback parameters, see the<br/>
-		/// [function pointer type](<br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static delegate*<GLFWwindow*, int, byte**, void> SetDropCallback(GLFWwindowPtr window, GLFWdropfun callback)
-		{
-			delegate*<GLFWwindow*, int, byte**, void> ret = SetDropCallbackNative(window, callback);
-			return ret;
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function sets the path drop callback of the specified window, which is<br/>
-		/// called when one or more dragged paths are dropped on the window.<br/>
-		/// Because the path array and its strings may have been generated specifically<br/>
-		/// for that event, they are not guaranteed to be valid after the callback has<br/>
-		/// returned.  If you wish to use them after the callback returns, you need to<br/>
-		/// make a deep copy.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// For more information about the callback parameters, see the<br/>
-		/// [function pointer type](<br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static delegate*<GLFWwindow*, int, byte**, void> SetDropCallback(ref GLFWwindow window, GLFWdropfun callback)
-		{
-			fixed (GLFWwindow* pwindow = &window)
-			{
-				delegate*<GLFWwindow*, int, byte**, void> ret = SetDropCallbackNative((GLFWwindow*)pwindow, callback);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns whether the specified joystick is present.<br/>
-		/// There is no need to call this function before other functions that accept<br/>
-		/// a joystick ID, as they all check for presence before performing any other<br/>
-		/// work.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static int JoystickPresentNative(int jid)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<int, int>)funcTable[93])(jid);
-			#else
-			return (int)((delegate* unmanaged[Cdecl]<int, int>)funcTable[93])(jid);
-			#endif
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns whether the specified joystick is present.<br/>
-		/// There is no need to call this function before other functions that accept<br/>
-		/// a joystick ID, as they all check for presence before performing any other<br/>
-		/// work.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static int JoystickPresent(int jid)
-		{
-			int ret = JoystickPresentNative(jid);
-			return ret;
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the values of all axes of the specified joystick.<br/>
-		/// Each element in the array is a value between -1.0 and 1.0.<br/>
-		/// If the specified joystick is not present this function will return `NULL`<br/>
-		/// but will not generate an error.  This can be used instead of first calling<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
-		/// should not free it yourself.  It is valid until the specified joystick is<br/>
-		/// disconnected or the library is terminated.<br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static float* GetJoystickAxesNative(int jid, int* count)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<int, int*, float*>)funcTable[94])(jid, count);
-			#else
-			return (float*)((delegate* unmanaged[Cdecl]<int, nint, nint>)funcTable[94])(jid, (nint)count);
-			#endif
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the values of all axes of the specified joystick.<br/>
-		/// Each element in the array is a value between -1.0 and 1.0.<br/>
-		/// If the specified joystick is not present this function will return `NULL`<br/>
-		/// but will not generate an error.  This can be used instead of first calling<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
-		/// should not free it yourself.  It is valid until the specified joystick is<br/>
-		/// disconnected or the library is terminated.<br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static float* GetJoystickAxes(int jid, int* count)
-		{
-			float* ret = GetJoystickAxesNative(jid, count);
-			return ret;
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the values of all axes of the specified joystick.<br/>
-		/// Each element in the array is a value between -1.0 and 1.0.<br/>
-		/// If the specified joystick is not present this function will return `NULL`<br/>
-		/// but will not generate an error.  This can be used instead of first calling<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
-		/// should not free it yourself.  It is valid until the specified joystick is<br/>
-		/// disconnected or the library is terminated.<br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static float* GetJoystickAxes(int jid, ref int count)
-		{
-			fixed (int* pcount = &count)
-			{
-				float* ret = GetJoystickAxesNative(jid, (int*)pcount);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the state of all buttons of the specified joystick.<br/>
-		/// Each element in the array is either `GLFW_PRESS` or `GLFW_RELEASE`.<br/>
-		/// For backward compatibility with earlier versions that did not have <br/>
-		/// the button array also includes all hats, each<br/>
-		/// represented as four buttons.  The hats are in the same order as returned by<br/>
-		/// __glfwGetJoystickHats__ and are in the order _up_, _right_, _down_ and<br/>
-		/// _left_.  To disable these extra buttons, set the <br/>
-		/// init hint before initialization.<br/>
-		/// If the specified joystick is not present this function will return `NULL`<br/>
-		/// but will not generate an error.  This can be used instead of first calling<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
-		/// should not free it yourself.  It is valid until the specified joystick is<br/>
-		/// disconnected or the library is terminated.<br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static byte* GetJoystickButtonsNative(int jid, int* count)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<int, int*, byte*>)funcTable[95])(jid, count);
-			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<int, nint, nint>)funcTable[95])(jid, (nint)count);
-			#endif
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the state of all buttons of the specified joystick.<br/>
-		/// Each element in the array is either `GLFW_PRESS` or `GLFW_RELEASE`.<br/>
-		/// For backward compatibility with earlier versions that did not have <br/>
-		/// the button array also includes all hats, each<br/>
-		/// represented as four buttons.  The hats are in the same order as returned by<br/>
-		/// __glfwGetJoystickHats__ and are in the order _up_, _right_, _down_ and<br/>
-		/// _left_.  To disable these extra buttons, set the <br/>
-		/// init hint before initialization.<br/>
-		/// If the specified joystick is not present this function will return `NULL`<br/>
-		/// but will not generate an error.  This can be used instead of first calling<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
-		/// should not free it yourself.  It is valid until the specified joystick is<br/>
-		/// disconnected or the library is terminated.<br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static byte* GetJoystickButtons(int jid, int* count)
-		{
-			byte* ret = GetJoystickButtonsNative(jid, count);
-			return ret;
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the state of all buttons of the specified joystick.<br/>
-		/// Each element in the array is either `GLFW_PRESS` or `GLFW_RELEASE`.<br/>
-		/// For backward compatibility with earlier versions that did not have <br/>
-		/// the button array also includes all hats, each<br/>
-		/// represented as four buttons.  The hats are in the same order as returned by<br/>
-		/// __glfwGetJoystickHats__ and are in the order _up_, _right_, _down_ and<br/>
-		/// _left_.  To disable these extra buttons, set the <br/>
-		/// init hint before initialization.<br/>
-		/// If the specified joystick is not present this function will return `NULL`<br/>
-		/// but will not generate an error.  This can be used instead of first calling<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
-		/// should not free it yourself.  It is valid until the specified joystick is<br/>
-		/// disconnected or the library is terminated.<br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static string GetJoystickButtonsS(int jid, int* count)
-		{
-			string ret = Utils.DecodeStringUTF8(GetJoystickButtonsNative(jid, count));
-			return ret;
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the state of all buttons of the specified joystick.<br/>
-		/// Each element in the array is either `GLFW_PRESS` or `GLFW_RELEASE`.<br/>
-		/// For backward compatibility with earlier versions that did not have <br/>
-		/// the button array also includes all hats, each<br/>
-		/// represented as four buttons.  The hats are in the same order as returned by<br/>
-		/// __glfwGetJoystickHats__ and are in the order _up_, _right_, _down_ and<br/>
-		/// _left_.  To disable these extra buttons, set the <br/>
-		/// init hint before initialization.<br/>
-		/// If the specified joystick is not present this function will return `NULL`<br/>
-		/// but will not generate an error.  This can be used instead of first calling<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
-		/// should not free it yourself.  It is valid until the specified joystick is<br/>
-		/// disconnected or the library is terminated.<br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static byte* GetJoystickButtons(int jid, ref int count)
-		{
-			fixed (int* pcount = &count)
-			{
-				byte* ret = GetJoystickButtonsNative(jid, (int*)pcount);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the state of all buttons of the specified joystick.<br/>
-		/// Each element in the array is either `GLFW_PRESS` or `GLFW_RELEASE`.<br/>
-		/// For backward compatibility with earlier versions that did not have <br/>
-		/// the button array also includes all hats, each<br/>
-		/// represented as four buttons.  The hats are in the same order as returned by<br/>
-		/// __glfwGetJoystickHats__ and are in the order _up_, _right_, _down_ and<br/>
-		/// _left_.  To disable these extra buttons, set the <br/>
-		/// init hint before initialization.<br/>
-		/// If the specified joystick is not present this function will return `NULL`<br/>
-		/// but will not generate an error.  This can be used instead of first calling<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
-		/// should not free it yourself.  It is valid until the specified joystick is<br/>
-		/// disconnected or the library is terminated.<br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static string GetJoystickButtonsS(int jid, ref int count)
-		{
-			fixed (int* pcount = &count)
-			{
-				string ret = Utils.DecodeStringUTF8(GetJoystickButtonsNative(jid, (int*)pcount));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the state of all hats of the specified joystick.<br/>
-		/// Each element in the array is one of the following values:<br/>
-		/// Name                  | Value<br/>
-		/// ----                  | -----<br/>
-		/// `GLFW_HAT_CENTERED`   | 0<br/>
-		/// `GLFW_HAT_UP`         | 1<br/>
-		/// `GLFW_HAT_RIGHT`      | 2<br/>
-		/// `GLFW_HAT_DOWN`       | 4<br/>
-		/// `GLFW_HAT_LEFT`       | 8<br/>
-		/// `GLFW_HAT_RIGHT_UP`   | `GLFW_HAT_RIGHT` <br/>
-		/// \<br/>
-		/// | `GLFW_HAT_UP`<br/>
-		/// `GLFW_HAT_RIGHT_DOWN` | `GLFW_HAT_RIGHT` <br/>
-		/// \<br/>
-		/// | `GLFW_HAT_DOWN`<br/>
-		/// `GLFW_HAT_LEFT_UP`    | `GLFW_HAT_LEFT` <br/>
-		/// \<br/>
-		/// | `GLFW_HAT_UP`<br/>
-		/// `GLFW_HAT_LEFT_DOWN`  | `GLFW_HAT_LEFT` <br/>
-		/// \<br/>
-		/// | `GLFW_HAT_DOWN`<br/>
-		/// The diagonal directions are bitwise combinations of the primary (up, right,<br/>
-		/// down and left) directions and you can test for these individually by ANDing<br/>
-		/// it with the corresponding direction.<br/>
-		/// <br/>
-		/// If the specified joystick is not present this function will return `NULL`<br/>
-		/// but will not generate an error.  This can be used instead of first calling<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
-		/// should not free it yourself.  It is valid until the specified joystick is<br/>
-		/// disconnected, this function is called again for that joystick or the library<br/>
-		/// is terminated.<br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static byte* GetJoystickHatsNative(int jid, int* count)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<int, int*, byte*>)funcTable[96])(jid, count);
-			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<int, nint, nint>)funcTable[96])(jid, (nint)count);
-			#endif
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the state of all hats of the specified joystick.<br/>
-		/// Each element in the array is one of the following values:<br/>
-		/// Name                  | Value<br/>
-		/// ----                  | -----<br/>
-		/// `GLFW_HAT_CENTERED`   | 0<br/>
-		/// `GLFW_HAT_UP`         | 1<br/>
-		/// `GLFW_HAT_RIGHT`      | 2<br/>
-		/// `GLFW_HAT_DOWN`       | 4<br/>
-		/// `GLFW_HAT_LEFT`       | 8<br/>
-		/// `GLFW_HAT_RIGHT_UP`   | `GLFW_HAT_RIGHT` <br/>
-		/// \<br/>
-		/// | `GLFW_HAT_UP`<br/>
-		/// `GLFW_HAT_RIGHT_DOWN` | `GLFW_HAT_RIGHT` <br/>
-		/// \<br/>
-		/// | `GLFW_HAT_DOWN`<br/>
-		/// `GLFW_HAT_LEFT_UP`    | `GLFW_HAT_LEFT` <br/>
-		/// \<br/>
-		/// | `GLFW_HAT_UP`<br/>
-		/// `GLFW_HAT_LEFT_DOWN`  | `GLFW_HAT_LEFT` <br/>
-		/// \<br/>
-		/// | `GLFW_HAT_DOWN`<br/>
-		/// The diagonal directions are bitwise combinations of the primary (up, right,<br/>
-		/// down and left) directions and you can test for these individually by ANDing<br/>
-		/// it with the corresponding direction.<br/>
-		/// <br/>
-		/// If the specified joystick is not present this function will return `NULL`<br/>
-		/// but will not generate an error.  This can be used instead of first calling<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
-		/// should not free it yourself.  It is valid until the specified joystick is<br/>
-		/// disconnected, this function is called again for that joystick or the library<br/>
-		/// is terminated.<br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static byte* GetJoystickHats(int jid, int* count)
-		{
-			byte* ret = GetJoystickHatsNative(jid, count);
-			return ret;
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the state of all hats of the specified joystick.<br/>
-		/// Each element in the array is one of the following values:<br/>
-		/// Name                  | Value<br/>
-		/// ----                  | -----<br/>
-		/// `GLFW_HAT_CENTERED`   | 0<br/>
-		/// `GLFW_HAT_UP`         | 1<br/>
-		/// `GLFW_HAT_RIGHT`      | 2<br/>
-		/// `GLFW_HAT_DOWN`       | 4<br/>
-		/// `GLFW_HAT_LEFT`       | 8<br/>
-		/// `GLFW_HAT_RIGHT_UP`   | `GLFW_HAT_RIGHT` <br/>
-		/// \<br/>
-		/// | `GLFW_HAT_UP`<br/>
-		/// `GLFW_HAT_RIGHT_DOWN` | `GLFW_HAT_RIGHT` <br/>
-		/// \<br/>
-		/// | `GLFW_HAT_DOWN`<br/>
-		/// `GLFW_HAT_LEFT_UP`    | `GLFW_HAT_LEFT` <br/>
-		/// \<br/>
-		/// | `GLFW_HAT_UP`<br/>
-		/// `GLFW_HAT_LEFT_DOWN`  | `GLFW_HAT_LEFT` <br/>
-		/// \<br/>
-		/// | `GLFW_HAT_DOWN`<br/>
-		/// The diagonal directions are bitwise combinations of the primary (up, right,<br/>
-		/// down and left) directions and you can test for these individually by ANDing<br/>
-		/// it with the corresponding direction.<br/>
-		/// <br/>
-		/// If the specified joystick is not present this function will return `NULL`<br/>
-		/// but will not generate an error.  This can be used instead of first calling<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
-		/// should not free it yourself.  It is valid until the specified joystick is<br/>
-		/// disconnected, this function is called again for that joystick or the library<br/>
-		/// is terminated.<br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static string GetJoystickHatsS(int jid, int* count)
-		{
-			string ret = Utils.DecodeStringUTF8(GetJoystickHatsNative(jid, count));
-			return ret;
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the state of all hats of the specified joystick.<br/>
-		/// Each element in the array is one of the following values:<br/>
-		/// Name                  | Value<br/>
-		/// ----                  | -----<br/>
-		/// `GLFW_HAT_CENTERED`   | 0<br/>
-		/// `GLFW_HAT_UP`         | 1<br/>
-		/// `GLFW_HAT_RIGHT`      | 2<br/>
-		/// `GLFW_HAT_DOWN`       | 4<br/>
-		/// `GLFW_HAT_LEFT`       | 8<br/>
-		/// `GLFW_HAT_RIGHT_UP`   | `GLFW_HAT_RIGHT` <br/>
-		/// \<br/>
-		/// | `GLFW_HAT_UP`<br/>
-		/// `GLFW_HAT_RIGHT_DOWN` | `GLFW_HAT_RIGHT` <br/>
-		/// \<br/>
-		/// | `GLFW_HAT_DOWN`<br/>
-		/// `GLFW_HAT_LEFT_UP`    | `GLFW_HAT_LEFT` <br/>
-		/// \<br/>
-		/// | `GLFW_HAT_UP`<br/>
-		/// `GLFW_HAT_LEFT_DOWN`  | `GLFW_HAT_LEFT` <br/>
-		/// \<br/>
-		/// | `GLFW_HAT_DOWN`<br/>
-		/// The diagonal directions are bitwise combinations of the primary (up, right,<br/>
-		/// down and left) directions and you can test for these individually by ANDing<br/>
-		/// it with the corresponding direction.<br/>
-		/// <br/>
-		/// If the specified joystick is not present this function will return `NULL`<br/>
-		/// but will not generate an error.  This can be used instead of first calling<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
-		/// should not free it yourself.  It is valid until the specified joystick is<br/>
-		/// disconnected, this function is called again for that joystick or the library<br/>
-		/// is terminated.<br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static byte* GetJoystickHats(int jid, ref int count)
-		{
-			fixed (int* pcount = &count)
-			{
-				byte* ret = GetJoystickHatsNative(jid, (int*)pcount);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the state of all hats of the specified joystick.<br/>
-		/// Each element in the array is one of the following values:<br/>
-		/// Name                  | Value<br/>
-		/// ----                  | -----<br/>
-		/// `GLFW_HAT_CENTERED`   | 0<br/>
-		/// `GLFW_HAT_UP`         | 1<br/>
-		/// `GLFW_HAT_RIGHT`      | 2<br/>
-		/// `GLFW_HAT_DOWN`       | 4<br/>
-		/// `GLFW_HAT_LEFT`       | 8<br/>
-		/// `GLFW_HAT_RIGHT_UP`   | `GLFW_HAT_RIGHT` <br/>
-		/// \<br/>
-		/// | `GLFW_HAT_UP`<br/>
-		/// `GLFW_HAT_RIGHT_DOWN` | `GLFW_HAT_RIGHT` <br/>
-		/// \<br/>
-		/// | `GLFW_HAT_DOWN`<br/>
-		/// `GLFW_HAT_LEFT_UP`    | `GLFW_HAT_LEFT` <br/>
-		/// \<br/>
-		/// | `GLFW_HAT_UP`<br/>
-		/// `GLFW_HAT_LEFT_DOWN`  | `GLFW_HAT_LEFT` <br/>
-		/// \<br/>
-		/// | `GLFW_HAT_DOWN`<br/>
-		/// The diagonal directions are bitwise combinations of the primary (up, right,<br/>
-		/// down and left) directions and you can test for these individually by ANDing<br/>
-		/// it with the corresponding direction.<br/>
-		/// <br/>
-		/// If the specified joystick is not present this function will return `NULL`<br/>
-		/// but will not generate an error.  This can be used instead of first calling<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _lifetime The returned array is allocated and freed by GLFW.  You<br/>
-		/// should not free it yourself.  It is valid until the specified joystick is<br/>
-		/// disconnected, this function is called again for that joystick or the library<br/>
-		/// is terminated.<br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static string GetJoystickHatsS(int jid, ref int count)
-		{
-			fixed (int* pcount = &count)
-			{
-				string ret = Utils.DecodeStringUTF8(GetJoystickHatsNative(jid, (int*)pcount));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the name, encoded as UTF-8, of the specified joystick.<br/>
-		/// The returned string is allocated and freed by GLFW.  You should not free it<br/>
-		/// yourself.<br/>
-		/// If the specified joystick is not present this function will return `NULL`<br/>
-		/// but will not generate an error.  This can be used instead of first calling<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _lifetime The returned string is allocated and freed by GLFW.  You<br/>
-		/// should not free it yourself.  It is valid until the specified joystick is<br/>
-		/// disconnected or the library is terminated.<br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static byte* GetJoystickNameNative(int jid)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<int, byte*>)funcTable[97])(jid);
-			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<int, nint>)funcTable[97])(jid);
-			#endif
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the name, encoded as UTF-8, of the specified joystick.<br/>
-		/// The returned string is allocated and freed by GLFW.  You should not free it<br/>
-		/// yourself.<br/>
-		/// If the specified joystick is not present this function will return `NULL`<br/>
-		/// but will not generate an error.  This can be used instead of first calling<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _lifetime The returned string is allocated and freed by GLFW.  You<br/>
-		/// should not free it yourself.  It is valid until the specified joystick is<br/>
-		/// disconnected or the library is terminated.<br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static byte* GetJoystickName(int jid)
-		{
-			byte* ret = GetJoystickNameNative(jid);
-			return ret;
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the name, encoded as UTF-8, of the specified joystick.<br/>
-		/// The returned string is allocated and freed by GLFW.  You should not free it<br/>
-		/// yourself.<br/>
-		/// If the specified joystick is not present this function will return `NULL`<br/>
-		/// but will not generate an error.  This can be used instead of first calling<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _lifetime The returned string is allocated and freed by GLFW.  You<br/>
-		/// should not free it yourself.  It is valid until the specified joystick is<br/>
-		/// disconnected or the library is terminated.<br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static string GetJoystickNameS(int jid)
-		{
-			string ret = Utils.DecodeStringUTF8(GetJoystickNameNative(jid));
-			return ret;
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the SDL compatible GUID, as a UTF-8 encoded<br/>
-		/// hexadecimal string, of the specified joystick.  The returned string is<br/>
-		/// allocated and freed by GLFW.  You should not free it yourself.<br/>
-		/// The GUID is what connects a joystick to a gamepad mapping.  A connected<br/>
-		/// joystick will always have a GUID even if there is no gamepad mapping<br/>
-		/// assigned to it.<br/>
-		/// If the specified joystick is not present this function will return `NULL`<br/>
-		/// but will not generate an error.  This can be used instead of first calling<br/>
-		/// <br/>
-		/// The GUID uses the format introduced in SDL 2.0.5.  This GUID tries to<br/>
-		/// uniquely identify the make and model of a joystick but does not identify<br/>
-		/// a specific unit, e.g. all wired Xbox 360 controllers will have the same<br/>
-		/// GUID on that platform.  The GUID for a unit may vary between platforms<br/>
-		/// depending on what hardware information the platform specific APIs provide.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _lifetime The returned string is allocated and freed by GLFW.  You<br/>
-		/// should not free it yourself.  It is valid until the specified joystick is<br/>
-		/// disconnected or the library is terminated.<br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static byte* GetJoystickGUIDNative(int jid)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<int, byte*>)funcTable[98])(jid);
-			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<int, nint>)funcTable[98])(jid);
-			#endif
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the SDL compatible GUID, as a UTF-8 encoded<br/>
-		/// hexadecimal string, of the specified joystick.  The returned string is<br/>
-		/// allocated and freed by GLFW.  You should not free it yourself.<br/>
-		/// The GUID is what connects a joystick to a gamepad mapping.  A connected<br/>
-		/// joystick will always have a GUID even if there is no gamepad mapping<br/>
-		/// assigned to it.<br/>
-		/// If the specified joystick is not present this function will return `NULL`<br/>
-		/// but will not generate an error.  This can be used instead of first calling<br/>
-		/// <br/>
-		/// The GUID uses the format introduced in SDL 2.0.5.  This GUID tries to<br/>
-		/// uniquely identify the make and model of a joystick but does not identify<br/>
-		/// a specific unit, e.g. all wired Xbox 360 controllers will have the same<br/>
-		/// GUID on that platform.  The GUID for a unit may vary between platforms<br/>
-		/// depending on what hardware information the platform specific APIs provide.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _lifetime The returned string is allocated and freed by GLFW.  You<br/>
-		/// should not free it yourself.  It is valid until the specified joystick is<br/>
-		/// disconnected or the library is terminated.<br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static byte* GetJoystickGUID(int jid)
-		{
-			byte* ret = GetJoystickGUIDNative(jid);
-			return ret;
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the SDL compatible GUID, as a UTF-8 encoded<br/>
-		/// hexadecimal string, of the specified joystick.  The returned string is<br/>
-		/// allocated and freed by GLFW.  You should not free it yourself.<br/>
-		/// The GUID is what connects a joystick to a gamepad mapping.  A connected<br/>
-		/// joystick will always have a GUID even if there is no gamepad mapping<br/>
-		/// assigned to it.<br/>
-		/// If the specified joystick is not present this function will return `NULL`<br/>
-		/// but will not generate an error.  This can be used instead of first calling<br/>
-		/// <br/>
-		/// The GUID uses the format introduced in SDL 2.0.5.  This GUID tries to<br/>
-		/// uniquely identify the make and model of a joystick but does not identify<br/>
-		/// a specific unit, e.g. all wired Xbox 360 controllers will have the same<br/>
-		/// GUID on that platform.  The GUID for a unit may vary between platforms<br/>
-		/// depending on what hardware information the platform specific APIs provide.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// and <br/>
-		/// <br/>
-		/// _lifetime The returned string is allocated and freed by GLFW.  You<br/>
-		/// should not free it yourself.  It is valid until the specified joystick is<br/>
-		/// disconnected or the library is terminated.<br/>
-		/// <br/>
-		/// _safety This function must only be called from the main thread.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static string GetJoystickGUIDS(int jid)
-		{
-			string ret = Utils.DecodeStringUTF8(GetJoystickGUIDNative(jid));
-			return ret;
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function sets the user-defined pointer of the specified joystick.  The<br/>
-		/// current value is retained until the joystick is disconnected.  The initial<br/>
-		/// value is `NULL`.<br/>
-		/// This function may be called from the joystick callback, even for a joystick<br/>
-		/// that is being disconnected.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// _safety This function may be called from any thread.  Access is not<br/>
-		/// synchronized.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void SetJoystickUserPointerNative(int jid, void* pointer)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<int, void*, void>)funcTable[99])(jid, pointer);
-			#else
-			((delegate* unmanaged[Cdecl]<int, nint, void>)funcTable[99])(jid, (nint)pointer);
-			#endif
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function sets the user-defined pointer of the specified joystick.  The<br/>
-		/// current value is retained until the joystick is disconnected.  The initial<br/>
-		/// value is `NULL`.<br/>
-		/// This function may be called from the joystick callback, even for a joystick<br/>
-		/// that is being disconnected.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// _safety This function may be called from any thread.  Access is not<br/>
-		/// synchronized.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		public static void SetJoystickUserPointer(int jid, void* pointer)
-		{
-			SetJoystickUserPointerNative(jid, pointer);
-		}
-
-		/// <summary>
-		/// <br/>
-		/// This function returns the current value of the user-defined pointer of the<br/>
-		/// specified joystick.  The initial value is `NULL`.<br/>
-		/// This function may be called from the joystick callback, even for a joystick<br/>
-		/// that is being disconnected.<br/>
-		/// <br/>
-		/// <br/>
-		/// Possible errors include <br/>
-		/// <br/>
-		/// _safety This function may be called from any thread.  Access is not<br/>
-		/// synchronized.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static void* GetJoystickUserPointerNative(int jid)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<int, void*>)funcTable[100])(jid);
-			#else
-			return (void*)((delegate* unmanaged[Cdecl]<int, nint>)funcTable[100])(jid);
+			return (delegate*<GLFWwindow*, double, double, void>)((delegate* unmanaged[Cdecl]<nint, nint, nint>)funcTable[91])((nint)window, (nint)callback);
 			#endif
 		}
 	}

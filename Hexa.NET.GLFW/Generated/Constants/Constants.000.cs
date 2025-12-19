@@ -84,6 +84,8 @@ namespace Hexa.NET.GLFW
 
 		public const int GLFW_FOCUS_ON_SHOW = 0x0002000C;
 
+		public const int GLFW_MOUSE_PASSTHROUGH = 0x0002000D;
+
 		public const int GLFW_POSITION_X = 0x0002000E;
 
 		public const int GLFW_POSITION_Y = 0x0002000F;
@@ -133,6 +135,8 @@ namespace Hexa.NET.GLFW
 		public const int GLFW_OPENGL_FORWARD_COMPAT = 0x00022006;
 
 		public const int GLFW_CONTEXT_DEBUG = 0x00022007;
+
+		public const int GLFW_OPENGL_DEBUG_CONTEXT = GLFW_CONTEXT_DEBUG;
 
 		public const int GLFW_OPENGL_PROFILE = 0x00022008;
 
@@ -251,6 +255,12 @@ namespace Hexa.NET.GLFW
 		public const int GLFW_RESIZE_ALL_CURSOR = 0x00036009;
 
 		public const int GLFW_NOT_ALLOWED_CURSOR = 0x0003600A;
+
+		public const int GLFW_HRESIZE_CURSOR = GLFW_RESIZE_EW_CURSOR;
+
+		public const int GLFW_VRESIZE_CURSOR = GLFW_RESIZE_NS_CURSOR;
+
+		public const int GLFW_HAND_CURSOR = GLFW_POINTING_HAND_CURSOR;
 
 		public const int GLFW_CONNECTED = 0x00040001;
 

@@ -15,14 +15,6 @@ using HexaGen.Runtime;
 
 namespace Hexa.NET.GLFW
 {
-	/// <summary>
-	/// <br/>
-	/// Opaque monitor object.<br/>
-	/// <br/>
-	/// <br/>
-	/// <br/>
-	/// <br/>
-	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct GLFWmonitor
 	{
@@ -30,14 +22,6 @@ namespace Hexa.NET.GLFW
 
 	}
 
-	/// <summary>
-	/// <br/>
-	/// Opaque monitor object.<br/>
-	/// <br/>
-	/// <br/>
-	/// <br/>
-	/// <br/>
-	/// </summary>
 	#if NET5_0_OR_GREATER
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	#endif
@@ -78,14 +62,6 @@ namespace Hexa.NET.GLFW
 		#endif
 	}
 
-	/// <summary>
-	/// <br/>
-	/// Opaque monitor object.<br/>
-	/// <br/>
-	/// <br/>
-	/// <br/>
-	/// <br/>
-	/// </summary>
 	#if NET5_0_OR_GREATER
 	[DebuggerDisplay("{DebuggerDisplay,nq}")]
 	#endif

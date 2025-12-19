@@ -53,11 +53,11 @@ namespace Hexa.NET.GLFW
 		public unsafe void* User;
 
 
-		public unsafe GLFWallocator(GLFWallocatefun allocate = default, GLFWreallocatefun reallocate = default, GLFWdeallocatefun deallocate = default, void* user = default)
+		public unsafe GLFWallocator(delegate*<nuint, void*, void*> allocate = default, delegate*<void*, nuint, void*, void*> reallocate = default, delegate*<void*, void*, void> deallocate = default, void* user = default)
 		{
-			Allocate = (delegate*<nuint, void*, void*>)Marshal.GetFunctionPointerForDelegate(allocate);
-			Reallocate = (delegate*<void*, nuint, void*, void*>)Marshal.GetFunctionPointerForDelegate(reallocate);
-			Deallocate = (delegate*<void*, void*, void>)Marshal.GetFunctionPointerForDelegate(deallocate);
+			Allocate = (delegate*<nuint, void*, void*>)allocate;
+			Reallocate = (delegate*<void*, nuint, void*, void*>)reallocate;
+			Deallocate = (delegate*<void*, void*, void>)deallocate;
 			User = user;
 		}
 

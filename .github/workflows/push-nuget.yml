@@ -1,0 +1,41 @@
+name: Publish NuGet Packages
+
+on:
+  push:
+    tags:
+      - 1.**
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install .NET workloads
+        run: dotnet workload install android
+
+      - name: Restore dependencies
+        run: |
+          dotnet restore Hexa.NET.GLFW/Hexa.NET.GLFW.csproj
+
+      - name: Build the project
+        run: |
+          dotnet build Hexa.NET.GLFW/Hexa.NET.GLFW.csproj --configuration Release
+
+      - name: Pack the project
+        run: |
+          dotnet pack Hexa.NET.GLFW/Hexa.NET.GLFW.csproj --configuration Release --output ./nupkgs
+
+      - name: List packages
+        run: ls ./nupkgs/
+
+      - name: Publish the package
+        run: dotnet nuget push ./nupkgs/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate

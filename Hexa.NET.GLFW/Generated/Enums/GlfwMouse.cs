@@ -26,6 +26,5 @@ namespace Hexa.NET.GLFW
 		ButtonLeft = Button1,
 		ButtonRight = Button2,
 		ButtonMiddle = Button3,
-		Passthrough = 0x0002000D,
 	}
 }
